@@ -63,3 +63,17 @@ function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(images[card.frame], 0, 0);
 }
+
+gsap.fromTo('.section-work__item', {
+  opacity:0,
+  y: '100',
+  }, {
+  scrollTrigger: {
+  trigger:'.section-work__list',
+  start:'top center',
+  // markers: true
+  },
+  y: 0,
+  opacity:1,
+  stagger: .2,
+});

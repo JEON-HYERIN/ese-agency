@@ -109,7 +109,7 @@
   right: 0;
   bottom: 0;
   z-index: 300;
-  opacity: .04;
+  opacity: 0.04;
   pointer-events: none;
   background-image: url("/assets/images/overlay.gif");
   background-size: 480px;
@@ -136,6 +136,166 @@
     font-size: 4vw;
     font-weight: 300;
     line-height: 1.25;
-    letter-spacing: -.015em;
+    letter-spacing: -0.015em;
+  }
+}
+.section-work {
+  padding-top: 150px;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  &__item {
+    width: calc((100% - 48px) / 4);
+  }
+  &__link {
+    position: relative;
+    display: block;
+  }
+  &__thumbnail {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding-top: 149%;
+    border-radius: 4px;
+    border: 1px solid #000;
+    background-color: rgba(255, 255, 255, 0.12);
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform-style: preserve-3d;
+      transition: opacity 0.3s,
+        transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+  .section-work__link:hover {
+    .section-work__thumbnail img {
+      transform: scale3d(1.05, 1.05, 1.05);
+    }
+  }
+  &__cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+    .section-work__link:hover & {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+    &-icon {
+      flex: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #f5f5f5;
+      background-image: url("/assets/images/icon-plus-small-black.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 10px 10px;
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+      .section-work__link:hover & {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+  &__more-view {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    &-btn {
+      min-height: 50px;
+      grid-column-gap: 8px;
+      color: var(--colors--white);
+      text-align: left;
+      white-space: nowrap;
+      background-color: transparent;
+      border-style: none;
+      border-radius: 50px;
+      flex-direction: row;
+      flex: none;
+      justify-content: center;
+      align-items: center;
+      padding-left: 30px;
+      padding-right: 30px;
+      display: flex;
+      position: relative;
+      overflow: hidden;
+      &:hover {
+        .section-work__more-view-btn-text-wrap {
+          transform: translateY(-100%);
+        }
+        .section-work__more-view-btn-bg {
+          transform: scale(0.95);
+        }
+      }
+      &-inner {
+        z-index: 10;
+        flex-direction: column;
+        flex: none;
+        justify-content: flex-start;
+        align-items: stretch;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+      }
+      &-text {
+        &-wrap {
+          display: flex;
+          align-items: center;
+          column-gap: 8px;
+          transform: translate(0);
+          transition: transform .3s cubic-bezier(.165,.84,.44,1);
+          &[aria-hidden="true"] {
+            position: absolute;
+            top: 100%;
+            left: 0;
+          }
+        }
+      }
+      &-icon {
+        width: 0.8em;
+        height: 0.8em;
+        flex: none;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      &-bg {
+        z-index: 2;
+        background-color: rgb(31, 31, 31);
+        transform: scale3d(1none, 1none, 1none);
+        transform-style: preserve-3d;
+        border-radius: 50px;
+        transition: all .3s cubic-bezier(.165,.84,.44,1);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        overflow: hidden;
+      }
+      }
   }
 }
