@@ -2,7 +2,7 @@
 $(".global-nav__item--expertise").mouseenter(function () {
   $("body").addClass("expertise-open");
 });
-$(".global-nav__item--expertise").mouseleave(function () {
+$(".local-nav").mouseleave(function () {
   $("body").removeClass("expertise-open");
 });
 
