@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scrollbar-width: none;
+  font-family: sans-serif;
+  text-size-adjust: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+}
+
+svg {
+  display: block;
+}
+button {
+  cursor: pointer;
+}
+#skip-nav {
+  position: relative;
+  z-index: 100;
+  a {
+    position: absolute;
+    top: -30px;
+    left: 0;
+    width: 300px;
+    background: #333;
+    text-align: center;
+    padding: 2px 6px 0 0;
+    font-size: 13px;
+    line-height: 26px;
+    color: #fff;
+    white-space: nowrap;
+
+    &:focus {
+      top: 0;
+    }
+  }
+}
+.blind {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.common-inner {
+  position: relative;
+  max-width: 2000px;
+  padding: 0 60px;
+  margin: 0 auto;
+}
+
+.common-display-mo {
+  display: none !important;
+}
