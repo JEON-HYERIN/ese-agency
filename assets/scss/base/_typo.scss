@@ -1,0 +1,65 @@
+@font-face {
+  font-family: 'Migha';
+  src: url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03f_MighaBold.woff2') format('woff2'), url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b040_MighaBold.woff') format('woff'), url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03b_MighaBold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Migha';
+  src: url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03c_MighaBoldItalic.woff2') format('woff2'), url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03d_MighaBoldItalic.woff') format('woff'), url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03e_MighaBoldItalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Suisseintl';
+  src: url('../fonts/651d15fb8f27f4a03c14afae_SuisseIntl-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisseintl';
+  src: url('../fonts/651d15fb8f27f4a03c14afaa_SuisseIntl-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Suisseintl';
+  src: url('../fonts/651d15fb8f27f4a03c14afac_SuisseIntl-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Asap';
+  src: url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/6523c65538fa56e6b4b99ba7_Asap-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Roboto Mono';
+  src: url('https://assets.website-files.com/651d15fb8f27f4a03c14ae88/6523c6de1cba76b00c5bafcf_RobotoMono-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  overflow: hidden;
+  font-family: Suisseintl, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  background-color: #000;
+  color: rgba(255, 255, 255, .96);
+}
