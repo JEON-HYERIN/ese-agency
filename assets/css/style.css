@@ -178,3 +178,7 @@ body { overflow: hidden; font-family: Suisseintl, sans-serif; font-size: 14px; f
 
 @keyframes scroll-move { 0% { -webkit-transform: translate(-100%, 0px); transform: translate(-100%, 0px); }
   100% { -webkit-transform: translate(-200%, 0px); transform: translate(-200%, 0px); } }
+
+.section-intro__title { display: inline-block; margin-right: 8em; font-size: 16px; line-height: 1; }
+
+.section-intro__description { display: inline; font-size: 4vw; font-weight: 300; line-height: 1.25; letter-spacing: -.015em; }

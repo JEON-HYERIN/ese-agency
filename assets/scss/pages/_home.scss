@@ -124,3 +124,18 @@
     transform: translate(-200%, 0px);
   }
 }
+.section-intro {
+  &__title {
+    display: inline-block;
+    margin-right: 8em;
+    font-size: 16px;
+    line-height: 1;
+  }
+  &__description {
+    display: inline;
+    font-size: 4vw;
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -.015em;
+  }
+}
