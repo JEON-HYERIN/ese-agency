@@ -1,3 +1,21 @@
+// common
+.common-paragraph {
+  &__title {
+    display: inline-block;
+    margin-right: 8em;
+    font-size: 16px;
+    line-height: 1;
+  }
+  &__description {
+    display: inline;
+    font-size: 4vw;
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+}
+
+// section
 .section-visual {
   height: 200svh;
   &__canvas {
