@@ -85,7 +85,7 @@ gsap.fromTo('.section-work__item', {
   stagger: .2,
 });
 
-$('.section-interview__video-control--audio').click(function (e) {
+$('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
 
