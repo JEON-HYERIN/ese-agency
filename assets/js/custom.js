@@ -77,3 +77,7 @@ gsap.fromTo('.section-work__item', {
   opacity:1,
   stagger: .2,
 });
+
+$('.section-interview__video-control--audio').click(function (e) {
+  $(this).toggleClass('is-active');
+});
