@@ -1,3 +1,10 @@
+$(function () {
+  // a태그 기본동작 방지
+  $(document).on('click', 'a[href="#"]', function (e) {
+    e.preventDefault();
+  });
+})
+
 // gnb
 $(".global-nav__item--expertise").mouseenter(function () {
   $("body").addClass("expertise-open");

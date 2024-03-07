@@ -252,3 +252,37 @@ body { overflow: hidden; font-family: Suisseintl, sans-serif; font-size: 14px; f
 .section-interview-thumbnail img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; }
 
 .section-interview .common-paragraph { padding-top: 150px; }
+
+.section-detail { padding-top: 150px; }
+
+.section-detail__sticky-area { position: relative; height: 700svh; }
+
+.section-detail__sticky { position: relative; }
+
+.section-detail__item { position: relative; z-index: 1; width: 100%; height: 120svh; overflow: hidden; -webkit-transition: all 1s cubic-bezier(0.602, 0.001, 0.175, 1); transition: all 1s cubic-bezier(0.602, 0.001, 0.175, 1); }
+
+.section-detail__link { position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: default; background-color: #1f1f1f; -webkit-transition: -webkit-transform 1s cubic-bezier(0.602, 0.001, 0.175, 1); transition: -webkit-transform 1s cubic-bezier(0.602, 0.001, 0.175, 1); transition: transform 1s cubic-bezier(0.602, 0.001, 0.175, 1); transition: transform 1s cubic-bezier(0.602, 0.001, 0.175, 1), -webkit-transform 1s cubic-bezier(0.602, 0.001, 0.175, 1); }
+
+.section-detail__content { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; -webkit-transition: all 1s cubic-bezier(0.602, 0.001, 0.175, 1); transition: all 1s cubic-bezier(0.602, 0.001, 0.175, 1); }
+
+.section-detail__content .common-inner { z-index: 1; width: 100%; padding-bottom: 120px; cursor: pointer; }
+
+.section-detail__content .common-inner:hover .common-scroll-move__text-wrap { text-stroke: 1px rgba(255, 255, 255, 0.96); -webkit-text-stroke: 1px rgba(255, 255, 255, 0.96); color: transparent; }
+
+.section-detail__content .common-inner:hover + .section-detail__thumbnail img { -webkit-transform: scale(1.1); transform: scale(1.1); }
+
+.section-detail__title { margin-bottom: 2vw; font-size: 22px; font-weight: 500; line-height: 1; letter-spacing: -.03em; }
+
+.section-detail .common-scroll-move__text-wrap { -webkit-animation-duration: calc(1s* 42.43926666666667); animation-duration: calc(1s* 42.43926666666667); }
+
+.section-detail__thumbnail { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+
+.section-detail__thumbnail img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -o-object-fit: cover; object-fit: cover; -o-object-position: 50% 0%; object-position: 50% 0%; -webkit-transform: scale3d(1none, 1none, 1none); transform: scale3d(1none, 1none, 1none); -webkit-transform-style: preserve-3d; transform-style: preserve-3d; -webkit-transition: -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); transition: -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), -webkit-transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+
+.section-detail__progressbar { position: absolute; bottom: 0; left: 0; z-index: 1; width: 100%; height: 100%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: vertical; -webkit-box-direction: normal; -ms-flex-direction: column; flex-direction: column; -webkit-box-pack: end; -ms-flex-pack: end; justify-content: flex-end; padding: 0 60px 60px; }
+
+.section-detail__progressbar-list { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; -webkit-column-gap: 20px; column-gap: 20px; max-width: 1880px; }
+
+.section-detail__progressbar-item { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; height: 2px; overflow: hidden; background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; }
+
+.section-detail__progressbar-fill { width: 0; height: 100%; background-color: rgba(255, 255, 255, 0.96); opacity: 0; -webkit-transition: opacity .5s; transition: opacity .5s; }
