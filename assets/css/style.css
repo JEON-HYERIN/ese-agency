@@ -286,3 +286,19 @@ body { overflow: hidden; font-family: Suisseintl, sans-serif; font-size: 14px; f
 .section-detail__progressbar-item { -webkit-box-flex: 1; -ms-flex: 1; flex: 1; height: 2px; overflow: hidden; background-color: rgba(255, 255, 255, 0.2); border-radius: 10px; }
 
 .section-detail__progressbar-fill { width: 0; height: 100%; background-color: rgba(255, 255, 255, 0.96); opacity: 0; -webkit-transition: opacity .5s; transition: opacity .5s; }
+
+.section-partner { padding-top: 150px; }
+
+.section-partner__title { width: 540px; font-size: 50px; font-weight: 500; line-height: 1; letter-spacing: -.04em; }
+
+.section-partner__list { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 10px; padding-top: 30px; }
+
+.section-partner__item { width: calc((100% - 50px)/ 6); }
+
+.section-partner__link { display: block; border-radius: 4px; background-color: #1f1f1f; -webkit-transition: opacity .4s; transition: opacity .4s; }
+
+.section-partner__list:hover .section-partner__link { opacity: .2; }
+
+.section-partner__list .section-partner__link:hover { opacity: 1; }
+
+.section-partner__link img { aspect-ratio: 3 / 2; mix-blend-mode: lighten; -o-object-fit: contain; object-fit: contain; }

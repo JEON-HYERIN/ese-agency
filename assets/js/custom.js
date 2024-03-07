@@ -88,3 +88,23 @@ gsap.fromTo('.section-work__item', {
 $('.section-interview__video-control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
+
+
+// $('.section-partner__item').each(function(index, element) {
+//   const anim = gsap.fromTo(element, {
+//     opacity:0,
+//     y: '1rem',
+//   }, {
+//     y: 0,
+//     opacity:1,
+//     // delay: (index + 1) * .2,
+//   });
+//   ScrollTrigger.create({
+//     trigger: element,
+//     start:'top center',
+//     animation: anim,
+//     toggleActions: 'play none none none',
+//     // play pause resume reset
+//     once: true,
+//   });
+// });

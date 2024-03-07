@@ -543,3 +543,41 @@
     }
   }
 }
+.section-partner {
+  padding-top: 150px;
+  &__title {
+    width: 540px;
+    font-size: 50px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -.04em;
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 30px;
+  }
+  &__item {
+    width: calc((100% - 50px)/ 6);
+  }
+  &__link {
+    display: block;
+    border-radius: 4px;
+    background-color: #1f1f1f;
+    transition: opacity .4s;
+    .section-partner__list:hover & {
+      opacity: .2;
+    }
+    .section-partner__list & {
+      &:hover {
+        opacity: 1;
+      }
+    }
+    img {
+      aspect-ratio: 3 / 2;
+      mix-blend-mode: lighten;
+      object-fit: contain;
+    }
+  }
+}
