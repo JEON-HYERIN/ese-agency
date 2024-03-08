@@ -1,6 +1,6 @@
 .main {
   padding-bottom: 150px;
-  border-radius: 20.0078px;
+  // border-radius: 20.0078px;
   overflow: hidden;
 }
 .section-visual {
@@ -78,7 +78,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      padding-top: 150px;
+      @include common-section-gap;
     }
     &-item {
       width: calc((100% - 48px) / 4);
@@ -213,7 +213,7 @@
   }
 }
 .section-interview {
-  padding-top: 150px;
+  @include common-section-gap;
   .common-inner {
     display: flex;
     flex-direction: column-reverse;
@@ -231,36 +231,43 @@
     border-radius: 16px;
     &-iframe {
       position: absolute;
-      top: -400%;
-      left: 0;
-      right: 0;
-      bottom: -400%;
+      top: 0;
+      left: -100%;
+      right: -100%;
       z-index: 1;
-      width: 100%;
-      height: 900%;
+      width: 300%;
+      height: 100%;
+      @media screen and (min-width: 1506px) {
+        top: -400%;
+        bottom: -400%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 900%;
+      }
     }
-  }
-  &-thumbnail {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    img {
+    &-thumbnail {
       position: absolute;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      right: 0;
+      bottom: 0;
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .common-paragraph {
-    padding-top: 150px;
+    @include common-section-gap;
   }
 }
 .section-detail {
-  padding-top: 150px;
+  @include common-section-gap;
   &__sticky {
     &-area {
       position: relative;
@@ -376,7 +383,7 @@
   }
 }
 .section-partner {
-  padding-top: 150px;
+  @include common-section-gap;
   &__title {
     width: 540px;
     font-size: 50px;
@@ -416,7 +423,7 @@
   }
 }
 .section-testimonials {
-  padding-top: 150px;
+  @include common-section-gap;
   &__content {
       height: 100vh;
       max-height: 1000px;
@@ -571,7 +578,7 @@
   }
 }
 .section-news {
-  padding-top: 150px;
+  @include common-section-gap;
   &__title {
     &-wrap {
       display: flex;
@@ -747,6 +754,48 @@
       &-title {
         font-size: 12px;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .section-visual {
+    &__slogan {
+      .common-inner {
+        padding-bottom: 40px;
+      }
+    }
+  }
+  .section-work {
+    &__card {
+      &-item {
+        width: calc((100% - 32px) / 3);
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section-interview {
+    &__video {
+      border-radius: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .section-work {
+    &__card {
+      &-item {
+        width: calc((100% - 16px) / 2);
+      }
+    }
+  }
+  .section-interview {
+    &__video {
+      height: 170vw;
+      max-height: none;
+      margin: 0 -6vw;
     }
   }
 }
