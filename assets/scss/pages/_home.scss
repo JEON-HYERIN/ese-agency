@@ -68,7 +68,7 @@
   z-index: 300;
   opacity: 0.04;
   pointer-events: none;
-  background-image: url("/assets/images/overlay.gif");
+  background-image: url("../images/overlay.gif");
   background-size: 480px;
   background-attachment: fixed;
 }
@@ -135,7 +135,7 @@
         height: 50px;
         border-radius: 50%;
         background-color: #f5f5f5;
-        background-image: url("/assets/images/icon-plus-small-black.svg");
+        background-image: url("../images/icon-plus-small-black.svg");
         background-repeat: no-repeat;
         background-position: center;
         background-size: 10px 10px;
