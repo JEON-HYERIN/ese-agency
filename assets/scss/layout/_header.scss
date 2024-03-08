@@ -35,6 +35,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    width: 100%;
     height: 100svh;
   }
   &__list {
@@ -131,7 +132,7 @@
       flex: none;
       padding: 0;
       transition: width 1.5s cubic-bezier(.165,.84,.44,1);
-      &:first-child {
+      &:first-of-type {
         animation-name: burgerLineTopClose;
         animation-duration: 0.3s;
         animation-fill-mode: forwards;
@@ -140,7 +141,7 @@
           animation-name: burgerLineTopOpen;
         }
       }
-      &:last-child {
+      &:last-of-type {
         animation-name: burgerLineBottomClose;
         animation-duration: 0.3s;
         animation-fill-mode: forwards;
