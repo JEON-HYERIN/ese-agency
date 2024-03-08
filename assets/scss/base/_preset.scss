@@ -243,3 +243,15 @@ iframe {
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .common-inner {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .common-inner {
+    padding: 0 6vw;
+  }
+}
