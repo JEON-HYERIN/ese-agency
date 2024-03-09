@@ -757,17 +757,17 @@
       border-radius: $border-radius--card;
       background-color: $color-primary;
       transition: background-color .6s;
+      @media (hover: hover) and (min-width: 768px) {
+        &:hover {
+          background-color: #292929;
+        }
+      }
       @include mobile {
         flex-direction: row-reverse;
         min-height: 130px;
       }
       @include mobile-small {
         min-height: 110px;
-      }
-      @media (hover: hover) and (min-width: 768px) {
-        &:hover {
-          background-color: #292929;
-        }
       }
     }
     &-thumbnail {
@@ -839,6 +839,11 @@
         flex-direction: column;
         width: 80%;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
+        @media (hover: hover) and (min-width: 768px) {
+          .section-news__card-link:hover & {
+            transform: translateY(-20px);
+          }
+        }
         @include tablet {
           width: 100%;
         }
@@ -847,11 +852,6 @@
         }
         @include mobile-small {
           width: 100%;
-        }
-        @media (hover: hover) and (min-width: 768px) {
-          .section-news__card-link:hover & {
-            transform: translateY(-20px);
-          }
         }
       }
       & {
