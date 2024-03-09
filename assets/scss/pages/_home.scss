@@ -98,6 +98,12 @@
       @include mobile-small {
         width: calc((100% - #{$card-gap}) / 2);
       }
+      &:last-child {
+        display: none;
+        @media screen and (min-width: 480px) and (max-width: 991px) {
+          display: block;
+        }
+      }
     }
     &-link {
       position: relative;
