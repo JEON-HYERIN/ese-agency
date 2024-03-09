@@ -67,13 +67,13 @@ iframe {
   position: relative;
   max-width: 2000px;
   padding: 0 $gutter-desktop;
+  margin: 0 auto;
   @include mobile {
     padding: 0 $gutter-tablet;
   }
   @include mobile-small {
     padding: 0 $gutter-mobile;
   }
-  margin: 0 auto;
 }
 
 .common-display-mo {
@@ -110,12 +110,6 @@ iframe {
       margin-bottom: -0.05em;
       padding-right: 10vw;
       font-size: 14vw;
-      @include tablet {
-        font-size: 140px;
-      }
-      @include mobile-small {
-        font-size: 120px;
-      }
       font-weight: 500;
       line-height: 1;
       letter-spacing: -0.05em;
@@ -125,6 +119,12 @@ iframe {
       animation-duration: calc(1s * 16.3468);
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+      @include tablet {
+        font-size: 140px;
+      }
+      @include mobile-small {
+        font-size: 120px;
+      }
     }
     & {
       display: inline-block;
@@ -155,24 +155,24 @@ iframe {
   &__title {
     display: inline-block;
     margin-right: 8em;
+    font-size: 16px;
+    line-height: 1;
     @include mobile {
       margin-right: 4em;
     }
-    font-size: 16px;
-    line-height: 1;
   }
   &__description {
     display: inline;
     font-size: 4vw;
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
     @include tablet {
       font-size: 40px;
     }
     @include mobile-small {
       font-size: 30px;
     }
-    font-weight: 300;
-    line-height: 1.25;
-    letter-spacing: -0.015em;
   }
 }
 .common-video {
@@ -190,10 +190,6 @@ iframe {
     &-btn {
       width: 90px;
       height: 90px;
-      @include tablet {
-        width: 80px;
-        height: 80px;
-      }
       backdrop-filter: blur(20px);
       border-radius: 50%;
       background-color: rgba(219, 219, 219, .25);
@@ -202,6 +198,10 @@ iframe {
       background-position: center;
       background-size: 16px 18px;
       transition: all .2s cubic-bezier(.165,.84,.44,1);
+      @include tablet {
+        width: 80px;
+        height: 80px;
+      }
       &:hover {
         width: 130px;
         height: 130px;
@@ -213,27 +213,27 @@ iframe {
     position: absolute;
     top: 30px;
     right: 30px;
-    @include mobile-small {
-      top: $gutter-mobile;
-      right: $gutter-mobile;
-    }
     z-index: 2;
     display: flex;
     align-items: center;
     column-gap: 10px;
+    @include mobile-small {
+      top: $gutter-mobile;
+      right: $gutter-mobile;
+    }
   }
   &__control {
     display: block;
     width: 70px;
     height: 70px;
-    @include mobile {
-      width: 40px;
-      height: 40px;
-    }
     border-radius: 50%;
     backdrop-filter: brightness(150%) blur(30px);
     background-color: rgba(219, 219, 219, .25);
     transition: all .2s cubic-bezier(.165,.84,.44,1);
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
     &:hover {
       width: 80px;
       height: 80px;
@@ -246,11 +246,11 @@ iframe {
       left: 50%;
       transform: translate(-50%, -50%);
       width: 25px;
+      height: 20px;
+      transition: all .3s cubic-bezier(.455,.03,.515,.955);
       @include mobile-small {
         width: 16px;
       }
-      height: 20px;
-      transition: all .3s cubic-bezier(.455,.03,.515,.955);
     }
     &--audio {
       position: relative;
