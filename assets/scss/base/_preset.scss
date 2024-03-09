@@ -33,6 +33,7 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
+  pointer-events: none;
 }
 #skip-nav {
   position: relative;
@@ -279,4 +280,42 @@ iframe {
       } 
     }
   }
+}
+
+.cursor {
+  position: fixed;
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .4s;
+  @media (hover: none) {
+    display: none;
+  }
+  &__pointer {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255, 255, 255, .4);
+    border-radius: 50%;
+    transition: all .2s cubic-bezier(.455,.03,.515,.955);
+    .cursor.is-hover & {
+      width: 90px;
+      height: 90px;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  opacity: 0.04;
+  pointer-events: none;
+  background-image: url("../images/overlay.gif");
+  background-size: 480px;
+  background-attachment: fixed;
 }

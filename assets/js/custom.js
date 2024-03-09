@@ -116,3 +116,20 @@ $('.common-video__control--audio').click(function (e) {
 //     once: true,
 //   });
 // });
+
+  // cursor
+  const mouseCursor = document.querySelector('.cursor');
+
+  window.addEventListener('mousemove', function(e){
+    mouseCursor.style.left = e.clientX + 'px';
+    mouseCursor.style.top = e.clientY + 'px';
+    mouseCursor.style.opacity = '1';
+  });
+
+  $('a').mouseenter(function(){
+    $('.cursor').addClass('is-hover');
+  });
+
+  $('a').mouseleave(function(){
+    $('.cursor').removeClass('is-hover');
+  });

@@ -35,7 +35,7 @@ svg { display: block; }
 
 button { cursor: pointer; }
 
-iframe { width: 100%; height: 100%; border: none; }
+iframe { width: 100%; height: 100%; border: none; pointer-events: none; }
 
 #skip-nav { position: relative; z-index: 100; }
 
@@ -120,6 +120,16 @@ iframe { width: 100%; height: 100%; border: none; }
 .common-video__control--audio.is-active img[data-audio-status="off"] { opacity: 1; pointer-events: auto; }
 
 .common-video__control--audio.is-active img[data-audio-status="on"] { opacity: 0; pointer-events: none; }
+
+.cursor { position: fixed; z-index: 100; opacity: 0; pointer-events: none; -webkit-transition: opacity .4s; transition: opacity .4s; }
+
+@media (hover: none) { .cursor { display: none; } }
+
+.cursor__pointer { position: absolute; width: 60px; height: 60px; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); border: 1px solid rgba(255, 255, 255, 0.4); border-radius: 50%; -webkit-transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955); transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955); }
+
+.cursor.is-hover .cursor__pointer { width: 90px; height: 90px; }
+
+.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 300; opacity: 0.04; pointer-events: none; background-image: url("../images/overlay.gif"); background-size: 480px; background-attachment: fixed; }
 
 @font-face { font-family: 'Migha'; src: url("https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03f_MighaBold.woff2") format("woff2"), url("https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b040_MighaBold.woff") format("woff"), url("https://assets.website-files.com/651d15fb8f27f4a03c14ae88/651d15fb8f27f4a03c14b03b_MighaBold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: block; }
 
@@ -378,8 +388,6 @@ iframe { width: 100%; height: 100%; border: none; }
 .section-visual__slogan-item { margin: -0.15em -0.5em; }
 
 .section-visual__slogan-text { display: block; padding: 0.15em 0.5em; font-size: 14px; font-weight: 500; line-height: 1; letter-spacing: -0.03em; }
-
-.overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 300; opacity: 0.04; pointer-events: none; background-image: url("../images/overlay.gif"); background-size: 480px; background-attachment: fixed; }
 
 .section-work__card-list { display: -webkit-box; display: -ms-flexbox; display: flex; -ms-flex-wrap: wrap; flex-wrap: wrap; gap: 16px; padding-top: 150px; }
 

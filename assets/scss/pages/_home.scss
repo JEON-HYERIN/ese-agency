@@ -68,19 +68,6 @@
 //     transition-delay: calc(2.5s / 12 * #{$i - 1});
 //   }
 // }
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 300;
-  opacity: 0.04;
-  pointer-events: none;
-  background-image: url("../images/overlay.gif");
-  background-size: 480px;
-  background-attachment: fixed;
-}
 .section-work {
   &__card {
     $card-gap: 16px;
