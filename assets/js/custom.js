@@ -5,6 +5,14 @@ $(function () {
   });
 })
 
+// header
+const headerEl = document.querySelector('.header');
+const globalNavMenuBtn = document.querySelector('.global-nav__menu-btn');
+
+globalNavMenuBtn.addEventListener('click', function(e) {
+  headerEl.classList.toggle('is-open');
+});
+
 // gnb
 $(".global-nav__item--expertise").mouseenter(function () {
   $("body").addClass("expertise-open");
