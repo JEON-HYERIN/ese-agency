@@ -92,7 +92,7 @@
       z-index: 1;
       overflow: hidden;
       padding-top: 149%;
-      border-radius: 4px;
+      border-radius: $border-radius--card;
       border: 1px solid $color-black;
       background-color: $color-white--transparent-large;
       img {
@@ -403,7 +403,7 @@
     }
     &-link {
       display: block;
-      border-radius: 4px;
+      border-radius: $border-radius--card;
       background-color: $color-primary;
       transition: opacity .4s;
       .section-partner__card-list:hover & {
@@ -644,7 +644,7 @@
       align-items: stretch;
       height: 100%;
       overflow: hidden;
-      border-radius: 4px;
+      border-radius: $border-radius--card;
       background-color: $color-primary;
       transition: background-color .6s;
       &:hover {
