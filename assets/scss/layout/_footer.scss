@@ -8,27 +8,80 @@
   &__row {
     display: flex;
     justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+    }
     & + & {
-      padding-top: $gap-desktop;
+      @include common-section-gap;
+    }
+  }
+  &__logo {
+    @include tablet {
+      display: none;
     }
   }
   &__nav {
     &-group {
       display: flex;
       gap: 9vw;
+      @include mobile {
+        flex-direction: column;
+        gap: 0;
+        padding-top: 60px;
+      }
     }
     & {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      max-width: 134px;
+      @include mobile {
+        gap: 0;
+        &.is-open {
+          padding-bottom: 20px;
+        }
+        & + & {
+          border-top: 1px solid $color-white--transparent-medium;
+        }
+      }
     }
     &-title {
-      display: inline-block;
-      padding: 0.15em 0;
-      font-weight: 500;
-      line-height: 1.1;
-      cursor: default;
+      &-wrap {
+        @include mobile {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 14px 0;
+        }
+      }
+      & {
+        display: inline-block;
+        padding: 0.15em 0;
+        font-weight: 500;
+        line-height: 1.1;
+      }
+      &-icon {
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background-color: $color-white--transparent-medium;
+        @include mobile {
+          display: flex;
+        }
+        svg {
+          transition: transform .6s cubic-bezier(.165,.84,.44,1);
+          .footer__nav.is-open & {
+            transform: scaleY(-1);
+          }
+        }
+      }
+    }
+    &-list {
+      @include mobile {
+        display: none;
+      }
     }
     &-item {
       padding: 0.15em 0.5em;
@@ -39,6 +92,9 @@
       margin: -0.15em -0.5em;
       .footer__nav-list:hover &:not(:hover) {
         color: $color-gray;
+      }
+      @include mobile {
+        padding: 6px 0;
       }
     }
   }

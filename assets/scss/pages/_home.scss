@@ -2,6 +2,12 @@
   padding-bottom: $gap-desktop;
   // border-radius: 20.0078px;
   overflow: hidden;
+  @include tablet {
+    padding-bottom: $gap-tablet;
+  }
+  @include mobile {
+    padding-bottom: $gap-mobile;
+  }
 }
 .section-visual {
   height: 200svh;
