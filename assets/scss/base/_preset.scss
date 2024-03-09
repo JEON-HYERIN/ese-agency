@@ -23,21 +23,34 @@ body {
   color: $color-white--transparent-small;
 }
 
+::selection {
+  background-color: #1d4f62;
+  color: $color-white;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 svg {
   display: block;
 }
+
 button {
   cursor: pointer;
 }
+
 iframe {
   width: 100%;
   height: 100%;
   border: none;
   pointer-events: none;
 }
+
 #skip-nav {
   position: relative;
   z-index: 100;
+
   a {
     position: absolute;
     top: -30px;
@@ -50,11 +63,13 @@ iframe {
     color: $color-white;
     white-space: nowrap;
     background-color: #333;
+
     &:focus {
       top: 0;
     }
   }
 }
+
 .blind {
   position: absolute;
   width: 1px;
@@ -63,14 +78,17 @@ iframe {
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
 .common-inner {
   position: relative;
   max-width: 2000px;
   padding: 0 $gutter-desktop;
   margin: 0 auto;
+
   @include mobile {
     padding: 0 $gutter-tablet;
   }
+
   @include mobile-small {
     padding: 0 $gutter-mobile;
   }
@@ -82,9 +100,11 @@ iframe {
   font-weight: 500;
   line-height: 1;
   letter-spacing: -.04em;
+
   @include tablet {
     font-size: 40px;
   }
+
   @include mobile-small {
     max-width: 90%;
   }
@@ -95,10 +115,12 @@ iframe {
     display: flex;
     align-items: center;
   }
+
   &__wrapper {
     width: 100%;
     transform: translate(416.633px, 0px);
   }
+
   & {
     flex: none;
     display: flex;
@@ -106,6 +128,7 @@ iframe {
     transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
     transition-duration: 7s;
   }
+
   &__text {
     &-wrap {
       flex: none;
@@ -121,19 +144,23 @@ iframe {
       animation-duration: calc(1s * 16.3468);
       animation-iteration-count: infinite;
       animation-timing-function: linear;
+
       @include tablet {
         font-size: 140px;
       }
+
       @include mobile-small {
         font-size: 120px;
       }
     }
+
     & {
       display: inline-block;
       margin: -0.15em -0.5em;
       overflow-y: hidden;
       vertical-align: top;
     }
+
     &-inner {
       display: inline-block;
       padding: 0.15em 0.5em;
@@ -144,6 +171,7 @@ iframe {
     }
   }
 }
+
 @keyframes scroll-move {
   0% {
     transform: translate(-100%, 0px);
@@ -153,30 +181,36 @@ iframe {
     transform: translate(-200%, 0px);
   }
 }
+
 .common-paragraph {
   &__title {
     display: inline-block;
     margin-right: 8em;
     font-size: 16px;
     line-height: 1;
+
     @include mobile {
       margin-right: 4em;
     }
   }
+
   &__description {
     display: inline;
     font-size: 4vw;
     font-weight: 300;
     line-height: 1.25;
     letter-spacing: -0.015em;
+
     @include tablet {
       font-size: 40px;
     }
+
     @include mobile-small {
       font-size: 30px;
     }
   }
 }
+
 .common-video {
   &__play {
     position: absolute;
@@ -189,6 +223,7 @@ iframe {
     align-items: center;
     width: 300px;
     height: 300px;
+
     &-btn {
       width: 90px;
       height: 90px;
@@ -199,11 +234,13 @@ iframe {
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px 18px;
-      transition: all .2s cubic-bezier(.165,.84,.44,1);
+      transition: all .2s cubic-bezier(.165, .84, .44, 1);
+
       @include tablet {
         width: 80px;
         height: 80px;
       }
+
       &:hover {
         width: 130px;
         height: 130px;
@@ -211,6 +248,7 @@ iframe {
       }
     }
   }
+
   &__controls {
     position: absolute;
     top: 30px;
@@ -219,11 +257,13 @@ iframe {
     display: flex;
     align-items: center;
     column-gap: 10px;
+
     @include mobile-small {
       top: $gutter-mobile;
       right: $gutter-mobile;
     }
   }
+
   &__control {
     display: block;
     width: 70px;
@@ -231,17 +271,20 @@ iframe {
     border-radius: 50%;
     backdrop-filter: brightness(150%) blur(30px);
     background-color: rgba(219, 219, 219, .25);
-    transition: all .2s cubic-bezier(.165,.84,.44,1);
+    transition: all .2s cubic-bezier(.165, .84, .44, 1);
+
     &:hover {
       width: 80px;
       height: 80px;
       margin: -5px;
       background-color: $color-white;
     }
+
     @include mobile {
       width: 40px;
       height: 40px;
     }
+
     img {
       position: absolute;
       top: 50%;
@@ -249,35 +292,41 @@ iframe {
       transform: translate(-50%, -50%);
       width: 25px;
       height: 20px;
-      transition: all .3s cubic-bezier(.455,.03,.515,.955);
+      transition: all .3s cubic-bezier(.455, .03, .515, .955);
+
       @include mobile-small {
         width: 16px;
       }
     }
+
     &--audio {
       position: relative;
+
       img {
         &[data-audio-status="off"] {
           opacity: 0;
           pointer-events: none;
         }
+
         &[data-audio-status="on"] {
           opacity: 1;
           pointer-events: auto;
         }
       }
+
       &.is-active {
         img {
           &[data-audio-status="off"] {
             opacity: 1;
             pointer-events: auto;
           }
+
           &[data-audio-status="on"] {
             opacity: 0;
             pointer-events: none;
           }
         }
-      } 
+      }
     }
   }
 }
@@ -288,9 +337,11 @@ iframe {
   opacity: 0;
   pointer-events: none;
   transition: opacity .4s;
+
   @media (hover: none) {
     display: none;
   }
+
   &__pointer {
     position: absolute;
     width: 60px;
@@ -298,7 +349,8 @@ iframe {
     transform: translate(-50%, -50%);
     border: 1px solid rgba(255, 255, 255, .4);
     border-radius: 50%;
-    transition: all .2s cubic-bezier(.455,.03,.515,.955);
+    transition: all .2s cubic-bezier(.455, .03, .515, .955);
+
     .cursor.is-hover & {
       width: 90px;
       height: 90px;
