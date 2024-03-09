@@ -795,7 +795,7 @@
     &__video {
       height: 170vw;
       max-height: none;
-      margin: 0 -6vw;
+      margin: 0 -$gutter-mobile;
     }
   }
 }

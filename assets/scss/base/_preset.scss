@@ -276,7 +276,7 @@ iframe {
 
 @media screen and (max-width: 479px) {
   .common-inner {
-    padding: 0 6vw;
+    padding: 0 $gutter-mobile;
   }
   .common-scroll-move__text-wrap {
     font-size: 120px;
@@ -287,8 +287,8 @@ iframe {
     }
   }
   .common-video__controls {
-    top: 6vw;
-    right: 6vw;
+    top: $gutter-mobile;
+    right: $gutter-mobile;
   }
   .common-video__control {
     img {
