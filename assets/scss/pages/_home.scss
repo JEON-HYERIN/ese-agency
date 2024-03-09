@@ -668,11 +668,18 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
+      gap: 40px;
+      @include mobile-small {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
     }
   }
   &__more-view {
     display: flex;
     align-items: center;
+    flex-shrink: 0;
     column-gap: 8px;
     font-weight: 500;
     transition: transform 1.5s cubic-bezier(.165,.84,.44,1);
@@ -719,9 +726,15 @@
       flex-wrap: wrap;
       gap: $card-gap;
       padding-top: 30px;
+      @include mobile {
+        flex-direction: column;
+      }
     }
     &-item {
       width: calc((100% - (#{$card-gap} * 2)) / 3);
+      @include mobile {
+        width: 100%;
+      }
     }
     &-link {
       display: flex;
@@ -732,8 +745,17 @@
       border-radius: $border-radius--card;
       background-color: $color-primary;
       transition: background-color .6s;
-      &:hover {
-        background-color: #292929;
+      @include mobile {
+        flex-direction: row-reverse;
+        min-height: 130px;
+      }
+      @include mobile-small {
+        min-height: 110px;
+      }
+      @media (hover: hover) and (min-width: 768px) {
+        &:hover {
+          background-color: #292929;
+        }
       }
     }
     &-thumbnail {
@@ -742,6 +764,14 @@
       overflow: hidden;
       padding-top: 65%;
       background-color: $color-white--transparent-large;
+      @include mobile {
+        width: 250px;
+        max-width: 35%;
+        padding-top: 0;
+      }
+      @include mobile-small {
+        max-width: 32%;
+      }
       img {
         position: absolute;
         top: 0;
@@ -752,8 +782,10 @@
         transform: scale3d(1none, 1none, 1none);
         transform-style: preserve-3d;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
-        .section-news__card-link:hover & {
-          transform: scale(1.05);
+        @media (hover: hover) and (min-width: 768px) {
+          .section-news__card-link:hover & {
+            transform: scale(1.05);
+          }
         }
       }
     }
@@ -765,6 +797,13 @@
       flex-direction: column;
       padding: 20px;
       background-color: $color-primary;
+      @include mobile {
+        padding-top: 3px;
+        padding-bottom: 30px;
+      }
+      @include mobile-small {
+        padding: 16px 30px 16px 16px;
+      }
       &::before {
         content: '';
         position: absolute;
@@ -774,8 +813,10 @@
         height: 20px;
         background-color: $color-primary;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
-        .section-news__card-link:hover & {
-          transform: translateY(-20px);
+        @media (hover: hover) and (min-width: 768px) {
+          .section-news__card-link:hover & {
+            transform: translateY(-20px);
+          }
         }
       }
     }
@@ -786,8 +827,19 @@
         flex-direction: column;
         width: 80%;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
-        .section-news__card-link:hover & {
-          transform: translateY(-20px);
+        @include tablet {
+          width: 100%;
+        }
+        @include mobile {
+          justify-content: center;
+        }
+        @include mobile-small {
+          width: 100%;
+        }
+        @media (hover: hover) and (min-width: 768px) {
+          .section-news__card-link:hover & {
+            transform: translateY(-20px);
+          }
         }
       }
       & {
@@ -796,6 +848,15 @@
         font-weight: 500;
         line-height: 1;
         letter-spacing: -.03em;
+        @include tablet {
+          font-size: 20px;
+        }
+        @include mobile {
+          font-size: 22px;
+        }
+        @include mobile-small {
+          font-size: 18px;
+        }
       }
     }
     &-sub-title {
@@ -812,6 +873,9 @@
         column-gap: 4px;
         padding-top: 40px;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
+        @include mobile {
+          display: none;
+        }
       }
       & {
         display: flex;
