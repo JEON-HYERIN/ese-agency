@@ -55,7 +55,7 @@
       }
     }
     & + & {
-      padding-left: 60px;
+      padding-left: $gutter-desktop;
     }
   }
   &__link {
@@ -343,7 +343,7 @@
 @media screen and (max-width: 991px) {
   .global-nav {
     display: none;
-    padding: 120px 60px 30px;
+    padding: 120px $gutter-desktop 30px;
     .header.is-open & {
       display: flex;
     }
