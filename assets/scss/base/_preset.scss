@@ -75,16 +75,18 @@ iframe {
   }
 }
 
-.common-display-mo {
-  display: none !important;
-}
-
 .common-title {
-  width: 540px;
+  max-width: 540px;
   font-size: 50px;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -.04em;
+  @include tablet {
+    font-size: 40px;
+  }
+  @include mobile-small {
+    max-width: 90%;
+  }
 }
 
 .common-scroll-move {
