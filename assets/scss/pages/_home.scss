@@ -251,6 +251,9 @@
     overflow: hidden;
     padding-bottom: 15px;
     border-radius: 16px;
+    @include tablet {
+      height: 110vw;
+    }
     @include mobile {
       border-radius: 0;
     }
@@ -882,7 +885,7 @@
         display: flex;
         flex-wrap: wrap;
         align-items: center;
-        column-gap: 4px;
+        gap: 4px;
         padding-top: 40px;
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
         @include mobile {
