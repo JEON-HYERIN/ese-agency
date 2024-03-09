@@ -1,27 +1,27 @@
 @mixin common-section-gap {
   padding-top: $gap-desktop;
-  @media screen and (max-width: 991px) {
+  @include tablet {
     padding-top: $gap-tablet;
   }
-  @media screen and (max-width: 479px) {
+  @include mobile {
     padding-top: $gap-mobile;
   }
 }
 
 // media query
-@mixin table-larget {
+@mixin tablet {
   @media screen and (max-width: 991px) {
     @content;
   }
 }
 
-@mixin tablet {
+@mixin mobile {
   @media screen and (max-width: 767px) {
     @content;
   }
 }
 
-@mixin mobile {
+@mixin mobile-small {
   @media screen and (max-width: 479px) {
     @content;
   }
