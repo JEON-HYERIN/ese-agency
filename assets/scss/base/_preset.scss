@@ -67,6 +67,12 @@ iframe {
   position: relative;
   max-width: 2000px;
   padding: 0 $gutter-desktop;
+  @include mobile {
+    padding: 0 $gutter-tablet;
+  }
+  @include mobile-small {
+    padding: 0 $gutter-mobile;
+  }
   margin: 0 auto;
 }
 
@@ -104,6 +110,12 @@ iframe {
       margin-bottom: -0.05em;
       padding-right: 10vw;
       font-size: 14vw;
+      @include tablet {
+        font-size: 140px;
+      }
+      @include mobile-small {
+        font-size: 120px;
+      }
       font-weight: 500;
       line-height: 1;
       letter-spacing: -0.05em;
@@ -143,12 +155,21 @@ iframe {
   &__title {
     display: inline-block;
     margin-right: 8em;
+    @include mobile {
+      margin-right: 4em;
+    }
     font-size: 16px;
     line-height: 1;
   }
   &__description {
     display: inline;
     font-size: 4vw;
+    @include tablet {
+      font-size: 40px;
+    }
+    @include mobile-small {
+      font-size: 30px;
+    }
     font-weight: 300;
     line-height: 1.25;
     letter-spacing: -0.015em;
@@ -169,6 +190,10 @@ iframe {
     &-btn {
       width: 90px;
       height: 90px;
+      @include tablet {
+        width: 80px;
+        height: 80px;
+      }
       backdrop-filter: blur(20px);
       border-radius: 50%;
       background-color: rgba(219, 219, 219, .25);
@@ -188,6 +213,10 @@ iframe {
     position: absolute;
     top: 30px;
     right: 30px;
+    @include mobile-small {
+      top: $gutter-mobile;
+      right: $gutter-mobile;
+    }
     z-index: 2;
     display: flex;
     align-items: center;
@@ -197,6 +226,10 @@ iframe {
     display: block;
     width: 70px;
     height: 70px;
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
     border-radius: 50%;
     backdrop-filter: brightness(150%) blur(30px);
     background-color: rgba(219, 219, 219, .25);
@@ -213,6 +246,9 @@ iframe {
       left: 50%;
       transform: translate(-50%, -50%);
       width: 25px;
+      @include mobile-small {
+        width: 16px;
+      }
       height: 20px;
       transition: all .3s cubic-bezier(.455,.03,.515,.955);
     }
@@ -240,59 +276,6 @@ iframe {
           }
         }
       } 
-    }
-  }
-}
-
-@media screen and (max-width: 991px) {
-  .common-scroll-move__text-wrap {
-    font-size: 140px;
-  }
-  .common-paragraph {
-    &__description {
-      font-size: 40px;
-    }
-  }
-  .common-video__play-btn {
-    width: 80px;
-    height: 80px;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .common-inner {
-    padding: 0 40px;
-  }
-  .common-paragraph {
-    &__title {
-      margin-right: 4em;
-    }
-  }
-  .common-video__control {
-    width: 40px;
-    height: 40px;
-  }
-}
-
-@media screen and (max-width: 479px) {
-  .common-inner {
-    padding: 0 $gutter-mobile;
-  }
-  .common-scroll-move__text-wrap {
-    font-size: 120px;
-  }
-  .common-paragraph {
-    &__description {
-      font-size: 30px;
-    }
-  }
-  .common-video__controls {
-    top: $gutter-mobile;
-    right: $gutter-mobile;
-  }
-  .common-video__control {
-    img {
-      width: 16px;
     }
   }
 }
