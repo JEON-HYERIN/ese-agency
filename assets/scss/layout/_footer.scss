@@ -38,13 +38,13 @@
       padding: 4px 0;
       margin: -0.15em -0.5em;
       .footer__nav-list:hover &:not(:hover) {
-        color: #9d9d9d;
+        color: $color-gray;
       }
     }
   }
   &__copyright {
     padding: 4px 0;
-    color: #9d9d9d;
+    color: $color-gray;
     cursor: default;
   }
   &__corporation {
@@ -53,7 +53,7 @@
       gap: 40px;
     }
     &-link {
-      color: #9d9d9d;
+      color: $color-gray;
       &:hover {
         color: rgba(255, 255, 255, .96);
       }
