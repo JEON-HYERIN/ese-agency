@@ -77,19 +77,20 @@
 }
 .section-work {
   &__card {
+    $card-gap: 16px;
     &-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: $card-gap;
       @include common-section-gap;
     }
     &-item {
-      width: calc((100% - 48px) / 4);
+      width: calc((100% - (#{$card-gap} * 3)) / 4);
       @include tablet {
-        width: calc((100% - 32px) / 3);
+        width: calc((100% - (#{$card-gap} * 2)) / 3);
       }
       @include mobile-small {
-        width: calc((100% - 16px) / 2);
+        width: calc((100% - #{$card-gap}) / 2);
       }
     }
     &-link {
@@ -409,14 +410,15 @@
     letter-spacing: -.04em;
   }
   &__card {
+    $card-gap: 10px;
     &-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: $card-gap;
       padding-top: 30px;
     }
     &-item {
-      width: calc((100% - 50px)/ 6);
+      width: calc((100% - (#{$card-gap} * 5)) / 6);
     }
     &-link {
       display: block;
@@ -646,6 +648,7 @@
     }
   }
   &__card {
+    $card-gap: 10px;
     &-list {
       display: flex;
       flex-wrap: wrap;
@@ -653,7 +656,7 @@
       padding-top: 30px;
     }
     &-item {
-      flex: 1;
+      width: calc((100% - (#{$card-gap} * 2)) / 3);
     }
     &-link {
       display: flex;
