@@ -55,7 +55,7 @@
     &-link {
       color: $color-gray;
       &:hover {
-        color: rgba(255, 255, 255, .96);
+        color: $color-white--transparent-small;
       }
     }
   }

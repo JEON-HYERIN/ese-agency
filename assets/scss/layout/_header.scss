@@ -128,7 +128,7 @@
     &-line {
       width: 20px;
       height: 1px;
-      background-color: rgba(255, 255, 255, .96);
+      background-color: $color-white--transparent-small;
       flex: none;
       padding: 0;
       transition: width 1.5s cubic-bezier(.165,.84,.44,1);
