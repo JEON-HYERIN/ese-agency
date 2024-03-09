@@ -453,20 +453,31 @@
 .section-testimonials {
   @include common-section-gap;
   &__content {
-      height: 100vh;
-      max-height: 1000px;
-      border-radius: 16px;
-      display: flex;
-      position: relative;
-      overflow: hidden;
+    position: relative;
+    display: flex;
+    height: 100vh;
+    max-height: 1000px;
+    border-radius: 16px;
+    overflow: hidden;
+    @include mobile {
+      display: block;
+      height: auto;
+      max-height: none;
+    }
   }
   &__video {
     &-list {
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color-primary;
+      @include mobile {
+        position: static;
+        width: 100%;
+        height: 100vw;
+      }
     }
     &-item {
       position: absolute;
@@ -479,17 +490,37 @@
       height: 100%;
       padding: $gutter-desktop;
       overflow: hidden;
+      opacity: 0;
       transition: opacity .5s;
+      &.is-active {
+        opacity: 1;
+      }
+      @include tablet {
+        padding: $gutter-tablet;
+      }
+      @include mobile {
+        &.is-active {
+          position: relative;
+        }
+        justify-content: flex-end;
+        padding-bottom: 0;
+      }
     }
     & {
       position: absolute;
-      top: -400%;
-      left: 0;
-      right: 0;
-      bottom: -400%;
-      width: 100%;
-      height: 900%;
-      background-color: $color-primary;
+      top: 0;
+      left: -100%;
+      right: -100%;
+      width: 300%;
+      height: 100%;
+      @media screen and (min-width: 1582px) {
+        top: -400%;
+        bottom: -400%;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 900%;
+      }
     }
     &-text {
       position: relative;
@@ -497,6 +528,9 @@
       display: flex;
       flex-direction: column-reverse;
       max-width: 550px;
+      @include mobile-small {
+        display: none;
+      }
     }
     &-description {
       &-wrap {
@@ -504,6 +538,13 @@
         font-weight: 500;
         line-height: 1;
         letter-spacing: -.05em;
+        @include tablet {
+          font-size: 45px;
+        }
+        @include mobile {
+          font-size: 35px;
+          line-height: 1.1;
+        }
       }
       & {
         // overflow: hidden;
@@ -525,9 +566,15 @@
         display: flex;
         align-items: center;
         padding-top: 30px;
+        @include mobile {
+          padding-top: 14px;
+        }
       }
       & {
         font-size: 24px;
+        @include mobile {
+          font-size: 18px;
+        }
         &--job {
           opacity: .35;
         }
@@ -558,8 +605,17 @@
     z-index: 1;
     width: 100%;
     display: flex;
+    align-items: flex-start;
     padding: 0 $gutter-desktop $gutter-desktop;
+    overflow-x: auto;
+    scrollbar-width: none;
+    @include mobile {
+      position: static;
+      padding: $gutter-tablet;
+      background-color: $color-primary;
+    }
     &-item {
+      flex-shrink: 0;
       overflow: hidden;
       border-radius: 16px;
       opacity: .2;
@@ -661,7 +717,7 @@
     &-list {
       display: flex;
       flex-wrap: wrap;
-      column-gap: 10px;
+      gap: $card-gap;
       padding-top: 30px;
     }
     &-item {
