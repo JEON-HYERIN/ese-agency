@@ -315,8 +315,8 @@
       cursor: pointer;
       &:hover {
         .common-scroll-move__text-wrap {
-          text-stroke: 1px rgba(255,255,255,.96);
-          -webkit-text-stroke: 1px rgba(255,255,255,.96);
+          text-stroke: 1px $color-white--transparent-small;
+          -webkit-text-stroke: 1px $color-white--transparent-small;
           color: transparent;
         }
         & + .section-detail__thumbnail img {
