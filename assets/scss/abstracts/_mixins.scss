@@ -7,3 +7,22 @@
     padding-top: 100px;
   }
 }
+
+// media query
+@mixin table-larget {
+  @media screen and (max-width: 991px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media screen and (max-width: 479px) {
+    @content;
+  }
+}
