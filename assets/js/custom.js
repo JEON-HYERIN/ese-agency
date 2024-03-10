@@ -5,6 +5,26 @@ $(function () {
   });
 })
 
+const body = document.querySelector('body');
+let scrollPosition = 0;
+
+// body fixed
+function enable() {
+  scrollPosition = window.pageYOffset;
+  body.style.overflow = 'hidden';
+  body.style.position = 'fixed';
+  body.style.top = `-${scrollPosition}px`;
+  body.style.width = '100%';
+}
+
+function disable() {
+  body.style.removeProperty('overflow');
+  body.style.removeProperty('position');
+  body.style.removeProperty('top');
+  body.style.removeProperty('width');
+  window.scrollTo(0, scrollPosition);
+}
+
 // header
 const headerEl = document.querySelector('.header');
 const globalNavMenuBtn = document.querySelector('.global-nav__menu-btn');
@@ -12,8 +32,10 @@ const globalNavMenuBtn = document.querySelector('.global-nav__menu-btn');
 globalNavMenuBtn.addEventListener('click', function(e) {
   headerEl.classList.toggle('is-open');
   if(headerEl.classList.contains('is-open')) {
+    enable();
     globalNavMenuBtn.setAttribute('aria-label', 'close navigation menu');
   } else {
+    disable();
     globalNavMenuBtn.setAttribute('aria-label', 'navigation menu');
   }
 });
