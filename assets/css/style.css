@@ -566,6 +566,7 @@ iframe {
 @media screen and (max-width: 991px) {
   .global-nav__list--lang {
     column-gap: 14px;
+    padding-top: 60px;
   }
 }
 .global-nav__list--lang .global-nav__link--de .global-nav__link-text {
