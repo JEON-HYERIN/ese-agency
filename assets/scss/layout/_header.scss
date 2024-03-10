@@ -178,7 +178,7 @@
       flex: none;
       padding: 0;
       transition: width 1.5s cubic-bezier(.165,.84,.44,1);
-      &:first-of-type {
+      &:nth-child(1) {
         animation-name: burgerLineTopClose;
         animation-duration: 0.3s;
         animation-fill-mode: forwards;
@@ -187,7 +187,7 @@
           animation-name: burgerLineTopOpen;
         }
       }
-      &:last-of-type {
+      &:nth-child(2) {
         animation-name: burgerLineBottomClose;
         animation-duration: 0.3s;
         animation-fill-mode: forwards;

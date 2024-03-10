@@ -38,6 +38,9 @@ svg {
 
 button {
   cursor: pointer;
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
 }
 
 iframe {

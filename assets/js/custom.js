@@ -11,6 +11,11 @@ const globalNavMenuBtn = document.querySelector('.global-nav__menu-btn');
 
 globalNavMenuBtn.addEventListener('click', function(e) {
   headerEl.classList.toggle('is-open');
+  if(headerEl.classList.contains('is-open')) {
+    globalNavMenuBtn.setAttribute('aria-label', 'close navigation menu');
+  } else {
+    globalNavMenuBtn.setAttribute('aria-label', 'navigation menu');
+  }
 });
 
 // gnb
