@@ -14,18 +14,17 @@ html {
 }
 
 body {
-  overflow: hidden;
   font-family: Suisseintl, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.2;
-  background-color: $color-black;
   color: $color-white--transparent-small;
+  background-color: $color-black;
 }
 
 ::selection {
-  background-color: #1d4f62;
   color: $color-white;
+  background-color: #1d4f62;
 }
 
 ::-webkit-scrollbar {
