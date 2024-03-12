@@ -12,21 +12,19 @@
 .section-visual {
   height: 200svh;
   &__canvas {
-    &-area {
-      position: sticky;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-    }
-    & {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    canvas {
       position: relative;
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-  &__slogan {
+  &__content {
     position: absolute;
     top: 0;
     left: 0;
@@ -43,16 +41,17 @@
         padding-bottom: $gutter-tablet;
       }
     }
-    &-list {
+  }
+  @at-root .slogan {
+    &__list {
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      margin: 0 auto 2vw;
+      margin-bottom: 2vw;
     }
-    &-item {
+    &__item {
       margin: -0.15em -0.5em;
     }
-    &-text {
+    &__title {
       display: block;
       padding: 0.15em 0.5em;
       font-size: 14px;
@@ -247,7 +246,7 @@
     @include mobile-small {
       height: 170vw;
       max-height: none;
-      margin: 0 -$gutter-mobile;
+      margin: 0 -#{$gutter-mobile};
     }
     &-iframe {
       position: absolute;
