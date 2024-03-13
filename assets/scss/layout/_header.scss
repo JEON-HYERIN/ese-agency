@@ -121,11 +121,6 @@
         column-gap: 14px;
         padding-top: 60px;
       }
-      .globalnav__link--de {
-        .globalnav__text {
-          opacity: .4;
-        }
-      }
     }
     & + & {
       padding-left: $gutter-desktop;
@@ -139,6 +134,11 @@
     z-index: 1;
     display: flex;
     overflow: hidden;
+    &--de {
+      .globalnav__text {
+        opacity: .4;
+      }
+    }
   }
   &__text {
     transform: translate(0);
@@ -231,6 +231,7 @@
     }
     @include tablet {
       position: static;
+      padding: 0;
       background-color: transparent;
     }
   }

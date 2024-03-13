@@ -1,0 +1,104 @@
+$component-name: 'common-video';
+.#{$component-name} {
+  &__cursor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 300px;
+  }
+  &__play {
+    width: 90px;
+    height: 90px;
+    backdrop-filter: blur(20px);
+    border-radius: 50%;
+    background-color: rgba(219, 219, 219, .25);
+    background-image: url("../images/icon-play-black.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 18px;
+    transition: all .2s cubic-bezier(.165, .84, .44, 1);
+    @include tablet {
+      width: 80px;
+      height: 80px;
+    }
+    &:hover {
+      width: 130px;
+      height: 130px;
+      background-color: $color-white;
+    }
+  }
+  &__controls {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    @include mobile-small {
+      top: $gutter-mobile;
+      right: $gutter-mobile;
+    }
+  }
+  &__control {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    backdrop-filter: brightness(150%) blur(30px);
+    background-color: rgba(219, 219, 219, .25);
+    transition: all .2s cubic-bezier(.165, .84, .44, 1);
+    &:hover {
+      width: 80px;
+      height: 80px;
+      margin: -5px;
+      background-color: $color-white;
+    }
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 25px;
+      height: 20px;
+      transition: all .3s cubic-bezier(.455, .03, .515, .955);
+      @include mobile-small {
+        width: 16px;
+      }
+    }
+    &--audio {
+      position: relative;
+      img {
+        &[data-audio-status="off"] {
+          opacity: 0;
+          pointer-events: none;
+        }
+        &[data-audio-status="on"] {
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+      &.is-active {
+        img {
+          &[data-audio-status="off"] {
+            opacity: 1;
+            pointer-events: auto;
+          }
+          &[data-audio-status="on"] {
+            opacity: 0;
+            pointer-events: none;
+          }
+        }
+      }
+    }
+  }
+}
