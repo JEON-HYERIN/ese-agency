@@ -802,7 +802,7 @@ section {
       background-color: $color-primary;
       transition: transform .6s cubic-bezier(.165,.84,.44,1);
       @media (hover: hover) and (min-width: 768px) {
-        .section-news__card-link:hover & {
+        .section-news__link:hover & {
           transform: translateY(-20px);
         }
       }
@@ -816,7 +816,7 @@ section {
       width: 80%;
       transition: transform .6s cubic-bezier(.165,.84,.44,1);
       @media (hover: hover) and (min-width: 768px) {
-        .section-news__card-link:hover & {
+        .section-news__link:hover & {
           transform: translateY(-20px);
         }
       }
