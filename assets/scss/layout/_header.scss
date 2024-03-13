@@ -134,7 +134,7 @@
     z-index: 1;
     display: flex;
     overflow: hidden;
-    &--de {
+    &[data-lang="de"] {
       .globalnav__text {
         opacity: .4;
       }

@@ -434,7 +434,7 @@ iframe {
   display: flex;
   overflow: hidden;
 }
-.globalnav__link--de .globalnav__text {
+.globalnav__link[data-lang=de] .globalnav__text {
   opacity: 0.4;
 }
 .globalnav__text {
