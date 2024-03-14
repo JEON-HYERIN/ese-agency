@@ -66,6 +66,74 @@ function navigationClose() {
   disable();
   globalNavMenuBtn.setAttribute('aria-label', 'navigation menu');
 }
+/*
+const loading = gsap.timeline({
+  //delay: 1,
+  paused: true,
+  autoAlpha: 0,
+  onStart: () => {
+    $('body').addClass('.is-loading');
+    console.log('start')
+    count()
+  },
+  onComplete: () => {
+    $('body').removeClass('.is-loading');
+  }
+})
+.addLabel('a')
+.to('.loading', {autoAlpha: 0}, 'a+=1')
+*/
+//loading.play()
+function count() {
+  const counter = ($counter, max) => {
+    let now = max;
+  
+    const handle = setInterval(() => {
+      $counter.innerHTML = Math.ceil(max - now);
+    
+      // 목표수치에 도달하면 정지
+      if (now < 1) {
+        clearInterval(handle);
+      }
+      
+      // 증가되는 값이 계속하여 작아짐
+      const step = now / 10;
+      
+      // 값을 적용시키면서 다음 차례에 영향을 끼침
+      now -= step;
+    }, 50);
+  }
+  
+  window.onload = () => {
+    // 카운트를 적용시킬 요소
+    const $counter = document.querySelector(".loading__count");
+    
+    // 목표 수치
+    const max = 100;
+    
+    setTimeout(() => counter($counter, max), 2000);
+  }
+}
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+const number = $('.loading__count');
+var startCount = {var: 0};
+
+gsap.to(startCount, {
+  var: 500,
+  duration: 3,
+  onUpdate: changeNumber,
+  scrollTrigger: {
+    trigger: '.loading',
+    toggleActions: 'restart none reverse none'
+    //play pause resume reset
+  },
+})
+function changeNumber() {
+  number.innerHTML = (startCount.var).toFixed();
+}
 
 // gnb
 $(".globalnav__item--expanded").mouseenter(function () {
@@ -190,7 +258,7 @@ $('.section-work__item').each(function(i,el) {
       trigger: el,
       start:'0% 100%',
       end: 'bottom center',
-      markers: true,
+      //markers: true,
       toggleActions: 'play none none reset'
       },
   })
@@ -220,7 +288,7 @@ ScrollTrigger.create({
   trigger: '.section-detail__inner',
   start: '0% 0%',
   end: '100% 100%',
-  markers: true,
+  //markers: true,
   onUpdate: function(self) {
     idx = Math.round(self.progress*4);
 
