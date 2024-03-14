@@ -175,7 +175,7 @@ gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
   delay: 1.2,
   })
 
-  const testimonialSwiper = new Swiper('.section-testimonials .swiper', {
+  const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
     autoplay: {
       delay: 3000
     },
