@@ -29,6 +29,11 @@
     <a href="#news">Jump to the news section</a>
   </div>
   <div id="wrap">
+    <div class="loading">
+      <div class="loading__inner">
+        <span id="number" class="loading__count">0</span>
+      </div>
+    </div>
     <!-- Header -->
     <header class="header">
       <div class="header__inner common-inner">
@@ -423,15 +428,10 @@
               </button>
             </div>
             <div class="section-interview__embedded">
-              <video playsinline autoplay loop poster="./assets/images/section-interview-thumb.jpg" src="./assets/videos/section-interview-video.mp4"></video>
-              <!-- <iframe
-                src="https://player.vimeo.com/video/905314782?muted=1&amp;autoplay=1&amp;autopause=0&amp;controls=0&amp;loop=1&amp;app_id=122963"
-                width="426" height="240" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                title="ese-doku-2023-16x9-SF5"></iframe> -->
-            </div>
-            <!-- <div class="section-interview__thumbnail">
-              <img src="./assets/images/section-interview-thumb.jpg" alt="" />
-            </div> -->
+              <video playsinline autoplay loop poster="./assets/images/section-interview-thumb.jpg">
+                <source src="./assets/videos/section-interview-video.mp4" type="video/mp4" />
+                <source src="./assets/videos/section-interview-video.webm" type="video/webm" />
+              </video>
           </div>
         </div>
       </section>

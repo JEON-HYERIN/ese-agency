@@ -18,20 +18,14 @@ $component-name: 'common-video';
     z-index: 1;
     width: 90px;
     height: 90px;
-    backdrop-filter: blur(20px);
     border-radius: 50%;
-    background-color: rgba(219, 219, 219, .25);
-    background-image: url("../images/icon-play-black.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 16px 18px;
-    transition:
-    width .2s cubic-bezier(.165, .84, .44, 1),
-    height .2s cubic-bezier(.165, .84, .44, 1),
-    background-color .2s cubic-bezier(.165, .84, .44, 1);
+    backdrop-filter: blur(20px);
+    background: rgba(219, 219, 219, .25) url("../images/icon-play-black.svg") no-repeat center/16px 18px;
+    transition-property: width, height, background-color;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.165, .84, .44, 1);
     will-change: transform;
     pointer-events: none;
-
     @include tablet {
       width: 80px;
       height: 80px;
