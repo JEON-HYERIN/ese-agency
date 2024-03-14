@@ -66,73 +66,49 @@ function navigationClose() {
   disable();
   globalNavMenuBtn.setAttribute('aria-label', 'navigation menu');
 }
-/*
-const loading = gsap.timeline({
-  //delay: 1,
-  paused: true,
-  autoAlpha: 0,
-  onStart: () => {
-    $('body').addClass('.is-loading');
-    console.log('start')
-    count()
-  },
-  onComplete: () => {
-    $('body').removeClass('.is-loading');
-  }
-})
-.addLabel('a')
-.to('.loading', {autoAlpha: 0}, 'a+=1')
-*/
-//loading.play()
-function count() {
-  const counter = ($counter, max) => {
-    let now = max;
-  
-    const handle = setInterval(() => {
-      $counter.innerHTML = Math.ceil(max - now);
-    
-      // 목표수치에 도달하면 정지
-      if (now < 1) {
-        clearInterval(handle);
-      }
-      
-      // 증가되는 값이 계속하여 작아짐
-      const step = now / 10;
-      
-      // 값을 적용시키면서 다음 차례에 영향을 끼침
-      now -= step;
-    }, 50);
-  }
-  
-  window.onload = () => {
-    // 카운트를 적용시킬 요소
-    const $counter = document.querySelector(".loading__count");
-    
-    // 목표 수치
-    const max = 100;
-    
-    setTimeout(() => counter($counter, max), 2000);
-  }
-}
 
-
-gsap.registerPlugin(ScrollTrigger);
-
-const number = $('.loading__count');
+// landing
 var startCount = {var: 0};
 
-gsap.to(startCount, {
-  var: 500,
-  duration: 3,
+const counting = gsap.to(startCount, {
+  var: 100,
+  duration: 2,
+  ease:"none",
+  onStart: function() {
+    $('body').addClass('is-load');
+  },
   onUpdate: changeNumber,
   scrollTrigger: {
-    trigger: '.loading',
-    toggleActions: 'restart none reverse none'
-    //play pause resume reset
+    trigger: ".loading__count",
   },
+  onComplete: function() {
+    $('body').removeClass('is-load');
+    $('.loading').addClass('is-invisible');
+    window.scrollTo(0,0);
+    moveCursor();
+  }
 })
+
 function changeNumber() {
-  number.innerHTML = (startCount.var).toFixed();
+  const count = document.querySelector('.loading__count');
+  count.innerHTML = (startCount.var).toFixed();
+}
+
+// cursor
+function moveCursor() {
+  const cursor = document.querySelector('.cursor');
+  window.addEventListener('mousemove', function(e){
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.opacity = '1';
+  });
+  $('a').mouseenter(function(){
+    $('.cursor').addClass('is-hover');
+  });
+
+  $('a').mouseleave(function(){
+    $('.cursor').removeClass('is-hover');
+  });
 }
 
 // gnb
@@ -188,14 +164,15 @@ gsap.to('.section-visual .marquee__content', {
     start: '0% 0%',
     end: '100% 0',
     // markers: true,
-    scrub: 0
+    scrub: 0,
   },
   xPercent: -20,
 })
 
 gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
   yPercent: -110,
-  stagger: 0.1
+  stagger: 0.1,
+  delay: 1.2,
   })
 
 
@@ -277,8 +254,6 @@ $('.section-interview__video').mousemove(function(e) {
   })
 })
 
-
-
 const stickySlide = new Swiper('.section-detail .swiper', {
   direction: 'vertical',
   parallax:true,
@@ -337,39 +312,3 @@ $('.common-video__control--audio').click(function (e) {
 //   });
 // });
 
-  // cursor
-  const cursor = document.querySelector('.cursor');
-  const videoCursor = document.querySelectorAll('.common-video__play');
-  // window.addEventListener('mousemove', function(e){
-  //   mouseCursor.style.left = e.clientX + 'px';
-  //   mouseCursor.style.top = e.clientY + 'px';
-  //   mouseCursor.style.opacity = '1';
-  // });
-
-  cursorMotion(cursor);
-  videoCursor.forEach(el => {
-    cursorMotion(el);
-
-  });
-  $('a').mouseenter(function(){
-    $('.cursor').addClass('is-hover');
-  });
-
-  $('a').mouseleave(function(){
-    $('.cursor').removeClass('is-hover');
-  });
-
-  function cursorMotion(selector) {
-    window.addEventListener('mousemove', function(e){
-      selector.style.left = e.clientX + 'px';
-      selector.style.top = e.clientY + 'px';
-      selector.style.opacity = '1';
-    });
-  }
-
-  $('.common-video__cursor').mouseenter(function(){
-    $(this).addClass('is-hover');
-  });
-  $('.common-video__cursor').mouseleave(function(){
-    $(this).removeClass('is-hover');
-  });

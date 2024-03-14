@@ -21,8 +21,8 @@ $color-white--transparent-large: rgba(255, 255, 255, .12);
 $border-radius--card: 4px;
 
 // z-index
-$z-index--header: 10;
+$z-index--header: 9;
+$z-index--loading: 10;
 $z-index--cursor: 100;
 $z-index--overlay: 1000;
 $z-index--skip-nav: 10000;
-$z-index--loading: 10;

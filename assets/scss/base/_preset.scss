@@ -19,6 +19,10 @@ body {
   line-height: 1.2;
   color: $color-white--transparent-small;
   background-color: $color-black;
+  &.is-load {
+    overflow-y: hidden;
+    touch-action: none;
+  }
 }
 
 ::selection {
