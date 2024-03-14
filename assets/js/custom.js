@@ -84,68 +84,166 @@ $(".localnav__link").mouseenter(function () {
     .removeClass("is-visible");
 });
 
+
+ScrollTrigger.create({
+  trigger: '.section-visual',
+  start: '0% 0%',
+  end: '100% 0',
+  // markers: true,
+  onLeaveBack: function() {
+    imgEl = $('.section-visual img');
+    total = imgEl.length;
+    $('.section-visual img').eq(total).addClass('on');
+  },
+  onUpdate: function(self) {
+
+    imgEl = $('.section-visual img');
+    total = imgEl.length - 1;
+    currImg = Math.round(total-(self.progress * total));
+    curr = imgEl.eq(currImg);
+
+    if($('.section-visual img.on')) {
+      imgEl.removeClass('on');
+    }
+
+    if(curr) {
+      curr.addClass('on');
+    }
+    // console.log(Math.round(self.progress * imgLength));
+  }
+})
+const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
+
+gsap.to('.section-visual .marquee__content', {
+  scrollTrigger: {
+    trigger: '.section-visual',
+    start: '0% 0%',
+    end: '100% 0',
+    // markers: true,
+    scrub: 0
+  },
+  xPercent: -20,
+})
+
+gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
+  yPercent: -110,
+  stagger: 0.1
+  })
+
+
 // canvas
-const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
+// const canvas = document.querySelector("#canvas");
+// const ctx = canvas.getContext("2d");
 
-canvas.width = 2500;
-canvas.height = 1355;
+// canvas.width = 2500;
+// canvas.height = 1355;
 
-const frameCount = 49;
+// const frameCount = 49;
 
-const currentFrame = (idx) => {
-  return `https://d20b8mqh7zo0pc.cloudfront.net/hero-sequence/v2/webp/ese-hero-sequence${idx
-    .toString()
-    .padStart(2, "0")}.webp`;
-};
+// const currentFrame = (idx) => {
+//   return `https://d20b8mqh7zo0pc.cloudfront.net/hero-sequence/v2/webp/ese-hero-sequence${idx
+//     .toString()
+//     .padStart(2, "0")}.webp`;
+// };
 
-const images = [];
-const card = {
-  frame: 0,
-};
+// const images = [];
+// const card = {
+//   frame: 0,
+// };
 
-for (let i = frameCount; i > 0; i--) {
-  const img = new Image();
-  img.src = currentFrame(i);
-  images.push(img);
-}
+// for (let i = frameCount; i > 0; i--) {
+//   const img = new Image();
+//   img.src = currentFrame(i);
+//   images.push(img);
+// }
 
-gsap.to(card, {
-  frame: frameCount - 1,
-  snap: "frame",
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".section-visual__canvas",
-    scrub: 1,
-    start: "top top",
-    end: "bottom center",
-    // pin: true,
-    // markers: true
-  },
-  onUpdate: render,
-  // duration: 4,
+// gsap.to(card, {
+//   frame: frameCount - 1,
+//   snap: "frame",
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: ".section-visual__canvas",
+//     scrub: 1,
+//     start: "top top",
+//     end: "bottom center",
+//     // pin: true,
+//     // markers: true
+//   },
+//   onUpdate: render,
+//   // duration: 4,
+// });
+
+// images[0].onload = render;
+
+// function render() {
+//   ctx.clearRect(0, 0, canvas.width, canvas.height);
+//   ctx.drawImage(images[card.frame], 0, 0);
+// }
+
+// from 과거 to 미래
+$('.section-work__item').each(function(i,el) {
+  gsap.from($(this).find('a'),{
+    opacity:0,
+    y: '100',
+    delay: el.dataset.delay,
+    scrollTrigger: {
+      trigger: el,
+      start:'0% 100%',
+      end: 'bottom center',
+      markers: true,
+      toggleActions: 'play none none reset'
+      },
+  })
+})
+
+$('.section-interview__video').mousemove(function(e) {
+  offsetX = e.offsetX;
+  offsetY = e.offsetY;
+
+  w = $('.section-interview__video').outerWidth();
+  h = $('.section-interview__video').outerHeight();
+
+  gsap.to('.common-video__play', {
+    x: (offsetX-(w/2)) / 10,
+    y: (offsetY-(h/2)) / 10,
+  })
+})
+
+
+
+const stickySlide = new Swiper('.section-detail .swiper', {
+  direction: 'vertical',
+  parallax:true,
+  speed: 1000
 });
+ScrollTrigger.create({
+  trigger: '.section-detail__inner',
+  start: '0% 0%',
+  end: '100% 100%',
+  markers: true,
+  onUpdate: function(self) {
+    idx = Math.round(self.progress*4);
 
-images[0].onload = render;
+    stickySlide.slideTo(idx);
+    $('.progressbar__column').eq(idx).find('.progressbar__fill').css({
+        width: '50%'
+    })
+  }
+})
 
-function render() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(images[card.frame], 0, 0);
-}
-
-gsap.fromTo('.section-work__item', {
-  opacity:0,
-  y: '100',
-  }, {
-  scrollTrigger: {
-  trigger:'.section-work__list',
-  start:'top center',
-  // markers: true
-  },
-  y: 0,
-  opacity:1,
-  stagger: .2,
-});
+// gsap.fromTo('.section-work__item', {
+//   opacity:0,
+//   y: '100',
+//   }, {
+//   scrollTrigger: {
+//   trigger:'.section-work__list',
+//   start:'top center',
+//   // markers: true
+//   },
+//   y: 0,
+//   opacity:1,
+//   stagger: .2,
+// });
 
 $('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
@@ -172,18 +270,38 @@ $('.common-video__control--audio').click(function (e) {
 // });
 
   // cursor
-  const mouseCursor = document.querySelector('.cursor');
+  const cursor = document.querySelector('.cursor');
+  const videoCursor = document.querySelectorAll('.common-video__play');
+  // window.addEventListener('mousemove', function(e){
+  //   mouseCursor.style.left = e.clientX + 'px';
+  //   mouseCursor.style.top = e.clientY + 'px';
+  //   mouseCursor.style.opacity = '1';
+  // });
 
-  window.addEventListener('mousemove', function(e){
-    mouseCursor.style.left = e.clientX + 'px';
-    mouseCursor.style.top = e.clientY + 'px';
-    mouseCursor.style.opacity = '1';
+  cursorMotion(cursor);
+  videoCursor.forEach(el => {
+    cursorMotion(el);
+
   });
-
   $('a').mouseenter(function(){
     $('.cursor').addClass('is-hover');
   });
 
   $('a').mouseleave(function(){
     $('.cursor').removeClass('is-hover');
+  });
+
+  function cursorMotion(selector) {
+    window.addEventListener('mousemove', function(e){
+      selector.style.left = e.clientX + 'px';
+      selector.style.top = e.clientY + 'px';
+      selector.style.opacity = '1';
+    });
+  }
+
+  $('.common-video__cursor').mouseenter(function(){
+    $(this).addClass('is-hover');
+  });
+  $('.common-video__cursor').mouseleave(function(){
+    $(this).removeClass('is-hover');
   });

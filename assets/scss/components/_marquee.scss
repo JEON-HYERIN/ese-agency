@@ -5,14 +5,12 @@ $component-name: 'marquee';
   align-items: center;
   &__inner {
     width: 100%;
-    transform: translate(416.633px, 0px);
   }
   &__content {
     display: flex;
     align-items: center;
-    transition-property: transform;
-    transition-duration: 7s;
-    transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+    // transform: translateX(x);
+    will-change: transform;
   }
   &__texts {
     flex-shrink: 0;

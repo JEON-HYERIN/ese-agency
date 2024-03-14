@@ -1,18 +1,21 @@
 $component-name: 'common-video';
 .#{$component-name} {
   &__cursor {
+
+    // z-index: 2;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    // width: 300px;
+    // height: 300px;
+    // pointer-events: none;
+  }
+  &__play {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    height: 300px;
-  }
-  &__play {
+    z-index: 1;
     width: 90px;
     height: 90px;
     backdrop-filter: blur(20px);
@@ -22,16 +25,27 @@ $component-name: 'common-video';
     background-repeat: no-repeat;
     background-position: center;
     background-size: 16px 18px;
-    transition: all .2s cubic-bezier(.165, .84, .44, 1);
+    transition:
+    width .2s cubic-bezier(.165, .84, .44, 1),
+    height .2s cubic-bezier(.165, .84, .44, 1),
+    background-color .2s cubic-bezier(.165, .84, .44, 1);
+    will-change: transform;
+    pointer-events: none;
+
     @include tablet {
       width: 80px;
       height: 80px;
     }
-    &:hover {
-      width: 130px;
-      height: 130px;
-      background-color: $color-white;
-    }
+    // .is-hover & {
+    //   width: 130px;
+    //   height: 130px;
+    //   background-color: $color-white;
+    // }
+    // &:hover {
+    //   width: 130px;
+    //   height: 130px;
+    //   background-color: $color-white;
+    // }
   }
   &__controls {
     position: absolute;
