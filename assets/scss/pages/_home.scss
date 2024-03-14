@@ -286,7 +286,7 @@ section {
     position: relative;
     height: 70vw;
     max-height: 90vh;
-    border-radius: 16px;
+    border-radius: $border-radius--video;
     overflow: hidden;
     background-color: $color-primary;
     @include tablet {
@@ -530,21 +530,24 @@ section {
     display: flex;
     height: 100vh;
     max-height: 1000px;
-    border-radius: 16px;
+    border-radius: $border-radius--video;
     overflow: hidden;
     @include mobile {
-      display: block;
+      flex-direction: column;
       height: auto;
       max-height: none;
     }
   }
-  &__list {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .swiper {
     width: 100%;
-    height: 100%;
+  }
+  &__list {
     background-color: $color-primary;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    // height: 100%;
     @include mobile {
       position: static;
       width: 100%;
@@ -552,38 +555,33 @@ section {
     }
   }
   &__item {
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    padding: $gutter-desktop;
-    overflow: hidden;
-    opacity: 0;
-    transition: opacity .5s;
-    &.is-active {
-      opacity: 1;
-    }
+    // padding: $gutter-desktop;
     @include tablet {
-      padding: $gutter-tablet;
+      // padding: $gutter-tablet;
     }
     @include mobile {
-      &.is-active {
-        position: relative;
-      }
-      justify-content: flex-end;
-      padding-bottom: 0;
+      // padding-bottom: 0;
     }
   }
   &__text {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: $gutter-desktop;
+    transform: translateY(-50%);
     z-index: 1;
     display: flex;
     flex-direction: column;
     max-width: 550px;
+    @include tablet {
+      left: $gutter-tablet;
+    }
+    @include mobile {
+      top: auto;
+      bottom: $gutter-mobile;
+      left: $gutter-mobile;
+      transform: translateY(0);
+      max-width: 400px;
+    }
     @include mobile-small {
       display: none;
     }
@@ -632,19 +630,27 @@ section {
     }
   }
   &__video {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    right: -100%;
-    width: 300%;
+    position: relative;
     height: 100%;
-    @media screen and (min-width: 1582px) {
-      top: -400%;
-      bottom: -400%;
-      left: 0;
-      right: 0;
+    // position: absolute;
+    // top: 0;
+    // left: -100%;
+    // right: -100%;
+    // width: 300%;
+    // height: 100%;
+    // @media screen and (min-width: 1582px) {
+    //   top: -400%;
+    //   bottom: -400%;
+    //   left: 0;
+    //   right: 0;
+    //   width: 100%;
+    //   height: 900%;
+    // }
+    video, img {
+      display: block;
       width: 100%;
-      height: 900%;
+      height: 100%;
+      object-fit: cover;
     }
   }
   &__indicator {

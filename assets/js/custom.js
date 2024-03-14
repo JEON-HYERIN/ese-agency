@@ -175,6 +175,31 @@ gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
   delay: 1.2,
   })
 
+  const testimonialSwiper = new Swiper('.section-testimonials .swiper', {
+    autoplay: {
+      delay: 3000
+    },
+    loop: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    touchRatio: 0,
+    on: {
+      slideChange: function () {
+        $('.indicator__button').removeClass('is-active');
+        $('.indicator__button').eq(this.realIndex).addClass('is-active');
+      }
+    }
+  });
+
+  $('.indicator__button').on('click', function(e) {
+    e.preventDefault();
+    const idx = $(this).index();
+    $('.indicator__button').removeClass('is-active');
+    $(this).addClass('is-active');
+    testimonialSwiper.slideToLoop(idx);
+  });
 
 // canvas
 // const canvas = document.querySelector("#canvas");
