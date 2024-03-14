@@ -28,7 +28,7 @@ function disable() {
 }
 
 headerEl.addEventListener('click', function(event) {
-  if(event.target.classList.contains('globalnav__menu')) {
+  if(event.target.classList.contains('global-nav__menu')) {
     globalNavMenuBtnToggle();
   }
 });
@@ -52,7 +52,7 @@ function globalNavMenuBtnToggle() {
 }
 
 function navigationOpen() {
-  const globalNavMenuBtn = document.querySelector('.globalnav__menu');
+  const globalNavMenuBtn = document.querySelector('.global-nav__menu');
 
   headerEl.classList.add('is-open');
   enable();
@@ -60,7 +60,7 @@ function navigationOpen() {
 }
 
 function navigationClose() {
-  const globalNavMenuBtn = document.querySelector('.globalnav__menu');
+  const globalNavMenuBtn = document.querySelector('.global-nav__menu');
 
   headerEl.classList.remove('is-open');
   disable();
@@ -112,17 +112,17 @@ function moveCursor() {
 }
 
 // gnb
-$(".globalnav__item--expanded").mouseenter(function () {
-  $("body").addClass("is-localnav-open");
+$(".global-nav__item--expanded").mouseenter(function () {
+  $("body").addClass("is-local-nav-open");
 });
-$(".localnav").mouseleave(function () {
-  $("body").removeClass("is-localnav-open");
+$(".local-nav").mouseleave(function () {
+  $("body").removeClass("is-local-nav-open");
 });
 
-$(".localnav__link").mouseenter(function () {
+$(".local-nav__link").mouseenter(function () {
   const index = $(this).parent().index();
 
-  $(`.localnav-thumbnail__item:eq(${index})`)
+  $(`.local-nav-thumbnail__item:eq(${index})`)
     .addClass("is-visible")
     .siblings()
     .removeClass("is-visible");
@@ -207,7 +207,7 @@ gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
 //   snap: "frame",
 //   ease: "none",
 //   scrollTrigger: {
-//     trigger: ".section-visual__canvas",
+//     trigger: ".section-visual__sticky",
 //     scrub: 1,
 //     start: "top top",
 //     end: "bottom center",
@@ -268,7 +268,7 @@ ScrollTrigger.create({
     idx = Math.round(self.progress*4);
 
     stickySlide.slideTo(idx);
-    $('.progressbar__column').eq(idx).find('.progressbar__fill').css({
+    $('.progress__column').eq(idx).find('.progress__fill').css({
         width: '50%'
     })
   }

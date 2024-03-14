@@ -37,7 +37,7 @@
     }
   }
 }
-.globalnav {
+.global-nav {
   &__content {
     display: flex;
     justify-content: space-between;
@@ -108,7 +108,7 @@
     @include tablet {
       align-items: flex-start;
     }
-    .header.is-open &:not(.globalnav__list--lang) {
+    .header.is-open &:not(.global-nav__list--lang) {
       flex-direction: column;
       row-gap: 10px;
     }
@@ -135,7 +135,7 @@
     display: flex;
     overflow: hidden;
     &[data-lang="de"] {
-      .globalnav__text {
+      .global-nav__text {
         opacity: .4;
       }
     }
@@ -153,17 +153,17 @@
     @include tablet {
       font-size: 40px;
       letter-spacing: -.05em;
-      .globalnav__list--lang & {
+      .global-nav__list--lang & {
         font-size: 20px;
       }
     }
-    .globalnav__link:hover & {
+    .global-nav__link:hover & {
       opacity: 0.75;
       transform: translateY(-100%);
     }
   }
   &__item--expanded {
-    .globalnav__link {
+    .global-nav__link {
       display: flex;
       align-items: center;
       column-gap: 8px;
@@ -171,11 +171,11 @@
         column-gap: 12px;
       }
     }
-    .is-localnav-open & {
-      .globalnav__text {
+    .is-local-nav-open & {
+      .global-nav__text {
         transform: none;
       }
-      .globalnav__arrow svg {
+      .global-nav__arrow svg {
         transform: scaleY(-1);
       }
     }
@@ -197,19 +197,19 @@
     }
   }
 }
-.localnav {
+.local-nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   pointer-events: none;
-  .is-localnav-open & {
+  .is-local-nav-open & {
     pointer-events: auto;
   }
   @include tablet {
     position: static;
-    .is-localnav-open & {
+    .is-local-nav-open & {
       padding-top: 10px;
     }
   }
@@ -222,7 +222,7 @@
     overflow: hidden;
     background-color: #171719;
     transition: height 1s cubic-bezier(0.23, 1, 0.32, 1);
-    .is-localnav-open & {
+    .is-local-nav-open & {
       height: 430px;
       @include tablet {
         // height: 338px;
@@ -256,7 +256,7 @@
     transform: translateY(100px);
     transition-timing-function: cubic-bezier(0.59, 0.12, 0.85, 0.33);
     transition-duration: 0.6s;
-    .is-localnav-open & {
+    .is-local-nav-open & {
       opacity: 1;
       transform: translateY(0px);
       transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
@@ -281,7 +281,7 @@
     }
   }
   @for $i from 1 through 5 {
-    .localnav__item:nth-child(#{$i}) .localnav__link {
+    .local-nav__item:nth-child(#{$i}) .local-nav__link {
       transition-delay: calc(0.05s * #{$i - 1});
     }
   }
@@ -295,7 +295,7 @@
     line-height: 1.15;
     transition: color 0.2s, transform 1s cubic-bezier(0.23, 1, 0.32, 1),
       opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    .localnav__list:hover & {
+    .local-nav__list:hover & {
       color: $color-white--transparent-medium;
       transition-delay: 0s;
       transition-duration: 0.5s;
@@ -318,7 +318,7 @@
       display: none;
     }
   }
-  @at-root .localnav-thumbnail {
+  @at-root .local-nav-thumbnail {
     &__item {
       position: absolute;
       top: 0;

@@ -44,7 +44,7 @@ section {
 .section-visual {
   position: relative;
   height: 200svh;
-  &__canvas {
+  &__sticky {
     position: sticky;
     top: 0;
     left: 0;
@@ -433,7 +433,7 @@ section {
     height: 20svh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, .01), #000);
   }
-  &__progressbar {
+  &__progress {
     position: absolute;
     top: 0;
     left: 0;
@@ -453,7 +453,7 @@ section {
       padding: 0 $gutter-mobile $gutter-mobile;
     }
   }
-  @at-root .progressbar {
+  @at-root .progress {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -696,7 +696,7 @@ section {
         border-radius: 50%;
       }
     }
-    &__progressbar {
+    &__progress {
       position: absolute;
       top: 0;
       left: 0;
