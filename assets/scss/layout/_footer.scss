@@ -46,7 +46,7 @@
       }
       @include mobile {
         gap: normal;
-        &.is-open {
+        &.is-active {
           padding-bottom: 20px;
         }
         & + & {
@@ -55,11 +55,13 @@
       }
     }
     &__header {
+      pointer-events: none;
       @include mobile {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 14px 0;
+        pointer-events: auto;
       }
     }
     &__title {
@@ -81,7 +83,7 @@
       }
       svg {
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
-        .footer__nav.is-open & {
+        .footer-nav__column.is-active & {
           transform: scaleY(-1);
         }
       }
@@ -89,6 +91,9 @@
     &__list {
       @include mobile {
         display: none;
+        .footer-nav__column.is-active & {
+          display: block;
+        }
       }
     }
     &__item {

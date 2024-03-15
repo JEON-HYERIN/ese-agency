@@ -69,8 +69,23 @@ $(window).on('resize', function() {
   }
 })
 
-// landing
+// loading
+// gsap.to('.loading', {
+//   delay: 1,
+//   onStart: , 
+//   onComplete: function() {
+//     introMotion.play();
+//   }
+// })
 var startCount = {var: 0};
+const introMotion = gsap.timeline({
+  paused: true,
+  delay: 1,
+})
+introMotion.addLabel('tl')
+.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0,}, 'tl')
+.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .2}, 'tl+=0.2')
+
 
 const counting = gsap.to(startCount, {
   var: 100,
@@ -88,6 +103,7 @@ const counting = gsap.to(startCount, {
     $('.loading').addClass('is-invisible');
     window.scrollTo(0,0);
     moveCursor();
+    introMotion.play();
   }
 })
 
@@ -95,6 +111,8 @@ function changeNumber() {
   const count = document.querySelector('.loading__count');
   count.innerHTML = (startCount.var).toFixed();
 }
+
+
 
 // cursor
 function moveCursor() {
@@ -244,3 +262,20 @@ $('.indicator__button').on('click', function(e) {
   $(this).addClass('is-active');
   testimonialSwiper.slideToLoop(idx);
 });
+
+// video play button
+$('.section-interview .common-video__play').on('click', function() {
+  const video = $('.section-interview__embedded').find('video');
+  video.get(0).play();
+})
+$('.section-testimonial .common-video__play').on('click', function() {
+  const video = $('.section-testimonial__embedded').find('video');
+  video.get(0).play();
+})
+
+// footer
+$('.footer-nav__header').on('click', function() {
+  let index = $(this).parent().index();
+  console.log(index);
+  $(`.footer-nav__column:eq(${index})`).addClass('is-active').siblings().removeClass('is-active');
+})
