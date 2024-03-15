@@ -22,6 +22,7 @@ body {
   &.is-load {
     overflow-y: hidden;
     touch-action: none;
+    cursor: wait;
   }
   @include tablet {
     &.is-nav-open {
@@ -123,6 +124,17 @@ iframe {
 
   @include mobile-small {
     max-width: 90%;
+  }
+}
+
+.letter-wrapper {
+  display: inline-block;
+  margin: -0.15em -0.5em;
+  vertical-align: top;
+  overflow: hidden;
+  span {
+    display: inline-block;
+    padding: 0.15em 0.5em;
   }
 }
 

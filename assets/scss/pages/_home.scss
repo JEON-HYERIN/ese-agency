@@ -10,11 +10,8 @@
   align-items: center;
   background-color: $color-black;
   box-shadow: 0 2px 100px 20px rgba(0,0,0,.2);
+  cursor: wait;
   pointer-events: none;
-  transition: opacity .3s;
-  &.is-invisible {
-    opacity: 0;
-  }
   &__count {
     flex-shrink: 0;
     font-size: 14px;
@@ -24,6 +21,9 @@
     white-space: nowrap;
     letter-spacing: -.05em;
   }
+}
+.word {
+  // overflow: hidden;
 }
 section {
   &:nth-child(n+3) {
@@ -95,18 +95,12 @@ section {
       }
     }
   }
-  @at-root .slogan {
-    &__list {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 2vw;
-    }
-    &__item {
-      margin: -0.15em -0.5em;
-    }
+  .slogan {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2vw;
     &__title {
       display: block;
-      padding: 0.15em 0.5em;
       font-size: 14px;
       font-weight: 500;
       line-height: 1;
@@ -604,16 +598,6 @@ section {
     }
     & + & {
       opacity: .35;
-    }
-  }
-  .letter-wrapper {
-    display: inline-block;
-    margin: -0.15em -0.5em;
-    vertical-align: top;
-    overflow: hidden;
-    span {
-      display: inline-block;
-      padding: 0.15em 0.5em;
     }
   }
   &__embedded {

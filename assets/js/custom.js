@@ -62,13 +62,13 @@ $('.local-nav__link').mouseenter(function () {
   }
 });
 $(window).on('resize', function() {
- console.log($(window).width()); 
   if($(window).width() >= 992) {
     $('body').removeClass('.is-local-nav-open is-nav-open');
     $('*').removeAttr('style');
   }
 })
 
+// const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
 // loading
 // gsap.to('.loading', {
 //   delay: 1,
@@ -80,12 +80,13 @@ $(window).on('resize', function() {
 var startCount = {var: 0};
 const introMotion = gsap.timeline({
   paused: true,
-  delay: 1,
 })
 introMotion.addLabel('tl')
-.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0,}, 'tl')
-.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .2}, 'tl+=0.2')
-
+.to('.loading', {autoAlpha: 0, delay: .3})
+.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0}, "-=0.5")
+.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
+.fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
+.fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
 
 const counting = gsap.to(startCount, {
   var: 100,
@@ -100,7 +101,6 @@ const counting = gsap.to(startCount, {
   },
   onComplete: function() {
     $('body').removeClass('is-load');
-    $('.loading').addClass('is-invisible');
     window.scrollTo(0,0);
     moveCursor();
     introMotion.play();
@@ -111,8 +111,6 @@ function changeNumber() {
   const count = document.querySelector('.loading__count');
   count.innerHTML = (startCount.var).toFixed();
 }
-
-
 
 // cursor
 function moveCursor() {
@@ -159,7 +157,7 @@ ScrollTrigger.create({
     // console.log(Math.round(self.progress * imgLength));
   }
 })
-const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
+// const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
 
 gsap.to('.section-visual .marquee__content', {
   scrollTrigger: {
@@ -172,11 +170,11 @@ gsap.to('.section-visual .marquee__content', {
   xPercent: -20,
 })
 
-gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
-  yPercent: -110,
-  stagger: 0.1,
-  delay: 1.2,
-  })
+// gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
+//   yPercent: -110,
+//   stagger: 0.1,
+//   delay: 1.2,
+//   })
 
 // from 과거 to 미래
 // work
@@ -194,6 +192,18 @@ $('.section-work__item').each(function(i,el) {
       },
   })
 })
+
+// gsap.to($('.section-work__more-view'), {
+//   yPercent: 100,
+//   scrollTrigger: {
+//     trigger: '.section-work',
+//     start: '80% center',
+//     end: 'bottom bottom',
+//     markers: true,
+//     scrub: 1,
+//     // toggleActions: 'play none reset reverse'
+//   }
+// });
 
 // interview
 $('.section-interview__video').mousemove(function(e) {
