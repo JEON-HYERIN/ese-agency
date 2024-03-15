@@ -331,7 +331,7 @@ section {
     }
   }
 }
-.section-detail {
+.section-expertise {
   &__inner {
     position: relative;
     height: 700svh;
@@ -344,7 +344,7 @@ section {
     // height: 100svh;
     .swiper {
       height: 100%;
-      pointer-events: none;
+      // pointer-events: none;
       &-slide {
         overflow: hidden;
       }
@@ -389,7 +389,7 @@ section {
           -webkit-text-stroke: 1px $color-white--transparent-small;
           color: transparent;
         }
-        & + .section-detail__thumbnail img {
+        & + .section-expertise__thumbnail img {
           transform: scale(1.1);
         }
       }

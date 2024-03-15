@@ -279,13 +279,14 @@ $('.section-interview__video').mousemove(function(e) {
   })
 })
 
-const stickySlide = new Swiper('.section-detail .swiper', {
+const stickySlide = new Swiper('.section-expertise .swiper', {
   direction: 'vertical',
   parallax:true,
-  speed: 1000
+  speed: 1000,
+  touchRatio: 0,
 });
 ScrollTrigger.create({
-  trigger: '.section-detail__inner',
+  trigger: '.section-expertise__inner',
   start: '0% 0%',
   end: '100% 100%',
   //markers: true,
