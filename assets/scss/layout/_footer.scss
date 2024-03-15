@@ -127,11 +127,15 @@
   &__contact {
     display: block;
     padding-top: 0.3em;
+    overflow: hidden;
     font-size: 18vw;
     &:hover {
       text-stroke: 1px $color-white--transparent-small;
       -webkit-text-stroke: 1px $color-white--transparent-small;
       color: transparent;
+    }
+    .marquee__texts {
+      animation-duration: 20s;
     }
   }
 }

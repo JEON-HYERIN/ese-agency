@@ -5,67 +5,69 @@ $(function () {
   });
 })
 
-const body = document.querySelector('body');
-const headerEl = document.querySelector('.header');
-let windowWidth = 0;
-let scrollPosition = 0;
-
-// body fixed
-function enable() {
-  scrollPosition = window.pageYOffset;
-  body.style.overflow = 'hidden';
-  body.style.position = 'fixed';
-  body.style.top = `-${scrollPosition}px`;
-  body.style.width = '100%';
-}
-
-function disable() {
-  body.style.removeProperty('overflow');
-  body.style.removeProperty('position');
-  body.style.removeProperty('top');
-  body.style.removeProperty('width');
-  window.scrollTo(0, scrollPosition);
-}
-
-headerEl.addEventListener('click', function(event) {
-  if(event.target.classList.contains('global-nav__menu')) {
-    globalNavMenuBtnToggle();
-  }
-});
-
-window.addEventListener('resize', function() {
-  windowWidth = window.innerWidth;
-
-  if((windowWidth > 991) && (headerEl.classList.contains('is-open'))) {
-    navigationClose();
+// header & nav
+$('.global-nav__menu').on('click', function () {
+  if($(window).width() <= 991) {
+    let tl = gsap.timeline({defaults: {duration: .2}});
+    $('body').toggleClass('is-nav-open');
+    if($('body').hasClass('is-nav-open')) {
+      tl.to('.global-nav__panel', {height: '100%', delay: .1})
+      tl.fromTo('.global-nav__item', {opacity: 0}, {opacity: 1, ease: 'none', stagger: .1});
+  
+      $('.global-nav__menu').attr('aria-label', 'close navigation menu');
+    } else {
+      tl.to('.global-nav__panel', {height: '0', delay: .1})
+      tl.fromTo('.global-nav__item', {opacity: 1}, {opacity: 0, ease: 'none', stagger: .1})
+  
+      $('.global-nav__menu').attr('aria-label', 'navigation menu');
+    }
   } else {
     return;
   }
 });
-
-function globalNavMenuBtnToggle() {
-    if(headerEl.classList.contains('is-open')) {
-      navigationClose();
+$('.global-nav__item--expertise .global-nav__link').on('click', function() {
+  if($(window).width() <= 991) {
+    const className = 'is-local-nav-open';
+    $('body').toggleClass(className);
+    if($('body').hasClass(className)) {
+      gsap.to('.local-nav__inner', {
+        height: 'auto',
+        duration: .3,
+      })
     } else {
-      navigationOpen();
+      gsap.to('.local-nav__inner',{height: 0, duration: .3});
     }
-}
-
-function navigationOpen() {
-  const globalNavMenuBtn = document.querySelector('.global-nav__menu');
-
-  headerEl.classList.add('is-open');
-  enable();
-  globalNavMenuBtn.setAttribute('aria-label', 'close navigation menu');
-}
-
-function navigationClose() {
-  const globalNavMenuBtn = document.querySelector('.global-nav__menu');
-
-  headerEl.classList.remove('is-open');
-  disable();
-  globalNavMenuBtn.setAttribute('aria-label', 'navigation menu');
-}
+  }
+})
+$('.global-nav__item--expertise .global-nav__link').on('mouseenter', function() {
+  if($(window).width() >= 992) {
+    const className = 'is-local-nav-open';
+    $('body').addClass(className);
+  }
+})
+$('.local-nav__inner').on('mouseleave', function() {
+  if($(window).width() >= 992) {
+    const className = 'is-local-nav-open';
+    $('body').removeClass(className);
+  }
+})
+$('.local-nav__link').mouseenter(function () {
+  if($(window).width() >= 992) {
+    const index = $(this).parent().index();
+  
+    $(`.local-nav-thumbnail__item:eq(${index})`)
+    .addClass("is-visible")
+    .siblings()
+    .removeClass("is-visible");
+  }
+});
+$(window).on('resize', function() {
+ console.log($(window).width()); 
+  if($(window).width() >= 992) {
+    $('body').removeClass('.is-local-nav-open is-nav-open');
+    $('*').removeAttr('style');
+  }
+})
 
 // landing
 var startCount = {var: 0};
@@ -111,24 +113,7 @@ function moveCursor() {
   });
 }
 
-// gnb
-$(".global-nav__item--expanded").mouseenter(function () {
-  $("body").addClass("is-local-nav-open");
-});
-$(".local-nav").mouseleave(function () {
-  $("body").removeClass("is-local-nav-open");
-});
-
-$(".local-nav__link").mouseenter(function () {
-  const index = $(this).parent().index();
-
-  $(`.local-nav-thumbnail__item:eq(${index})`)
-    .addClass("is-visible")
-    .siblings()
-    .removeClass("is-visible");
-});
-
-
+// visual
 ScrollTrigger.create({
   trigger: '.section-visual',
   start: '0% 0%',
@@ -176,6 +161,7 @@ gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
   })
 
 // from 과거 to 미래
+// work
 $('.section-work__item').each(function(i,el) {
   gsap.from($(this).find('a'),{
     opacity:0,
@@ -191,6 +177,7 @@ $('.section-work__item').each(function(i,el) {
   })
 })
 
+// interview
 $('.section-interview__video').mousemove(function(e) {
   offsetX = e.offsetX;
   offsetY = e.offsetY;
@@ -204,6 +191,7 @@ $('.section-interview__video').mousemove(function(e) {
   })
 })
 
+// expertise
 const stickySlide = new Swiper('.section-expertise .swiper', {
   direction: 'vertical',
   parallax:true,
@@ -230,7 +218,7 @@ $('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
 
-// testimonial
+testimonial
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
   autoplay: {
     delay: 3000
@@ -256,32 +244,3 @@ $('.indicator__button').on('click', function(e) {
   $(this).addClass('is-active');
   testimonialSwiper.slideToLoop(idx);
 });
-
-// const time = setTimeout(function test() {
-//   let index = 0;
-//   // console.log('test');
-//   $('.section-testimonial__item').eq(index).addClass('is-active').siblings.removeClass('is-active');
-//   setTimeout(test, 1000)
-//   index++;
-// }, 1000)
-
-// const time = setInterval(isActive, 2000);
-
-// function isActive() {
-//   let num = 0;
-//   $('.section-testimonial__item').removeClass('is-active');
-//   $('.section-testimonial__item').eq(num).addClass('is-active');
-//   num === $('.section-testimonial').length ? num === 0 : num++;
-//   console.log(num);
-// }
-// rankRepeat = function () {
-//   let num = 0;
-//   const length = $('.section-testimonial__item').length - 1;
-//   repeat = setInterval(function () {
-//     $('.section-testimonial__item').removeClass("is-active");
-//     $('.section-testimonial__item').eq(num).addClass('is-active');
-//     num === length ? num = 0 : num++;
-//   }, 2000)
-//   console.log(num);
-// };
-// rankRepeat();

@@ -23,6 +23,12 @@ body {
     overflow-y: hidden;
     touch-action: none;
   }
+  @include tablet {
+    &.is-nav-open {
+      overflow-y: hidden;
+      touch-action: none;
+    }
+  }
 }
 
 ::selection {

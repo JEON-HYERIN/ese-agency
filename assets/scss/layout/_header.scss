@@ -4,12 +4,12 @@
   left: 0;
   z-index: $z-index--header;
   width: 100%;
-  overflow: hidden;
-  transition: height .6s cubic-bezier(.165,.84,.44,1);
-  &.is-open {
-    height: 100vh;
-    background-color: $color-primary;
-    overflow-y: auto;
+  // overflow: hidden;
+  // transition: height .6s cubic-bezier(.165,.84,.44,1);
+  &.is-nav-open {
+    // height: 100vh;
+    // background-color: $color-primary;
+    // overflow-y: auto;
   }
   &__inner {
     display: flex;
@@ -38,14 +38,33 @@
   }
 }
 .global-nav {
+  @include tablet {
+    pointer-events: none;
+  }
+  &__panel {
+    @include tablet {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
+      pointer-events: none;
+      background-color: $color-primary;
+      transition: height .6s cubic-bezier(.165,.84,.44,1);
+    }
+  }
   &__content {
     display: flex;
     justify-content: space-between;
     @include tablet {
-      display: none;
+      flex-direction: column;
       padding: 120px $gutter-desktop 30px;
-      .header.is-open & {
-        display: flex;
+      overflow-y: auto;
+      scrollbar-width: none;
+      .is-nav-open & {
+        height: 100svh;
+        pointer-events: auto;
       }
     }
     @include mobile {
@@ -55,14 +74,6 @@
     @include mobile-small {
       padding-left: $gutter-mobile;
       padding-right: $gutter-mobile;
-    }
-    .header.is-open & {
-      flex-direction: column;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100svh;
     }
   }
   &__menu {
@@ -82,6 +93,7 @@
     padding: 15px;
     @include tablet {
       display: flex;
+      pointer-events: auto;
     }
   }
   &__line {
@@ -92,7 +104,7 @@
     transition-property: transform;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    .header.is-open & {
+    .is-nav-open & {
     &:nth-child(1) {
         transform: translateY(4px) rotate(45deg);
       }
@@ -107,10 +119,10 @@
     column-gap: 30px;
     @include tablet {
       align-items: flex-start;
-    }
-    .header.is-open &:not(.global-nav__list--lang) {
-      flex-direction: column;
-      row-gap: 10px;
+      &:not(.global-nav__list--lang) {
+        flex-direction: column;
+        row-gap: 10px;
+      }
     }
     &--lang {
       position: relative;
@@ -149,6 +161,9 @@
       position: absolute;
       top: 100%;
       left: 0;
+      @media (hover: none) {
+        display: none;
+      }
     }
     @include tablet {
       font-size: 40px;
@@ -162,13 +177,18 @@
       transform: translateY(-100%);
     }
   }
-  &__item--expanded {
+  &__item--expertise {
     .global-nav__link {
       display: flex;
       align-items: center;
       column-gap: 8px;
       @include tablet {
         column-gap: 12px;
+      }
+      &:hover {
+        .global-nav__text {
+          transform: none;
+        }
       }
     }
     .is-local-nav-open & {
@@ -225,8 +245,8 @@
     .is-local-nav-open & {
       height: 430px;
       @include tablet {
-        // height: 338px;
-        height: auto;
+        height: 0;
+        // height: 290px;
       }
     }
     @include tablet {

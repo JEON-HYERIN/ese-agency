@@ -9,7 +9,6 @@ $component-name: 'marquee';
   &__content {
     display: flex;
     align-items: center;
-    // transform: translateX(x);
     will-change: transform;
   }
   &__texts {
@@ -18,9 +17,9 @@ $component-name: 'marquee';
     padding-right: 10vw;
     transform: translate(-100%);
     animation-name: marquee;
-    animation-duration: calc(1s * 16.3468);
-    animation-iteration-count: infinite;
+    animation-duration: 47s;
     animation-timing-function: linear;
+    animation-iteration-count: infinite;
   }
   &__text {
     display: inline-block;

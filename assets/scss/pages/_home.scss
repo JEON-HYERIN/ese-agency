@@ -87,6 +87,7 @@ section {
       }
     }
     .marquee__texts {
+      animation-duration: 17s;
       &:nth-child(2) {
         .char {
           transform: translateY(110%);
@@ -286,8 +287,8 @@ section {
     position: relative;
     height: 70vw;
     max-height: 90vh;
-    border-radius: $border-radius--video;
     overflow: hidden;
+    border-radius: $border-radius--video;
     background-color: $color-primary;
     @include tablet {
       height: 110vw;
@@ -530,8 +531,9 @@ section {
     display: flex;
     height: 100vh;
     max-height: 1000px;
-    border-radius: $border-radius--video;
     overflow: hidden;
+    border-radius: $border-radius--video;
+    background-color: $color-primary;
     @include mobile {
       flex-direction: column;
       height: auto;
@@ -647,7 +649,6 @@ section {
   }
   @at-root .indicator {
     display: flex;
-    pointer-events: none;
     &__button {
       flex-shrink: 0;
       display:flex;
@@ -655,7 +656,6 @@ section {
       padding: 15px 30px 15px 24px;
       overflow: hidden;
       border-radius: 16px;
-      pointer-events: auto;
       opacity: .2;
       transition: opacity .2s;
       &:hover {
