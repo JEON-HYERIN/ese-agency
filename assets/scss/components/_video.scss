@@ -25,7 +25,7 @@ $component-name: 'common-video';
     transition-duration: .2s;
     transition-timing-function: cubic-bezier(.165, .84, .44, 1);
     will-change: transform;
-    pointer-events: none;
+    // pointer-events: none;
     @include tablet {
       width: 80px;
       height: 80px;
@@ -35,11 +35,11 @@ $component-name: 'common-video';
     //   height: 130px;
     //   background-color: $color-white;
     // }
-    // &:hover {
-    //   width: 130px;
-    //   height: 130px;
-    //   background-color: $color-white;
-    // }
+    &:hover {
+      width: 130px;
+      height: 130px;
+      background-color: $color-white;
+    }
   }
   &__controls {
     position: absolute;

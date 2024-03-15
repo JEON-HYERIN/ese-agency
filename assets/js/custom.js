@@ -175,81 +175,6 @@ gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
   delay: 1.2,
   })
 
-  const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
-    autoplay: {
-      delay: 3000
-    },
-    loop: true,
-    effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
-    touchRatio: 0,
-    on: {
-      slideChange: function () {
-        $('.indicator__button').removeClass('is-active');
-        $('.indicator__button').eq(this.realIndex).addClass('is-active');
-      }
-    }
-  });
-
-  $('.indicator__button').on('click', function(e) {
-    e.preventDefault();
-    const idx = $(this).index();
-    $('.indicator__button').removeClass('is-active');
-    $(this).addClass('is-active');
-    testimonialSwiper.slideToLoop(idx);
-  });
-
-// canvas
-// const canvas = document.querySelector("#canvas");
-// const ctx = canvas.getContext("2d");
-
-// canvas.width = 2500;
-// canvas.height = 1355;
-
-// const frameCount = 49;
-
-// const currentFrame = (idx) => {
-//   return `https://d20b8mqh7zo0pc.cloudfront.net/hero-sequence/v2/webp/ese-hero-sequence${idx
-//     .toString()
-//     .padStart(2, "0")}.webp`;
-// };
-
-// const images = [];
-// const card = {
-//   frame: 0,
-// };
-
-// for (let i = frameCount; i > 0; i--) {
-//   const img = new Image();
-//   img.src = currentFrame(i);
-//   images.push(img);
-// }
-
-// gsap.to(card, {
-//   frame: frameCount - 1,
-//   snap: "frame",
-//   ease: "none",
-//   scrollTrigger: {
-//     trigger: ".section-visual__sticky",
-//     scrub: 1,
-//     start: "top top",
-//     end: "bottom center",
-//     // pin: true,
-//     // markers: true
-//   },
-//   onUpdate: render,
-//   // duration: 4,
-// });
-
-// images[0].onload = render;
-
-// function render() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   ctx.drawImage(images[card.frame], 0, 0);
-// }
-
 // from 과거 to 미래
 $('.section-work__item').each(function(i,el) {
   gsap.from($(this).find('a'),{
@@ -300,41 +225,63 @@ ScrollTrigger.create({
   }
 })
 
-// gsap.fromTo('.section-work__item', {
-//   opacity:0,
-//   y: '100',
-//   }, {
-//   scrollTrigger: {
-//   trigger:'.section-work__list',
-//   start:'top center',
-//   // markers: true
-//   },
-//   y: 0,
-//   opacity:1,
-//   stagger: .2,
-// });
-
+// common-video
 $('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
 
+// testimonial
+const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
+  autoplay: {
+    delay: 3000
+  },
+  loop: true,
+  effect: 'fade',
+  fadeEffect: {
+    crossFade: true
+  },
+  touchRatio: 0,
+  on: {
+    slideChange: function () {
+      $('.indicator__button').removeClass('is-active');
+      $('.indicator__button').eq(this.realIndex).addClass('is-active');
+    }
+  }
+});
 
-// $('.section-partner__item').each(function(index, element) {
-//   const anim = gsap.fromTo(element, {
-//     opacity:0,
-//     y: '1rem',
-//   }, {
-//     y: 0,
-//     opacity:1,
-//     // delay: (index + 1) * .2,
-//   });
-//   ScrollTrigger.create({
-//     trigger: element,
-//     start:'top center',
-//     animation: anim,
-//     toggleActions: 'play none none none',
-//     // play pause resume reset
-//     once: true,
-//   });
-// });
+$('.indicator__button').on('click', function(e) {
+  e.preventDefault();
+  const idx = $(this).index();
+  $('.indicator__button').removeClass('is-active');
+  $(this).addClass('is-active');
+  testimonialSwiper.slideToLoop(idx);
+});
 
+// const time = setTimeout(function test() {
+//   let index = 0;
+//   // console.log('test');
+//   $('.section-testimonial__item').eq(index).addClass('is-active').siblings.removeClass('is-active');
+//   setTimeout(test, 1000)
+//   index++;
+// }, 1000)
+
+// const time = setInterval(isActive, 2000);
+
+// function isActive() {
+//   let num = 0;
+//   $('.section-testimonial__item').removeClass('is-active');
+//   $('.section-testimonial__item').eq(num).addClass('is-active');
+//   num === $('.section-testimonial').length ? num === 0 : num++;
+//   console.log(num);
+// }
+// rankRepeat = function () {
+//   let num = 0;
+//   const length = $('.section-testimonial__item').length - 1;
+//   repeat = setInterval(function () {
+//     $('.section-testimonial__item').removeClass("is-active");
+//     $('.section-testimonial__item').eq(num).addClass('is-active');
+//     num === length ? num = 0 : num++;
+//   }, 2000)
+//   console.log(num);
+// };
+// rankRepeat();

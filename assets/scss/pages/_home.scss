@@ -525,7 +525,7 @@ section {
   }
 }
 .section-testimonial {
-  &__content {
+  &__video {
     position: relative;
     display: flex;
     height: 100vh;
@@ -542,25 +542,10 @@ section {
     width: 100%;
   }
   &__list {
-    background-color: $color-primary;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // width: 100%;
-    // height: 100%;
     @include mobile {
       position: static;
       width: 100%;
       height: 100vw;
-    }
-  }
-  &__item {
-    // padding: $gutter-desktop;
-    @include tablet {
-      // padding: $gutter-tablet;
-    }
-    @include mobile {
-      // padding-bottom: 0;
     }
   }
   &__text {
@@ -629,24 +614,16 @@ section {
       padding: 0.15em 0.5em;
     }
   }
-  &__video {
-    position: relative;
+  &__embedded {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
-    // position: absolute;
-    // top: 0;
-    // left: -100%;
-    // right: -100%;
-    // width: 300%;
-    // height: 100%;
-    // @media screen and (min-width: 1582px) {
-    //   top: -400%;
-    //   bottom: -400%;
-    //   left: 0;
-    //   right: 0;
-    //   width: 100%;
-    //   height: 900%;
-    // }
-    video, img {
+    @include mobile {
+      height: 100vw;
+    }
+    video {
       display: block;
       width: 100%;
       height: 100%;
@@ -670,6 +647,7 @@ section {
   }
   @at-root .indicator {
     display: flex;
+    pointer-events: none;
     &__button {
       flex-shrink: 0;
       display:flex;
@@ -677,8 +655,9 @@ section {
       padding: 15px 30px 15px 24px;
       overflow: hidden;
       border-radius: 16px;
+      pointer-events: auto;
       opacity: .2;
-      transition: all .2s;
+      transition: opacity .2s;
       &:hover {
         opacity: 1;
       }
