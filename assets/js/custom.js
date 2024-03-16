@@ -179,7 +179,7 @@ gsap.to('.section-visual .marquee__content', {
 // from 과거 to 미래
 // work
 $('.section-work__item').each(function(i,el) {
-  gsap.from($(this).find('a'),{
+  gsap.from($(this).find('.section-work__link'),{
     opacity:0,
     y: '100',
     delay: el.dataset.delay,
@@ -246,11 +246,12 @@ ScrollTrigger.create({
 $('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
-
-testimonial
+// testimonial
+const progressCircle = document.querySelector(".indicator__button");
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
   autoplay: {
-    delay: 3000
+    delay: 3000, // 슬라이드 전환 시간 (밀리초)
+    disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 재생 유지
   },
   loop: true,
   effect: 'fade',
@@ -262,7 +263,28 @@ const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
     slideChange: function () {
       $('.indicator__button').removeClass('is-active');
       $('.indicator__button').eq(this.realIndex).addClass('is-active');
-    }
+    },
+    autoplayTimeLeft(s, time, progress) {
+      // const parent = document.querySelector('.indicator__button.active');
+      // const activeEl = parent.querySelector('svg path')
+      // progressCircle.forEach(function(el, index) {
+      //   el.children.style.removeProperty('style');
+      //   // if(el.classList.contains('is-active')) {
+      //   //   activeEl.style.setProperty("--progress", 1 - progress);
+      //   // }
+      //   console.log(el.children);
+      // })
+
+
+        // $('.indicator__button').find('svg path').removeAttr('style');
+        // $('.indicator__button').eq(this.realIndex).find('svg path').css('stroke-dashoffset', 1 - progress)
+  
+
+  
+      // progressCircle.style.setProperty("--progress", 1 - progress)
+      // $(".section-testimonial .indicator__button svg").removeAttr('style');
+      // $(".section-testimonial .indicator__button").eq(this.realIndex).find('svg').css('stroke-dashoffset', 1 - progress) 
+  }
   }
 });
 
@@ -282,6 +304,23 @@ $('.section-interview .common-video__play').on('click', function() {
 $('.section-testimonial .common-video__play').on('click', function() {
   const video = $('.section-testimonial__embedded').find('video');
   video.get(0).play();
+})
+
+// from 과거 to 미래
+// testimonial
+$('.section-partner__item').each(function(i,el) {
+  gsap.from($(this).find('.section-partner__link'),{
+    opacity:0,
+    y: '100',
+    delay: el.dataset.delay,
+    scrollTrigger: {
+      trigger: el,
+      start:'0% 100%',
+      end: 'bottom center',
+      //markers: true,
+      toggleActions: 'play none none reset'
+      },
+  })
 })
 
 // footer
