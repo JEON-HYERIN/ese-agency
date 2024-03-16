@@ -64,7 +64,7 @@ $('.local-nav__link').mouseenter(function () {
 $(window).on('resize', function() {
   if($(window).width() >= 992) {
     $('body').removeClass('.is-local-nav-open is-nav-open');
-    $('*').removeAttr('style');
+    $('.header *').removeAttr('style');
   }
 })
 
@@ -193,17 +193,18 @@ $('.section-work__item').each(function(i,el) {
   })
 })
 
-// gsap.to($('.section-work__more-view'), {
-//   yPercent: 100,
-//   scrollTrigger: {
-//     trigger: '.section-work',
-//     start: '80% center',
-//     end: 'bottom bottom',
-//     markers: true,
-//     scrub: 1,
-//     // toggleActions: 'play none reset reverse'
-//   }
-// });
+gsap.from($('.section-work__more-view .more-view'), {
+  opacity: 0,
+  yPercent: 50,
+  scrollTrigger: {
+    trigger: '.section-work',
+    start: '35% top',
+    // end: '80% top',
+    // markers: true,
+    // scrub: 1,
+    toggleActions: 'play none none reset'
+  }
+});
 
 // interview
 $('.section-interview__video').mousemove(function(e) {
