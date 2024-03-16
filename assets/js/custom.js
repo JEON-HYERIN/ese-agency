@@ -170,6 +170,31 @@ gsap.to('.section-visual .marquee__content', {
   xPercent: -20,
 })
 
+gsap.to('.main', {
+  scale: 0.9,
+  borderRadius: 30,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.footer',
+    start: 'top bottom',
+    bottom:'center top',
+    scrub: 0,
+    // markers: true,
+  }
+})
+// gsap.from('#about', {
+//   y: 100,
+//   opacity: 0,
+//   scrollTrigger: {
+//     trigger: '#about',
+//     top: 'top top',
+//     // end: 'bottom center',
+//     scrub: 0,
+//     // toggleActions: 'play none none reset',
+//     markers: true,
+//   }
+// })
+
 // gsap.to('.section-visual .marquee__texts:nth-child(2) .char', {
 //   yPercent: -110,
 //   stagger: 0.1,
@@ -195,7 +220,7 @@ $('.section-work__item').each(function(i,el) {
 
 gsap.from($('.section-work__more-view .more-view'), {
   opacity: 0,
-  yPercent: 50,
+  y: 100,
   scrollTrigger: {
     trigger: '.section-work',
     start: '35% top',
@@ -219,6 +244,37 @@ $('.section-interview__video').mousemove(function(e) {
     y: (offsetY-(h/2)) / 10,
   })
 })
+
+gsap.from('.section-interview__embedded', {
+  yPercent: -20,
+  scale: 1.2,
+  scrollTrigger: {
+    trigger: '.section-interview__video',
+    start: 'top bottom',
+    end: 'bottom top',
+    scrub: 0,
+    // markers: true,
+    // toggleActions: 'play reverse reverse none',
+  }
+})
+// gsap.from('.section-interview__video', {
+//   y: -20,
+//   scale: 1.3,
+//   scrollTrigger: {
+//     trigger: '.section-interview__video',
+//     start: 'top bottom',
+//     end: 'bottom top',
+//     // scrub: 1,
+//     markers: true,
+//     toggleActions: 'play reverse reverse none',
+//   }
+// })
+// scrollTrigger.create({
+//   trigger: '.section-interview__embedded',
+//   start: 'top bottom',
+//   end: 'bottom top',
+
+// });
 
 // expertise
 const stickySlide = new Swiper('.section-expertise .swiper', {
@@ -246,12 +302,36 @@ ScrollTrigger.create({
 $('.common-video__control--audio').click(function (e) {
   $(this).toggleClass('is-active');
 });
+
+// video play button
+$('.section-interview .common-video__play').on('click', function() {
+  const video = $('.section-interview__embedded').find('video');
+  video.get(0).play();
+})
+$('.section-testimonial .common-video__play').on('click', function() {
+  const video = $('.section-testimonial__embedded').find('video');
+  video.get(0).play();
+})
+
+
+const showLetter = gsap.timeline({
+  defaults: ({
+    stagger: .1,
+    delay: .3
+  }),
+  paused: true
+});
+showLetter.addLabel('t1')
+.fromTo('.section-testimonial__headline .letter-wrapper span',{yPercent: 100}, {yPercent: 0, stagger: 0.2}, "+=0")
+.fromTo('.section-testimonial__name .letter-wrapper span',{yPercent: 100}, {yPercent: 0, stagger: 0.2}, "+=0.2");
+
+
 // testimonial
 const progressCircle = document.querySelector(".indicator__button");
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
   autoplay: {
-    delay: 3000, // 슬라이드 전환 시간 (밀리초)
-    disableOnInteraction: false, // 사용자 상호 작용 후에도 자동 재생 유지
+    delay: 3000,
+    disableOnInteraction: false,
   },
   loop: true,
   effect: 'fade',
@@ -263,6 +343,7 @@ const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
     slideChange: function () {
       $('.indicator__button').removeClass('is-active');
       $('.indicator__button').eq(this.realIndex).addClass('is-active');
+      showLetter.play();
     },
     autoplayTimeLeft(s, time, progress) {
       // const parent = document.querySelector('.indicator__button.active');
@@ -294,17 +375,9 @@ $('.indicator__button').on('click', function(e) {
   $('.indicator__button').removeClass('is-active');
   $(this).addClass('is-active');
   testimonialSwiper.slideToLoop(idx);
+  showLetter.play();
 });
 
-// video play button
-$('.section-interview .common-video__play').on('click', function() {
-  const video = $('.section-interview__embedded').find('video');
-  video.get(0).play();
-})
-$('.section-testimonial .common-video__play').on('click', function() {
-  const video = $('.section-testimonial__embedded').find('video');
-  video.get(0).play();
-})
 
 // from 과거 to 미래
 // testimonial
