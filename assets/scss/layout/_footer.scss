@@ -103,8 +103,10 @@
       display: inline-block;
       padding: 4px 0;
       margin: -0.15em -0.5em;
-      .footer-nav__list:hover &:not(:hover) {
-        color: $color-gray;
+      @include hover {
+        .footer-nav__list:hover &:not(:hover) {
+          color: $color-gray;
+        }
       }
       @include mobile {
         padding: 6px 0;
@@ -123,8 +125,10 @@
       }
       &__link {
         color: $color-gray;
-        &:hover {
-          color: $color-white--transparent-small;
+        @include hover {
+          &:hover {
+            color: $color-white--transparent-small;
+          }
         }
       }
     }
@@ -134,10 +138,12 @@
     padding-top: 0.3em;
     overflow: hidden;
     font-size: 18vw;
-    &:hover {
-      text-stroke: 1px $color-white--transparent-small;
-      -webkit-text-stroke: 1px $color-white--transparent-small;
-      color: transparent;
+    @include hover {
+      &:hover {
+        text-stroke: 1px $color-white--transparent-small;
+        -webkit-text-stroke: 1px $color-white--transparent-small;
+        color: transparent;
+      }
     }
     .marquee__texts {
       animation-duration: 20s;

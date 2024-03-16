@@ -30,15 +30,12 @@ $component-name: 'common-video';
       width: 80px;
       height: 80px;
     }
-    // .is-hover & {
-    //   width: 130px;
-    //   height: 130px;
-    //   background-color: $color-white;
-    // }
-    &:hover {
-      width: 130px;
-      height: 130px;
-      background-color: $color-white;
+    @include hover {
+      &:hover {
+        width: 130px;
+        height: 130px;
+        background-color: $color-white;
+      }
     }
   }
   &__controls {
@@ -61,11 +58,13 @@ $component-name: 'common-video';
     backdrop-filter: brightness(150%) blur(30px);
     background-color: rgba(219, 219, 219, .25);
     transition: all .2s cubic-bezier(.165, .84, .44, 1);
-    &:hover {
-      width: 80px;
-      height: 80px;
-      margin: -5px;
-      background-color: $color-white;
+    @include hover {
+      &:hover {
+        width: 80px;
+        height: 80px;
+        margin: -5px;
+        background-color: $color-white;
+      }
     }
     @include mobile {
       width: 40px;
