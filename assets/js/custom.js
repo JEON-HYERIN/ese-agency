@@ -1,5 +1,16 @@
+// lenis
+const lenis = new Lenis()
+
+lenis.on('scroll', ScrollTrigger.update)
+
+gsap.ticker.add((time)=>{
+  lenis.raf(time * 1000)
+})
+
+gsap.ticker.lagSmoothing(0)
+
+// a태그 기본동작 방지
 $(function () {
-  // a태그 기본동작 방지
   $(document).on('click', 'a[href="#"]', function (e) {
     e.preventDefault();
   });
@@ -15,11 +26,13 @@ $('.global-nav__menu').on('click', function () {
       tl.fromTo('.global-nav__item', {opacity: 0}, {opacity: 1, ease: 'none', stagger: .1});
   
       $('.global-nav__menu').attr('aria-label', 'close navigation menu');
+      lenis.stop();
     } else {
       tl.to('.global-nav__panel', {height: '0', delay: .1})
       tl.fromTo('.global-nav__item', {opacity: 1}, {opacity: 0, ease: 'none', stagger: .1})
   
       $('.global-nav__menu').attr('aria-label', 'navigation menu');
+      lenis.start();
     }
   } else {
     return;
@@ -87,13 +100,13 @@ introMotion.addLabel('tl')
 .fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
 .fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
 .fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
-
 const counting = gsap.to(startCount, {
   var: 100,
   duration: 2,
   ease:"none",
   onStart: function() {
     $('body').addClass('is-load');
+    lenis.stop();
   },
   onUpdate: changeNumber,
   scrollTrigger: {
@@ -104,6 +117,7 @@ const counting = gsap.to(startCount, {
     window.scrollTo(0,0);
     moveCursor();
     introMotion.play();
+    lenis.start();
   }
 })
 
@@ -128,6 +142,19 @@ function moveCursor() {
     $('.cursor').removeClass('is-hover');
   });
 }
+
+
+// gsap.from('.footer-nav__link .letter-wrapper span', {
+//   yPercent: 100,
+//   stagger: '.2',
+//   scrollTrigger: {
+//     trigger: '.footer',
+//     start: '-50% top',
+//     end: 'bottom center',
+//     toggleActions: 'play none none reset',
+//     markers: true
+//   },
+// })
 
 // visual
 ScrollTrigger.create({
@@ -172,12 +199,25 @@ gsap.to('.section-visual .marquee__content', {
 
 gsap.to('.main', {
   scale: 0.9,
-  borderRadius: 30,
+  borderRadius: 40,
   ease: 'none',
   scrollTrigger: {
     trigger: '.footer',
     start: 'top bottom',
-    bottom:'center top',
+    bottom:'90% top',
+    scrub: 0,
+
+    // markers: true,
+    // toggleActions: 'play none none reset'
+  }
+})
+gsap.from('.footer', {
+  yPercent: -20,
+  ease: 'none',
+  scrollTrigger: {
+    trigger: '.main',
+    start: 'bottom bottom',
+    bottom:'bottom top',
     scrub: 0,
     // markers: true,
   }
@@ -220,7 +260,7 @@ $('.section-work__item').each(function(i,el) {
 
 gsap.from($('.section-work__more-view .more-view'), {
   opacity: 0,
-  y: 100,
+  y: 50,
   scrollTrigger: {
     trigger: '.section-work',
     start: '35% top',
@@ -245,18 +285,18 @@ $('.section-interview__video').mousemove(function(e) {
   })
 })
 
-gsap.from('.section-interview__embedded', {
-  yPercent: -20,
-  scale: 1.2,
-  scrollTrigger: {
-    trigger: '.section-interview__video',
-    start: 'top bottom',
-    end: 'bottom top',
-    scrub: 0,
-    // markers: true,
-    // toggleActions: 'play reverse reverse none',
-  }
-})
+// gsap.from('.section-interview__embedded', {
+//   yPercent: -20,
+//   scale: 1.2,
+//   scrollTrigger: {
+//     trigger: '.section-interview__video',
+//     start: 'top bottom',
+//     end: 'bottom top',
+//     scrub: 0,
+//     // markers: true,
+//     // toggleActions: 'play reverse reverse none',
+//   }
+// })
 // gsap.from('.section-interview__video', {
 //   y: -20,
 //   scale: 1.3,

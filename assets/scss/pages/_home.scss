@@ -35,9 +35,12 @@ section {
 }
 .main {
   position: relative;
+  z-index: 1;
   padding-bottom: $gap-desktop;
   box-shadow: 0 2px 100px 20px rgba(0,0,0,.2);
   background-color: $color-black;
+  transform-style: preserve-3d;
+  transform-origin: 50% 100%;
   @include tablet {
     padding-bottom: $gap-tablet;
   }

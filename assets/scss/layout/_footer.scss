@@ -13,6 +13,12 @@
     }
     & + & {
       @include common-section-gap;
+      @media (min-height: 950px) {
+        padding-top: 200px;
+      }
+      @include mobile {
+        flex-direction: row;
+      }
     }
   }
   &__logo {
@@ -98,11 +104,10 @@
     }
     &__item {
       padding: 0.15em 0.5em;
+      overflow: hidden;
     }
     &__link {
-      display: inline-block;
       padding: 4px 0;
-      margin: -0.15em -0.5em;
       @include hover {
         .footer-nav__list:hover &:not(:hover) {
           color: $color-gray;
@@ -110,6 +115,11 @@
       }
       @include mobile {
         padding: 6px 0;
+      }
+      .letter-wrapper span {
+        transition-duration: 1s;
+        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        transition-property: transform;
       }
     }
   }
@@ -122,6 +132,9 @@
       &__list {
         display: flex;
         gap: 40px;
+        @include mobile-small {
+          gap: 10px;
+        }
       }
       &__link {
         color: $color-gray;
@@ -134,10 +147,9 @@
     }
   }
   &__contact {
-    display: block;
+    display: flex;
     padding-top: 0.3em;
     overflow: hidden;
-    font-size: 18vw;
     @include hover {
       &:hover {
         text-stroke: 1px $color-white--transparent-small;
@@ -147,6 +159,21 @@
     }
     .marquee__texts {
       animation-duration: 20s;
+      white-space: nowrap;
+      margin-top: -0.3em;
+      margin-bottom: -0.15em;
+      padding-left: 0.2em;
+      padding-right: 0.2em;
+      transform: translate(-100%);
+    }
+    .marquee__text {
+      font-size: 18vw;
+      @include tablet {
+        font-size: 25vw;
+      }
+      @include mobile {
+        font-size: 30vw;
+      }
     }
   }
 }
