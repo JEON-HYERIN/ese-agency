@@ -186,6 +186,14 @@ ScrollTrigger.create({
 })
 // const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
 
+// function introWomen() {
+//   for (let index = 0; index < 10; index++) {
+//     setTimeout(()=> {
+//       console.log(1);
+//     }, 100 * index)
+//   }
+//  }
+//  introWomen();
 gsap.to('.section-visual .marquee__content', {
   scrollTrigger: {
     trigger: '.section-visual',
@@ -323,20 +331,25 @@ const stickySlide = new Swiper('.section-expertise .swiper', {
   speed: 1000,
   touchRatio: 0,
 });
-ScrollTrigger.create({
-  trigger: '.section-expertise__inner',
-  start: '0% 0%',
-  end: '100% 100%',
-  //markers: true,
-  onUpdate: function(self) {
-    idx = Math.round(self.progress*4);
 
-    stickySlide.slideTo(idx);
-    $('.progress__column').eq(idx).find('.progress__fill').css({
-        width: '50%'
-    })
+bar = gsap.timeline({
+  scrollTrigger:{
+    trigger: '.section-expertise__inner',
+    start: '0% 0%',
+    end: '100% 100%',
+    scrub:0,
   }
 })
+document.querySelectorAll('.progress__column').forEach((element,index) => {
+  bar.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
+  onComplete:function(){
+    stickySlide.slideTo(index+1)
+  },
+  onReverseComplete:function(){
+    stickySlide.slideTo(index-1)
+  }
+})
+});
 
 // common-video
 $('.common-video__control--audio').click(function (e) {
