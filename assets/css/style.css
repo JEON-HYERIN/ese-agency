@@ -892,7 +892,6 @@ iframe {
 .marquee__content {
   display: flex;
   align-items: center;
-  will-change: transform;
 }
 .marquee__texts {
   flex-shrink: 0;
@@ -1489,7 +1488,7 @@ section:nth-child(n+3) {
   letter-spacing: -0.03em;
 }
 .section-expertise .marquee__texts {
-  animation-duration: 47s;
+  animation-play-state: paused;
 }
 .section-expertise__thumbnail {
   position: absolute;
@@ -1761,9 +1760,13 @@ section:nth-child(n+3) {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  width: auto;
+  height: auto;
   padding: 15px 30px 15px 24px;
+  margin: 0 !important;
   overflow: hidden;
   border-radius: 16px;
+  background-color: transparent;
   opacity: 0.2;
   transition: opacity 0.2s;
 }
@@ -1772,7 +1775,7 @@ section:nth-child(n+3) {
     opacity: 1;
   }
 }
-.indicator__button.is-active {
+.indicator__button.swiper-pagination-bullet-active {
   opacity: 1;
   -webkit-backdrop-filter: brightness(150%) blur(30px);
           backdrop-filter: brightness(150%) blur(30px);
@@ -1818,7 +1821,7 @@ section:nth-child(n+3) {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
-.indicator__button.is-active .indicator__circle--fill {
+.swiper-pagination-bullet-active .indicator__circle--fill {
   animation-name: progress-fill;
 }
 @keyframes progress-fill {
@@ -1826,7 +1829,7 @@ section:nth-child(n+3) {
     stroke-dashoffset: 0;
   }
 }
-.indicator__description {
+.indicator__information {
   opacity: 0.4;
 }
 

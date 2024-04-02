@@ -9,7 +9,6 @@ $component-name: 'marquee';
   &__content {
     display: flex;
     align-items: center;
-    will-change: transform;
   }
   &__texts {
     flex-shrink: 0;

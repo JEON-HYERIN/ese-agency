@@ -134,7 +134,7 @@ function visualMotion() {
   gsap.to('.section-visual .marquee__content', {
     scrollTrigger: {
       trigger: '.section-visual',
-      start: '0% 0%',
+      start: '0% 55%',
       end: '85% 60%',
       // markers: true,
       scrub: 0,
@@ -288,10 +288,10 @@ gsap.from($('.section-work__more-view .more-view'), {
   y: 50,
   scrollTrigger: {
     trigger: '.section-work',
-    start: '35% top',
-    // end: '80% top',
+    start: '80% 60%',
+    // end: 'bottom center',
     // markers: true,
-    // scrub: 1,
+    // scrub: 0,
     toggleActions: 'play none none reset'
   }
 });
@@ -354,99 +354,134 @@ bar = gsap.timeline({
     trigger: '.section-expertise__inner',
     start: '0% 0%',
     end: '100% 100%',
-    scrub:0
+    scrub:0,
+    onUpdate: function(self) {
+      gsap.to($('.section-expertise__item.swiper-slide-active .marquee__content'), {
+        xPercent: -(Math.round(self.progress * 320))
+      })
+    }
   }
 })
+
 document.querySelectorAll('.progress__column').forEach((element,index) => {
   bar.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
-  onComplete:function(){
-    stickySlide.slideTo(index+1)
-  },
-  onReverseComplete:function(){
-    stickySlide.slideTo(index-1)
-  }
-})
+    onComplete:function(){
+      stickySlide.slideTo(index+1);
+    },
+    onReverseComplete:function(){
+      stickySlide.slideTo(index-1);
+    }
+  })
 });
 
-// common-video
-$('.common-video__control--audio').click(function (e) {
+// video
+$('.common-video__control--audio').click(function() {
   $(this).toggleClass('is-active');
 });
-
-// video play button
+$('.section-interview .common-video__control--replay').click(function() {
+  replayVideo('.section-interview__embedded video');
+})
+$('.section-testimonial .common-video__control--replay').click(function() {
+  replayVideo('.section-testimonial__embedded video');
+})
 $('.section-interview .common-video__play').on('click', function() {
-  const video = $('.section-interview__embedded').find('video');
-  video.get(0).play();
+  playVideo('.section-interview__embedded video');
 })
 $('.section-testimonial .common-video__play').on('click', function() {
-  const video = $('.section-testimonial__embedded').find('video');
-  video.get(0).play();
+  playVideo('.section-testimonial__embedded video');
 })
 
+function replayVideo(selector) {
+  const video = document.querySelector(selector);
+  
+  video.pause();
+  video.currentTime = 0;
+  video.load();
+  video.play();
+}
 
-const showLetter = gsap.timeline({
-  defaults: ({
-    stagger: .1,
-    delay: .3
-  }),
-  paused: true
-});
-showLetter.addLabel('t1')
-.fromTo('.section-testimonial__headline .letter-wrapper span',{yPercent: 100}, {yPercent: 0, stagger: 0.2}, "+=0")
-.fromTo('.section-testimonial__name .letter-wrapper span',{yPercent: 100}, {yPercent: 0, stagger: 0.2}, "+=0.2");
+function playVideo(selector) {
+  const video = document.querySelector(selector);
+  
+  video.play();
+}
 
 
 // testimonial
-const progressCircle = document.querySelector(".indicator__button");
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
+  // autoplay: {
+  //   delay: 3000,
+  //   disableOnInteraction: false,
+  // },
   loop: true,
+  touchRatio: 0,
   effect: 'fade',
   fadeEffect: {
     crossFade: true
   },
-  touchRatio: 0,
-  on: {
-    slideChange: function () {
-      $('.indicator__button').removeClass('is-active');
-      $('.indicator__button').eq(this.realIndex).addClass('is-active');
-      showLetter.play();
-    },
-    autoplayTimeLeft(s, time, progress) {
-      // const parent = document.querySelector('.indicator__button.active');
-      // const activeEl = parent.querySelector('svg path')
-      // progressCircle.forEach(function(el, index) {
-      //   el.children.style.removeProperty('style');
-      //   // if(el.classList.contains('is-active')) {
-      //   //   activeEl.style.setProperty("--progress", 1 - progress);
-      //   // }
-      //   console.log(el.children);
-      // })
-
-
-        // $('.indicator__button').find('svg path').removeAttr('style');
-        // $('.indicator__button').eq(this.realIndex).find('svg path').css('stroke-dashoffset', 1 - progress)
-  
-
-  
-      // progressCircle.style.setProperty("--progress", 1 - progress)
-      // $(".section-testimonial .indicator__button svg").removeAttr('style');
-      // $(".section-testimonial .indicator__button").eq(this.realIndex).find('svg').css('stroke-dashoffset', 1 - progress) 
-  }
+  pagination: {
+    el: '.section-testimonial__indicator .indicator',
+    clickable: true,
+    renderBullet: function (index, className) {
+      const imageSrc = ['arno-del-curto', 'philipp-untersander', 'remy-tina', 'jerome-humm'];
+      const nameArr = ['Arno Del Curto', 'Philipp Untersander', 'Rémy & Tina Vils', 'Jerome Humm'];
+      const infoArr = ['Hockey Legend', 'CEO & Owner Swifiss AG', 'ALVICO Vils AG', 'Entrepreneur & Actor'];
+      return `
+      <a href="#" role="button" class="indicator__button ${className}">
+      <div class="indicator__thumbnail">
+        <img src="./assets/images/section-testimonial-indicator-${imageSrc[index]}.jpg" alt="" />
+        <div class="indicator__progress">
+          <svg width="62" height="62">
+            <circle r="30" cx="31" cy="31" class="indicator__circle indicator__circle--bar"></circle>
+            <circle r="30" cx="31" cy="31" class="indicator__circle indicator__circle--fill"></circle>
+          </svg>
+        </div>
+      </div>
+      <div class="indicator__text">
+        <strong class="indicator__name">${nameArr[index]}</strong>
+        <p class="indicator__information">${infoArr[index]}</p>
+      </div>
+    </a>`
+    }
   }
 });
 
-$('.indicator__button').on('click', function(e) {
-  e.preventDefault();
-  const idx = $(this).index();
-  $('.indicator__button').removeClass('is-active');
-  $(this).addClass('is-active');
-  testimonialSwiper.slideToLoop(idx);
-  showLetter.play();
-});
+// testimonialSwiper.on('slideChange', function() {
+//     const showLetter = gsap.timeline({
+//       paused: true
+//     });
+//     showLetter.from('.section-testimonial__headline .letter-wrapper span',{yPercent: 100, stagger: 0.2}, "+=0")
+//     showLetter.from('.section-testimonial__name .letter-wrapper span',{yPercent: 100, stagger: 0.2}, "+=0.2")
+
+//     gsap.to(testimonialSwiper.slides[testimonialSwiper.activeIndex], {
+//       // animation: showLetter
+//       onStart: function() {
+//         showLetter.play()
+//       }
+//     })
+//   }
+// )
+
+
+
+
+
+// const showLetter = gsap.timeline({
+//   // paused: true
+//   scrollTrigger: {
+//     trigger: '.section-testimonial',
+//     start: 'center center',
+//     end: 'bottom center',
+//     scrub: 0,
+//     markers: true,
+//   }
+// });
+// showLetter.from('.section-testimonial__headline .letter-wrapper span',{yPercent: 100, stagger: 0.2})
+// showLetter.from('.section-testimonial__name .letter-wrapper span',{yPercent: 100, stagger: 0.2})
+// $('.indicator__button').on('click', function(e) {
+
+//   // showLetter.play();
+// });
 
 
 // from 과거 to 미래
