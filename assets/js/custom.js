@@ -93,13 +93,40 @@ $(window).on('resize', function() {
 var startCount = {var: 0};
 const introMotion = gsap.timeline({
   paused: true,
+  onComplete: function() {
+    introWomen();
+    introMotion2.play();
+  }
 })
 introMotion.addLabel('tl')
 .to('.loading', {autoAlpha: 0, delay: .3})
+
+const introMotion2 = gsap.timeline({
+  paused: true,
+})
+introMotion2
 .fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0}, "-=0.5")
 .fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
 .fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
 .fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
+
+function introWomen() {
+  imgEl = $('.section-visual img');
+  total = imgEl.length - 1;
+  for (let i = 0; i <= total; i++) {
+    setTimeout(()=> {
+      curr = imgEl.eq(i);
+      if($('.section-visual img.on')) {
+        imgEl.removeClass('on');
+      }
+  
+      if(curr) {
+        curr.addClass('on');
+      }
+    }, i * 65)
+  }
+ }
+
 const counting = gsap.to(startCount, {
   var: 100,
   duration: 2,
@@ -185,15 +212,7 @@ ScrollTrigger.create({
   }
 })
 // const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
-
-// function introWomen() {
-//   for (let index = 0; index < 10; index++) {
-//     setTimeout(()=> {
-//       console.log(1);
-//     }, 100 * index)
-//   }
-//  }
-//  introWomen();
+ 
 gsap.to('.section-visual .marquee__content', {
   scrollTrigger: {
     trigger: '.section-visual',
