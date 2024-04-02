@@ -51,12 +51,15 @@ $component-name: 'common-video';
     }
   }
   &__control {
+    position: relative;
     width: 70px;
     height: 70px;
     border-radius: 50%;
     backdrop-filter: brightness(150%) blur(30px);
     background-color: rgba(219, 219, 219, .25);
-    transition: all .2s cubic-bezier(.165, .84, .44, 1);
+    transition-property: width, height, margin, background-color;
+    transition-duration: .2s;
+    transition-timing-function: cubic-bezier(.165, .84, .44, 1);
     @include hover {
       &:hover {
         width: 80px;
@@ -88,7 +91,6 @@ $component-name: 'common-video';
       }
     }
     &--audio {
-      position: relative;
       img {
         &[data-audio-status="off"] {
           opacity: 0;

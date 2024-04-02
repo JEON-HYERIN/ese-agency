@@ -991,13 +991,16 @@ iframe {
   }
 }
 .common-video__control {
+  position: relative;
   width: 70px;
   height: 70px;
   border-radius: 50%;
   -webkit-backdrop-filter: brightness(150%) blur(30px);
           backdrop-filter: brightness(150%) blur(30px);
   background-color: rgba(219, 219, 219, 0.25);
-  transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition-property: width, height, margin, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 @media (hover: hover) {
   .common-video__control:hover {
@@ -1032,9 +1035,6 @@ iframe {
   .common-video__control img {
     width: 16px;
   }
-}
-.common-video__control--audio {
-  position: relative;
 }
 .common-video__control--audio img[data-audio-status=off] {
   opacity: 0;
