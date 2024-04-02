@@ -2,12 +2,17 @@
 const lenis = new Lenis()
 
 lenis.on('scroll', ScrollTrigger.update)
-
 gsap.ticker.add((time)=>{
   lenis.raf(time * 1000)
 })
+gsap.ticker.lagSmoothing(0);
 
-gsap.ticker.lagSmoothing(0)
+// 새로고침 시 스크롤 맨 상단으로 이동
+window.onload = function() {
+  setTimeout (function () {
+  scrollTo(0,0);
+  },100);
+}
 
 // a태그 기본동작 방지
 $(function () {
@@ -15,6 +20,128 @@ $(function () {
     e.preventDefault();
   });
 })
+
+// cursor
+function moveCursor() {
+  const cursor = document.querySelector('.cursor');
+  window.addEventListener('mousemove', function(e){
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+    cursor.style.opacity = '1';
+  });
+  $('a').mouseenter(function(){
+    $('.cursor').addClass('is-hover');
+  });
+
+  $('a').mouseleave(function(){
+    $('.cursor').removeClass('is-hover');
+  });
+}
+
+// intro
+var startCount = {var: 0};
+const introMotion = gsap.timeline({
+  paused: true,
+  onComplete: function() {
+    introMotion2.play();
+  }
+})
+introMotion.addLabel('tl')
+.to('.loading', {autoAlpha: 0, delay: .3})
+
+const introMotion2 = gsap.timeline({
+  paused: true,
+  onComplete: function() {
+    $('body').removeAttr('style');
+    lenis.start();
+    visualMotion();
+  }
+})
+introMotion2
+.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0, onComplete: function() {introWomen();}}, "+=0.2")
+.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
+.fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
+.fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
+
+function introWomen() {
+  imgEl = $('.section-visual__sticky img');
+  total = imgEl.length - 1;
+  for (let i = 0; i <= total; i++) {
+    setTimeout(()=> {
+      curr = imgEl.eq(i);
+      if($('.section-visual__sticky img.is-visible')) {
+        imgEl.removeClass('is-visible');
+      }
+      if(curr) {
+        curr.addClass('is-visible');
+      }
+    }, i * 60)
+  }
+ }
+
+const counting = gsap.to(startCount, {
+  var: 100,
+  duration: 2,
+  ease:"none",
+  onStart: function() {
+    lenis.stop();
+    $('body').addClass('is-load');
+    window.scrollTo(0,0);
+    $('body').css('overflow-x', 'hidden');
+  },
+  onUpdate: changeNumber,
+  scrollTrigger: {
+    trigger: ".loading__count",
+  },
+  onComplete: function() {
+    $('body').removeClass('is-load');
+    moveCursor();
+    introMotion.play();
+  }
+})
+
+function changeNumber() {
+  const count = document.querySelector('.loading__count');
+  count.innerHTML = (startCount.var).toFixed();
+}
+
+// visual
+function visualMotion() {
+  ScrollTrigger.create({
+    trigger: '.section-visual',
+    start: '0% 0%',
+    end: '90% 60%',
+    // markers: true,
+    onLeaveBack: function() {
+      imgEl = $('.section-visual__sticky img');
+      total = imgEl.length;
+    },
+    onUpdate: function(self) {
+      imgEl = $('.section-visual__sticky img');
+      total = imgEl.length - 1;
+      currImg = Math.round(total-(self.progress * total));
+      curr = imgEl.eq(currImg);
+  
+      if($('.section-visual__sticky img.is-visible')) {
+        imgEl.removeClass('is-visible');
+      }
+      if(curr) {
+        curr.addClass('is-visible');
+      }
+    }
+  })
+  
+  gsap.to('.section-visual .marquee__content', {
+    scrollTrigger: {
+      trigger: '.section-visual',
+      start: '0% 0%',
+      end: '85% 60%',
+      // markers: true,
+      scrub: 0,
+    },
+    xPercent: -20,
+  })
+}
 
 // header & nav
 $('.global-nav__menu').on('click', function () {
@@ -81,95 +208,6 @@ $(window).on('resize', function() {
   }
 })
 
-// const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
-// loading
-// gsap.to('.loading', {
-//   delay: 1,
-//   onStart: , 
-//   onComplete: function() {
-//     introMotion.play();
-//   }
-// })
-var startCount = {var: 0};
-const introMotion = gsap.timeline({
-  paused: true,
-  onComplete: function() {
-    introWomen();
-    introMotion2.play();
-  }
-})
-introMotion.addLabel('tl')
-.to('.loading', {autoAlpha: 0, delay: .3})
-
-const introMotion2 = gsap.timeline({
-  paused: true,
-})
-introMotion2
-.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0}, "-=0.5")
-.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
-.fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
-.fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
-
-function introWomen() {
-  imgEl = $('.section-visual img');
-  total = imgEl.length - 1;
-  for (let i = 0; i <= total; i++) {
-    setTimeout(()=> {
-      curr = imgEl.eq(i);
-      if($('.section-visual img.on')) {
-        imgEl.removeClass('on');
-      }
-  
-      if(curr) {
-        curr.addClass('on');
-      }
-    }, i * 65)
-  }
- }
-
-const counting = gsap.to(startCount, {
-  var: 100,
-  duration: 2,
-  ease:"none",
-  onStart: function() {
-    $('body').addClass('is-load');
-    lenis.stop();
-  },
-  onUpdate: changeNumber,
-  scrollTrigger: {
-    trigger: ".loading__count",
-  },
-  onComplete: function() {
-    $('body').removeClass('is-load');
-    window.scrollTo(0,0);
-    moveCursor();
-    introMotion.play();
-    lenis.start();
-  }
-})
-
-function changeNumber() {
-  const count = document.querySelector('.loading__count');
-  count.innerHTML = (startCount.var).toFixed();
-}
-
-// cursor
-function moveCursor() {
-  const cursor = document.querySelector('.cursor');
-  window.addEventListener('mousemove', function(e){
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    cursor.style.opacity = '1';
-  });
-  $('a').mouseenter(function(){
-    $('.cursor').addClass('is-hover');
-  });
-
-  $('a').mouseleave(function(){
-    $('.cursor').removeClass('is-hover');
-  });
-}
-
 
 // gsap.from('.footer-nav__link .letter-wrapper span', {
 //   yPercent: 100,
@@ -182,47 +220,8 @@ function moveCursor() {
 //     markers: true
 //   },
 // })
-
-// visual
-ScrollTrigger.create({
-  trigger: '.section-visual',
-  start: '0% 0%',
-  end: '100% 0',
-  // markers: true,
-  onLeaveBack: function() {
-    imgEl = $('.section-visual img');
-    total = imgEl.length;
-    $('.section-visual img').eq(total).addClass('on');
-  },
-  onUpdate: function(self) {
-
-    imgEl = $('.section-visual img');
-    total = imgEl.length - 1;
-    currImg = Math.round(total-(self.progress * total));
-    curr = imgEl.eq(currImg);
-
-    if($('.section-visual img.on')) {
-      imgEl.removeClass('on');
-    }
-
-    if(curr) {
-      curr.addClass('on');
-    }
-    // console.log(Math.round(self.progress * imgLength));
-  }
-})
-// const headTxt = new SplitType('.marquee__text span ', { types: 'words, chars', });
  
-gsap.to('.section-visual .marquee__content', {
-  scrollTrigger: {
-    trigger: '.section-visual',
-    start: '0% 0%',
-    end: '100% 0',
-    // markers: true,
-    scrub: 0,
-  },
-  xPercent: -20,
-})
+
 
 gsap.to('.main', {
   scale: 0.9,
@@ -233,7 +232,6 @@ gsap.to('.main', {
     start: 'top bottom',
     bottom:'90% top',
     scrub: 0,
-
     // markers: true,
     // toggleActions: 'play none none reset'
   }
@@ -348,7 +346,7 @@ const stickySlide = new Swiper('.section-expertise .swiper', {
   direction: 'vertical',
   parallax:true,
   speed: 1000,
-  touchRatio: 0,
+  touchRatio: 0
 });
 
 bar = gsap.timeline({
@@ -356,7 +354,7 @@ bar = gsap.timeline({
     trigger: '.section-expertise__inner',
     start: '0% 0%',
     end: '100% 100%',
-    scrub:0,
+    scrub:0
   }
 })
 document.querySelectorAll('.progress__column').forEach((element,index) => {

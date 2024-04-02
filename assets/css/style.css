@@ -1128,7 +1128,7 @@ section:nth-child(n+3) {
   -o-object-fit: cover;
      object-fit: cover;
 }
-.section-visual__sticky img.on {
+.section-visual__sticky img.is-visible {
   opacity: 1;
 }
 .section-visual__content {
