@@ -1,7 +1,6 @@
 $component-name: 'common-video';
 .#{$component-name} {
   &__cursor {
-
     // z-index: 2;
     // display: flex;
     // justify-content: center;
@@ -69,6 +68,12 @@ $component-name: 'common-video';
     @include mobile {
       width: 40px;
       height: 40px;
+      @include hover {
+        &:hover {
+          width: 50px;
+          height: 50px;
+        }
+      }
     }
     img {
       position: absolute;

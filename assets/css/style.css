@@ -304,6 +304,10 @@ iframe {
     height: 18px;
   }
 }
+.header__logo svg {
+  width: 100%;
+  height: 100%;
+}
 
 @media screen and (max-width: 991px) {
   .global-nav {
@@ -1009,6 +1013,12 @@ iframe {
     height: 40px;
   }
 }
+@media screen and (max-width: 767px) and (hover: hover) {
+  .common-video__control:hover {
+    width: 50px;
+    height: 50px;
+  }
+}
 .common-video__control img {
   position: absolute;
   top: 50%;
@@ -1390,6 +1400,11 @@ section:nth-child(n+3) {
     margin: 0 -6vw;
   }
 }
+.section-interview__asset {
+  position: relative;
+  width: 100%;
+  height: inherit;
+}
 .section-interview__embedded {
   position: absolute;
   top: 0;
@@ -1526,7 +1541,7 @@ section:nth-child(n+3) {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 5;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;

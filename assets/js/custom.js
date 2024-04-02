@@ -7,6 +7,11 @@ gsap.ticker.add((time)=>{
 })
 gsap.ticker.lagSmoothing(0);
 
+// 새로고침 시 사용자 스크롤 위치 저장하지 않음
+if (history.scrollRestoration) {
+  history.scrollRestoration = "manual";
+}
+
 // 새로고침 시 스크롤 맨 상단으로 이동
 window.onload = function() {
   setTimeout (function () {
@@ -310,36 +315,17 @@ $('.section-interview__video').mousemove(function(e) {
   })
 })
 
-// gsap.from('.section-interview__embedded', {
-//   yPercent: -20,
-//   scale: 1.2,
-//   scrollTrigger: {
-//     trigger: '.section-interview__video',
-//     start: 'top bottom',
-//     end: 'bottom top',
-//     scrub: 0,
-//     // markers: true,
-//     // toggleActions: 'play reverse reverse none',
-//   }
-// })
-// gsap.from('.section-interview__video', {
-//   y: -20,
-//   scale: 1.3,
-//   scrollTrigger: {
-//     trigger: '.section-interview__video',
-//     start: 'top bottom',
-//     end: 'bottom top',
-//     // scrub: 1,
-//     markers: true,
-//     toggleActions: 'play reverse reverse none',
-//   }
-// })
-// scrollTrigger.create({
-//   trigger: '.section-interview__embedded',
-//   start: 'top bottom',
-//   end: 'bottom top',
-
-// });
+gsap.from('.section-interview__embedded', {
+  yPercent: -20,
+  scale: 1.2,
+  scrollTrigger: {
+    trigger: '.section-interview',
+    start: 'top center',
+    end: 'bottom center',
+    scrub: 0,
+    // markers: true,
+  }
+})
 
 // expertise
 const stickySlide = new Swiper('.section-expertise .swiper', {
@@ -409,10 +395,10 @@ function playVideo(selector) {
 
 // testimonial
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
-  // autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: false,
-  // },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
   loop: true,
   touchRatio: 0,
   effect: 'fade',
