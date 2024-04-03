@@ -136,7 +136,7 @@ function visualMotion() {
     }
   })
   
-  gsap.to('.section-visual .marquee__content', {
+  gsap.to('.section-visual .marquee__inner', {
     scrollTrigger: {
       trigger: '.section-visual',
       start: '0% 55%',
@@ -241,7 +241,7 @@ gsap.to('.main', {
     // toggleActions: 'play none none reset'
   }
 })
-gsap.from('.footer', {
+gsap.from('.footer__inner', {
   yPercent: -20,
   ease: 'none',
   scrollTrigger: {
@@ -342,20 +342,26 @@ bar = gsap.timeline({
     end: '100% 100%',
     scrub:0,
     onUpdate: function(self) {
-      gsap.to($('.section-expertise__item.swiper-slide-active .marquee__content'), {
+      gsap.to($('.section-expertise__item.swiper-slide-active .marquee__inner'), {
         xPercent: -(Math.round(self.progress * 320))
       })
-    }
-  }
+    },
+    onEnterBack: function() {
+      $('.section-expertise .marquee__texts').removeAttr('style');
+    },
+  },
+  onComplete: function() {
+    $('.section-expertise .marquee__texts').css('animation-play-state', 'running');
+  },
 })
 
 document.querySelectorAll('.progress__column').forEach((element,index) => {
   bar.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
-    onComplete:function(){
-      stickySlide.slideTo(index+1);
+    onComplete:function() {
+      stickySlide.slideTo(index + 1);
     },
-    onReverseComplete:function(){
-      stickySlide.slideTo(index-1);
+    onReverseComplete:function() {
+      stickySlide.slideTo(index - 1);
     }
   })
 });

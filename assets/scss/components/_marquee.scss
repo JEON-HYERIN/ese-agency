@@ -1,12 +1,7 @@
 $component-name: 'marquee';
 
 .#{$component-name} {
-  display: flex;
-  align-items: center;
   &__inner {
-    width: 100%;
-  }
-  &__content {
     display: flex;
     align-items: center;
   }
@@ -14,31 +9,30 @@ $component-name: 'marquee';
     flex-shrink: 0;
     margin-bottom: -0.05em;
     padding-right: 10vw;
-    transform: translate(-100%);
-    animation-name: marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-  &__text {
-    display: inline-block;
-    margin: -0.15em -0.5em;
-    overflow-y: hidden;
-    vertical-align: top;
     font-size: 14vw;
     font-weight: 500;
     line-height: 1;
     letter-spacing: -0.05em;
     white-space: nowrap;
+    transform: translateX(-100%);
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
     @include tablet {
       font-size: 140px;
     }
     @include mobile-small {
       font-size: 120px;
     }
+  }
+  &__text {
+    display: inline-block;
+    margin: -0.15em -0.5em;
+    overflow-y: hidden;
+    vertical-align: top;
     span {
       display: inline-block;
       padding: 0.15em 0.5em;
-      transform: translateY(0%) scaleY(1);
       transition-duration: 2s;
       transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
       transition-property: opacity, transform;

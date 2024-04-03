@@ -417,7 +417,12 @@ section {
     letter-spacing: -.03em;
   }
   .marquee__texts {
-    animation-play-state: paused;
+    animation-duration: 47s;
+  }
+  .swiper-slide-active {
+    .marquee__texts {
+      animation-play-state: paused;
+    }
   }
   &__thumbnail {
     position: absolute;
