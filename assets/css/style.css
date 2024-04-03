@@ -710,6 +710,17 @@ iframe {
     flex-direction: row;
   }
 }
+.footer__logo a {
+  display: block;
+  width: 137px;
+  height: 22px;
+}
+@media screen and (max-width: 767px) {
+  .footer__logo a {
+    width: 110px;
+    height: 18px;
+  }
+}
 @media screen and (min-width: 768px) and (max-width: 991px) {
   .footer__logo {
     display: none;
@@ -858,7 +869,7 @@ iframe {
 
 .footer__contact {
   display: block;
-  padding-top: 0.3em;
+  padding-top: 0.45em;
   font-size: 18vw;
   font-weight: 500;
 }
@@ -879,16 +890,14 @@ iframe {
     color: transparent;
   }
 }
-.footer__contact .marquee__text {
-  font-size: inherit;
-}
 .footer__contact .marquee__texts {
-  display: flex;
-  animation-duration: 20s;
   margin-top: -0.3em;
   margin-bottom: -0.15em;
   padding-left: 0.2em;
   padding-right: 0.2em;
+  font-size: inherit;
+  font-weight: inherit;
+  animation-duration: 20s;
 }
 
 .marquee__inner {
@@ -1388,6 +1397,8 @@ section:nth-child(n+3) {
 @media screen and (max-width: 767px) {
   .section-interview__video {
     border-radius: 0;
+    height: 120vw;
+    margin: 0 -40px;
   }
 }
 @media screen and (max-width: 479px) {
@@ -1482,6 +1493,16 @@ section:nth-child(n+3) {
   padding-bottom: 120px;
   cursor: pointer;
 }
+@media screen and (max-width: 767px) {
+  .section-expertise__content .common-inner {
+    padding: 0 20px 80px;
+  }
+}
+@media screen and (max-width: 479px) {
+  .section-expertise__content .common-inner {
+    padding: 0 6vw 60px;
+  }
+}
 @media (hover: hover) {
   .section-expertise__content .common-inner:hover .marquee__texts {
     text-stroke: 1px rgba(255, 255, 255, 0.96);
@@ -1497,13 +1518,14 @@ section:nth-child(n+3) {
   font-size: 22px;
   font-weight: 500;
   line-height: 1;
-  letter-spacing: -0.03em;
 }
 .section-expertise .marquee__texts {
   animation-duration: 47s;
 }
-.section-expertise .swiper-slide-active .marquee__texts {
-  animation-play-state: paused;
+@media screen and (min-width: 768px) {
+  .section-expertise .swiper-slide-active .marquee__texts {
+    animation-play-state: paused;
+  }
 }
 .section-expertise__thumbnail {
   position: absolute;
@@ -1530,7 +1552,6 @@ section:nth-child(n+3) {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 1;
   width: 100%;
   height: 20svh;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.01), #000);
@@ -1665,31 +1686,45 @@ section:nth-child(n+3) {
 }
 .section-testimonial__text {
   position: absolute;
-  top: 50%;
-  left: 60px;
-  transform: translateY(-50%);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1;
   display: flex;
   flex-direction: column;
-  max-width: 550px;
+  justify-content: center;
+  padding: 60px;
 }
 @media screen and (max-width: 991px) {
   .section-testimonial__text {
-    left: 40px;
+    padding: 40px;
   }
 }
 @media screen and (max-width: 767px) {
   .section-testimonial__text {
-    top: auto;
-    bottom: 6vw;
-    left: 6vw;
-    transform: translateY(0);
-    max-width: 400px;
+    justify-content: flex-end;
   }
 }
 @media screen and (max-width: 479px) {
   .section-testimonial__text {
     display: none;
+  }
+}
+.section-testimonial__row {
+  max-width: 550px;
+}
+.section-testimonial__row--information {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  padding-top: 30px;
+}
+@media screen and (max-width: 767px) {
+  .section-testimonial__row--information {
+    padding-top: 14px;
   }
 }
 .section-testimonial__headline {
@@ -1707,18 +1742,6 @@ section:nth-child(n+3) {
   .section-testimonial__headline {
     font-size: 35px;
     line-height: 1.1;
-  }
-}
-.section-testimonial__row--information {
-  display: flex;
-  align-items: center;
-  -moz-column-gap: 5px;
-       column-gap: 5px;
-  padding-top: 30px;
-}
-@media screen and (max-width: 767px) {
-  .section-testimonial__row--information {
-    padding-top: 14px;
   }
 }
 .section-testimonial__name {
@@ -1766,6 +1789,11 @@ section:nth-child(n+3) {
     position: static;
     padding: 40px;
     background-color: #1f1f1f;
+  }
+}
+@media screen and (max-width: 479px) {
+  .section-testimonial__indicator {
+    display: none;
   }
 }
 .indicator {

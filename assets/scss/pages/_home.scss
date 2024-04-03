@@ -306,6 +306,8 @@ section {
     }
     @include mobile {
       border-radius: 0;
+      height: 120vw;
+      margin: 0 -#{$gutter-tablet};
     }
     @include mobile-small {
       height: 170vw;
@@ -395,6 +397,12 @@ section {
       width: 100%;
       padding-bottom: 120px;
       cursor: pointer;
+      @include mobile {
+        padding: 0 20px 80px;
+      }
+      @include mobile-small {
+        padding: 0 $gutter-mobile 60px;
+      }
       @include hover {
         &:hover {
           .marquee__texts {
@@ -414,14 +422,15 @@ section {
     font-size: 22px;
     font-weight: 500;
     line-height: 1;
-    letter-spacing: -.03em;
   }
   .marquee__texts {
     animation-duration: 47s;
   }
   .swiper-slide-active {
     .marquee__texts {
-      animation-play-state: paused;
+      @media screen and (min-width: 768px) {
+        animation-play-state: paused;
+      }
     }
   }
   &__thumbnail {
@@ -447,7 +456,6 @@ section {
     position: absolute;
     bottom: 0;
     left: 0;
-    z-index: 1;
     width: 100%;
     height: 20svh;
     background-image: linear-gradient(to bottom, rgba(0, 0, 0, .01), #000);
@@ -572,25 +580,36 @@ section {
   }
   &__text {
     position: absolute;
-    top: 50%;
-    left: $gutter-desktop;
-    transform: translateY(-50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 1;
     display: flex;
     flex-direction: column;
-    max-width: 550px;
+    justify-content: center;
+    padding: $gutter-desktop;
     @include tablet {
-      left: $gutter-tablet;
+      padding: $gutter-tablet;
     }
     @include mobile {
-      top: auto;
-      bottom: $gutter-mobile;
-      left: $gutter-mobile;
-      transform: translateY(0);
-      max-width: 400px;
+      justify-content: flex-end;
     }
     @include mobile-small {
       display: none;
+    }
+  }
+  &__row {
+    max-width: 550px;
+    &--information {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      column-gap: 5px;
+      padding-top: 30px;
+      @include mobile {
+        padding-top: 14px;
+      }
     }
   }
   &__headline {
@@ -604,17 +623,6 @@ section {
     @include mobile {
       font-size: 35px;
       line-height: 1.1;
-    }
-  }
-  &__row {
-    &--information {
-      display: flex;
-      align-items: center;
-      column-gap: 5px;
-      padding-top: 30px;
-      @include mobile {
-        padding-top: 14px;
-      }
     }
   }
   &__name {
@@ -655,6 +663,9 @@ section {
       position: static;
       padding: $gutter-tablet;
       background-color: $color-primary;
+    }
+    @include mobile-small {
+      display: none;
     }
   }
   @at-root .indicator {
