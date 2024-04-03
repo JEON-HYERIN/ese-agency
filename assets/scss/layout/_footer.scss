@@ -13,12 +13,12 @@
       flex-direction: column;
     }
     & + & {
-      @include common-section-gap;
       @media (min-height: 950px) {
         padding-top: 200px;
       }
+      @include common-section-gap;
       @include mobile {
-        flex-direction: row;
+        row-gap: 10px;
       }
     }
   }
@@ -27,9 +27,17 @@
       display: block;
       width: 137px;
       height: 22px;
+      overflow: hidden;
       @include mobile {
         width: 110px;
         height: 18px;
+      }
+      svg {
+        transform: translateY(110%);
+        transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        .footer.is-visible & {
+          transform: translateY(0);
+        }
       }
     }
     @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -48,6 +56,15 @@
       padding-top: 60px;
     }
   }
+  .word {
+    opacity: 0;
+    transform: translateY(110%);
+    transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  &.is-visible .word {
+    opacity: 1;
+    transform: translateY(0);
+  }
   @at-root .footer-nav {
     display: flex;
     gap: 9vw;
@@ -58,9 +75,17 @@
       flex-direction: column;
     }
     &__column {
+      position: relative;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+          .word {
+            transition-delay: calc(0.1s * $i);
+          }
+        }
+      }
       @include tablet {
         flex: 1;
       }
@@ -69,8 +94,25 @@
         &.is-active {
           padding-bottom: 20px;
         }
-        & + & {
-          border-top: 1px solid $color-white--transparent-medium;
+        & + &::before {
+          content: '';
+            position: absolute;
+            left: 0;
+            bottom: 100%;
+            width: 100%;
+            height: 1px;
+            background-color: $color-white--transparent-medium;
+            transform-origin: left top;
+            transform: scaleX(0);
+            transition: transform 1s cubic-bezier(.165, .84, .44, 1);
+            .footer.is-visible & {
+              transform: scaleX(1);
+            }
+          }
+        @for $i from 2 through 4 {
+          &:nth-child(#{$i})::before {
+            transition-delay: ($i - 1) * 0.1+s
+          }
         }
       }
     }
@@ -81,6 +123,7 @@
         justify-content: space-between;
         align-items: center;
         padding: 14px 0;
+        overflow: hidden;
         pointer-events: auto;
       }
     }
@@ -89,6 +132,18 @@
       padding: 0.15em 0;
       font-weight: 500;
       line-height: 1.1;
+      @include mobile {
+        overflow: hidden;
+      }
+      .word {
+        @for $i from 1 through 4 {
+          @at-root .footer-nav__column:nth-child(#{$i}) {
+            .footer-nav__title .word {
+              transition-delay: ($i+1) * 0.1s;
+            }
+          }
+        }
+      }
     }
     &__arrow {
       display: none;
@@ -100,6 +155,20 @@
       background-color: $color-white--transparent-medium;
       @include mobile {
         display: flex;
+        transform: scale(0.5);
+        opacity: 0;
+        transition: transform 1s cubic-bezier(.165, .84, .44, 1), opacity 1s ease;
+        .footer.is-visible & {
+          transform: scale(1);
+          opacity: 1;
+        }
+        @for $i from 1 through 4 {
+          @at-root .footer-nav__column:nth-child(#{$i}) {
+            .footer-nav__arrow {
+              transition-delay: calc(0.5s + 0.1s * $i);
+            }
+          }
+        }
       }
       svg {
         transition: transform .6s cubic-bezier(.165,.84,.44,1);
@@ -109,19 +178,17 @@
       }
     }
     &__list {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
       @include mobile {
         display: none;
-        .footer-nav__column.is-active & {
-          display: block;
-        }
       }
     }
-    &__item {
-      padding: 0.15em 0.5em;
-      overflow: hidden;
-    }
     &__link {
+      display: block;
       padding: 4px 0;
+      overflow: hidden;
       @include hover {
         .footer-nav__list:hover &:not(:hover) {
           color: $color-gray;
@@ -131,16 +198,18 @@
         padding: 6px 0;
       }
       .letter-wrapper span {
-        transition-duration: 1s;
-        transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
-        transition-property: transform;
+        transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
       }
     }
   }
   @at-root {
     .copyright {
+      overflow: hidden;
       color: $color-gray;
       cursor: default;
+      .word {
+        transition-delay: 0.5s;
+      }
     }
     .corporation {
       &__list {
@@ -151,12 +220,17 @@
         }
       }
       &__link {
+        display: block;
+        overflow: hidden;
         color: $color-gray;
         @include hover {
           &:hover {
             color: $color-white--transparent-small;
           }
         }
+      }
+      .word {
+        transition-delay: 0.6s;
       }
     }
   }
@@ -186,6 +260,12 @@
       font-size: inherit;
       font-weight: inherit;
       animation-duration: 20s;
+    }
+    .marquee__text span {
+      transform: translateY(110%);
+      .footer.is-visible & {
+        transform: translateY(0);
+      }
     }
   }
 }

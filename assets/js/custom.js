@@ -220,7 +220,7 @@ gsap.to('.main', {
   scrollTrigger: {
     trigger: '.footer',
     start: 'top bottom',
-    bottom:'90% top',
+    end:'90% top',
     scrub: 0,
     // markers: true,
     // toggleActions: 'play none none reset'
@@ -233,41 +233,11 @@ gsap.from('.footer__inner', {
   scrollTrigger: {
     trigger: '.main',
     start: 'bottom bottom',
-    bottom:'bottom top',
+    end:'bottom top',
     scrub: 0,
     // markers: true,
   }
 })
-
-gsap.from('.footer .marquee__text span', {
-  yPercent: 110,
-  scrollTrigger: {
-    trigger: '.section-news',
-    start: 'center top',
-    toggleActions: 'play none none reset',
-    // markers: true,
-  }
-})
-
-const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
-const footerText2 = new SplitType('.footer-nav__link', {types: 'words'});
-const footerText3 = new SplitType('.footer .copyright', {types: 'words'});
-const footerText4 = new SplitType('.footer .corporation__link', {types: 'words'});
-
-const footerTl = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.footer',
-    start: '-50% 10%',
-    bottom: 'top bottom',
-    toggleActions: 'play none none reset',
-    // markers: true,
-  }
-})
-footerTl.from('.footer-nav__title .word', {yPercent: 110, opacity: 0}, 'a+=0.2')
-footerTl.from('.footer-nav__link .word', {yPercent: 110, opacity: 0}, 'a+=0.2')
-footerTl.from('.footer .copyright .word', {yPercent: 110, opacity: 0}, 'b+=0.2')
-footerTl.from('.footer .corporation__link .word', {yPercent: 110, opacity: 0}, 'b+=0.2')
-
 
 // from 과거 to 미래
 // work
@@ -387,6 +357,62 @@ mm.add("(min-width: 768px)", () => {
   });
 })
 
+const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
+const footerText2 = new SplitType('.footer-nav__link', {types: 'words'});
+const footerText3 = new SplitType('.footer .copyright', {types: 'words'});
+const footerText4 = new SplitType('.footer .corporation__link', {types: 'words'});
+
+mm.add("(max-width: 767px)", () => {
+  const footerTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.section-news',
+      start: '65% top',
+      onEnter: function() {
+        $('.footer').addClass('is-visible');
+      },
+      // markers: true,
+    }
+  })
+  const footerTl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.footer',
+      start: 'top bottom',
+      // markers: true,
+      onEnter: function() {
+        $('.footer').removeClass('is-visible');
+      },
+      onLeaveBack: function() {
+        $('.footer').removeClass('is-visible');
+      }
+    }
+  })
+})
+mm.add("(min-width: 768px)", () => {
+  const footerTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.footer',
+      start: 'top 30%',
+      // markers: true,
+      onEnter: function() {
+        $('.footer').addClass('is-visible');
+      },
+    }
+  })
+  const footerTl2 = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.footer',
+      start: 'top bottom',
+      // markers: true,
+      onEnter: function() {
+        $('.footer').removeClass('is-visible');
+      },
+      onLeaveBack: function() {
+        $('.footer').removeClass('is-visible');
+      }
+    }
+  })
+})
+
 // video
 $('.common-video__control--audio').click(function() {
   $(this).toggleClass('is-active');
@@ -422,10 +448,10 @@ function playVideo(selector) {
 
 // testimonial
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
-  // autoplay: {
-  //   delay: 3000,
-  //   disableOnInteraction: false,
-  // },
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
   loop: true,
   touchRatio: 0,
   effect: 'fade',
@@ -516,6 +542,14 @@ $('.section-partner__item').each(function(i,el) {
 
 // footer
 $('.footer-nav__header').on('click', function() {
-  let index = $(this).parent().index();
-  $(`.footer-nav__column:eq(${index})`).addClass('is-active').siblings().removeClass('is-active');
+  const index = $(this).parent().index();
+
+  if($(this).parent().hasClass('is-active')) {
+    $('.footer-nav__list').stop().slideUp();
+    $(this).parent().removeClass('is-active');
+  } else {
+    $('.footer-nav__list').stop().slideUp();
+    $('.footer-nav__column').eq(index).find('.footer-nav__list').stop().slideDown();
+    $(this).parent().addClass('is-active').siblings().removeClass('is-active');
+  }
 })
