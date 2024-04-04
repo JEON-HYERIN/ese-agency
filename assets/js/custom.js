@@ -342,13 +342,13 @@ mm.add("(min-width: 768px)", () => {
 
 // work
 mm.add("(max-width: 479px)", () => {
-  const evenWorkItems = document.querySelectorAll('.section-work__item:nth-child(2n)');
-  const oddWorkItems = document.querySelectorAll('.section-work__item:nth-child(2n+1)');
+  const evenItems = document.querySelectorAll('.section-work__item:nth-child(2n)');
+  const oddItems = document.querySelectorAll('.section-work__item:nth-child(2n+1)');
   
-  evenWorkItems.forEach(function(item, index) {
+  evenItems.forEach(function(item, index) {
     item.dataset.delay = 0.1;
   });
-  oddWorkItems.forEach(function(item, index) {
+  oddItems.forEach(function(item, index) {
     item.dataset.delay = 0;
   });
 
@@ -369,17 +369,17 @@ mm.add("(max-width: 479px)", () => {
   })
 })
 mm.add("(min-width: 480px) and (max-width: 991px)", () => {
-  const firstWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n+1)');
-  const secondWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n+2)');
-  const thirdWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n)');
+  const firstItems = document.querySelectorAll('.section-work__item:nth-child(3n+1)');
+  const secondItems = document.querySelectorAll('.section-work__item:nth-child(3n+2)');
+  const thirdItems = document.querySelectorAll('.section-work__item:nth-child(3n)');
   
-  firstWorkItems.forEach(function(item, index) {
+  firstItems.forEach(function(item, index) {
     item.dataset.delay = 0;
   });
-  secondWorkItems.forEach(function(item, index) {
+  secondItems.forEach(function(item, index) {
     item.dataset.delay = 0.1;
   });
-  thirdWorkItems.forEach(function(item, index) {
+  thirdItems.forEach(function(item, index) {
     item.dataset.delay = 0.2;
   });
 
@@ -400,21 +400,21 @@ mm.add("(min-width: 480px) and (max-width: 991px)", () => {
   })
 })
 mm.add("(min-width: 992px)", () => {
-  const firstWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n+1)');
-  const secondWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n-2)');
-  const thirdWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n-1)');
-  const fourthWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n)');
+  const firstItems = document.querySelectorAll('.section-work__item:nth-child(4n+1)');
+  const secondItems = document.querySelectorAll('.section-work__item:nth-child(4n-2)');
+  const thirdItems = document.querySelectorAll('.section-work__item:nth-child(4n-1)');
+  const fourthItems = document.querySelectorAll('.section-work__item:nth-child(4n)');
   
-  firstWorkItems.forEach(function(item, index) {
+  firstItems.forEach(function(item, index) {
     item.dataset.delay = 0;
   });
-  secondWorkItems.forEach(function(item, index) {
+  secondItems.forEach(function(item, index) {
     item.dataset.delay = 0.1;
   });
-  thirdWorkItems.forEach(function(item, index) {
+  thirdItems.forEach(function(item, index) {
     item.dataset.delay = 0.2;
   });
-  fourthWorkItems.forEach(function(item, index) {
+  fourthItems.forEach(function(item, index) {
     item.dataset.delay = 0.3;
   });
   
@@ -436,6 +436,287 @@ mm.add("(min-width: 992px)", () => {
   })
 })
 
+// partner
+mm.add("(max-width: 479px)", () => {
+  const evenItems = document.querySelectorAll('.section-partner__item:nth-child(2n)');
+  const oddItems = document.querySelectorAll('.section-partner__item:nth-child(2n+1)');
+  
+  evenItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  oddItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 480px) and (max-width: 949px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n+1)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n+2)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 950px) and (max-width: 991px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n+1)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
+  const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 992px) and (max-width: 1189px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n+1)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n+2)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 1190px) and (max-width: 1459px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n+1)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
+  const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 1460px) and (max-width: 1729px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(5n-4)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(5n-3)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(5n-2)');
+  const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(5n-1)');
+  const fifthItems = document.querySelectorAll('.section-partner__item:nth-child(5n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+  fifthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.4;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 1730px) and (max-width: 1999px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(6n-5)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(6n-4)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(6n-3)');
+  const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(6n-2)');
+  const fifthItems = document.querySelectorAll('.section-partner__item:nth-child(6n-1)');
+  const sixthItems = document.querySelectorAll('.section-partner__item:nth-child(6n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+  fifthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.4;
+  });
+  sixthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.5;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 2000px)", () => {
+  const firstItems = document.querySelectorAll('.section-partner__item:nth-child(7n-6)');
+  const secondItems = document.querySelectorAll('.section-partner__item:nth-child(7n-5)');
+  const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(7n-4)');
+  const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(7n-3)');
+  const fifthItems = document.querySelectorAll('.section-partner__item:nth-child(7n-2)');
+  const sixthItems = document.querySelectorAll('.section-partner__item:nth-child(7n-1)');
+  const sevenItems = document.querySelectorAll('.section-partner__item:nth-child(7n)');
+  
+  firstItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+  fifthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.4;
+  });
+  sixthItems.forEach(function(item, index) {
+    item.dataset.delay = 0.5;
+  });
+  sevenItems.forEach(function(item, index) {
+    item.dataset.delay = 0.6;
+  });
+
+  $('.section-partner__item').each(function(i,el) {
+    gsap.from($(this).find('.section-partner__link'),{
+      opacity:0,
+      y: '100',
+      delay: el.dataset.delay,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
 
 // footer
 const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
@@ -565,23 +846,6 @@ const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
   }
 });
 
-// from 과거 to 미래
-// testimonial
-$('.section-partner__item').each(function(i,el) {
-  gsap.from($(this).find('.section-partner__link'),{
-    opacity:0,
-    y: '100',
-    delay: el.dataset.delay,
-    scrollTrigger: {
-      trigger: el,
-      start:'0% 100%',
-      end: 'bottom center',
-      //markers: true,
-      toggleActions: 'play none none reset'
-      },
-  })
-})
-
 // footer
 $('.footer-nav__header').on('click', footerToggle);
 $(window).on('resize', function() {
@@ -614,6 +878,6 @@ function footerToggle () {
   }
 }
 
-// 저작권 년도 스크립트로 넣어주기(마크업으로 넣으면 매년 갱신해야함)
+// 저작권 년도 동적으로 넣어주기(마크업으로 넣으면 매년 갱신해야함)
 const thisYear = document.querySelector('.this-year');
 thisYear.textContent = new Date().getFullYear();
