@@ -302,6 +302,12 @@ mm.add("(max-width: 767px)", () => {
       start: '0% 0%',
       end: '100% 100%',
       scrub:0,
+      onEnterBack: function() {
+        $('.section-expertise__progress').removeClass('is-complete');
+      },
+    },
+    onComplete: function() {
+      $('.section-expertise__progress').addClass('is-complete');
     },
   })
 
@@ -334,10 +340,12 @@ mm.add("(min-width: 768px)", () => {
       },
       onEnterBack: function() {
         $('.section-expertise .marquee__texts').removeAttr('style');
+        $('.section-expertise__progress').removeClass('is-complete');
       },
     },
     onComplete: function() {
       $('.section-expertise .marquee__texts').css('animation-play-state', 'running');
+      $('.section-expertise__progress').addClass('is-complete');
     },
   })
 
