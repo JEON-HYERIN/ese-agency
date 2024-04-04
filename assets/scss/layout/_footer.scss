@@ -23,6 +23,9 @@
     }
   }
   &__logo {
+    @media screen and (min-width: 768px) and (max-width: 991px) {
+      display: none;
+    }
     a {
       display: block;
       width: 137px;
@@ -39,9 +42,6 @@
           transform: translateY(0);
         }
       }
-    }
-    @media screen and (min-width: 768px) and (max-width: 991px) {
-      display: none;
     }
     svg {
       width: 100%;
@@ -180,7 +180,7 @@
     &__list {
       display: flex;
       flex-direction: column;
-      row-gap: 8px;
+      row-gap: 5px;
       @include mobile {
         display: none;
       }
@@ -197,9 +197,6 @@
       @include mobile {
         padding: 6px 0;
       }
-      .letter-wrapper span {
-        transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
     }
   }
   @at-root {
@@ -207,11 +204,17 @@
       overflow: hidden;
       color: $color-gray;
       cursor: default;
+      @include mobile {
+        flex-basis: 100%;
+      }
       .word {
         transition-delay: 0.5s;
       }
     }
     .corporation {
+      @include mobile {
+        flex-basis: 100%;
+      }
       &__list {
         display: flex;
         gap: 40px;
