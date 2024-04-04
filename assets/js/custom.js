@@ -126,7 +126,7 @@ function visualMotion() {
     onUpdate: function(self) {
       const imgEl = $('.section-visual__sticky img');
       const total = imgEl.length - 1;
-      const currentIndex = Math.round(total-(self.progress * total));
+      const currentIndex = total - Math.round((total * self.progress));
       const currentImg = imgEl.eq(currentIndex);
       const CLASSNAME = 'is-visible';
   
