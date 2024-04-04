@@ -359,7 +359,7 @@ mm.add("(min-width: 768px)", () => {
 
 const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
 const footerText2 = new SplitType('.footer-nav__link', {types: 'words'});
-const footerText3 = new SplitType('.footer .copyright', {types: 'words'});
+const footerText3 = new SplitType('.footer .copyright span', {types: 'words'});
 const footerText4 = new SplitType('.footer .corporation__link', {types: 'words'});
 
 mm.add("(max-width: 767px)", () => {
@@ -571,3 +571,7 @@ function footerToggle () {
     $('.footer-nav__list').removeAttr('style');
   }
 }
+
+// 저작권 년도 스크립트로 넣어주기(마크업으로 넣으면 매년 갱신해야함)
+const thisYear = document.querySelector('.this-year');
+thisYear.textContent = new Date().getFullYear();

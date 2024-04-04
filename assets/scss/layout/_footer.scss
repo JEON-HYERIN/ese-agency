@@ -57,6 +57,7 @@
     }
   }
   .word {
+    display: inline-block;
     opacity: 0;
     transform: translateY(110%);
     transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
