@@ -123,10 +123,6 @@ function visualMotion() {
     start: '0% 0%',
     end: '90% 60%',
     // markers: true,
-    onLeaveBack: function() {
-      const imgEl = $('.section-visual__sticky img');
-      const total = imgEl.length;
-    },
     onUpdate: function(self) {
       const imgEl = $('.section-visual__sticky img');
       const total = imgEl.length - 1;
