@@ -239,24 +239,6 @@ gsap.from('.footer__inner', {
   }
 })
 
-// from 과거 to 미래
-// work
-$('.section-work__item').each(function(i,el) {
-  gsap.from($(this).find('.section-work__link'),{
-    opacity: 0,
-    y: '100',
-    delay: el.dataset.delay * 1.2,
-    duration: .5,
-    scrollTrigger: {
-      trigger: el,
-      start:'0% 100%',
-      end: 'bottom center',
-      //markers: true,
-      toggleActions: 'play none none reset'
-      },
-  })
-})
-
 gsap.from($('.section-work__more-view .more-view'), {
   opacity: 0,
   y: 50,
@@ -296,6 +278,9 @@ gsap.from('.section-interview__embedded', {
   }
 })
 
+
+let mm = gsap.matchMedia();
+
 // expertise
 const stickySlide = new Swiper('.section-expertise .swiper', {
   direction: 'vertical',
@@ -303,8 +288,6 @@ const stickySlide = new Swiper('.section-expertise .swiper', {
   speed: 1000,
   touchRatio: 0
 });
-
-let mm = gsap.matchMedia();
 mm.add("(max-width: 767px)", () => {
   bar = gsap.timeline({
     scrollTrigger:{
@@ -357,6 +340,104 @@ mm.add("(min-width: 768px)", () => {
   });
 })
 
+// work
+mm.add("(max-width: 479px)", () => {
+  const evenWorkItems = document.querySelectorAll('.section-work__item:nth-child(2n)');
+  const oddWorkItems = document.querySelectorAll('.section-work__item:nth-child(2n+1)');
+  
+  evenWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  oddWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+
+  $('.section-work__item').each(function(i,el) {
+    gsap.from($(this).find('.section-work__link'),{
+      opacity: 0,
+      y: '150',
+      delay: el.dataset.delay,
+      duration: .5,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        // markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 480px) and (max-width: 991px)", () => {
+  const firstWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n+1)');
+  const secondWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n+2)');
+  const thirdWorkItems = document.querySelectorAll('.section-work__item:nth-child(3n)');
+  
+  firstWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+
+  $('.section-work__item').each(function(i,el) {
+    gsap.from($(this).find('.section-work__link'),{
+      opacity: 0,
+      y: '150',
+      delay: el.dataset.delay,
+      duration: .5,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+mm.add("(min-width: 992px)", () => {
+  const firstWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n+1)');
+  const secondWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n-2)');
+  const thirdWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n-1)');
+  const fourthWorkItems = document.querySelectorAll('.section-work__item:nth-child(4n)');
+  
+  firstWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0;
+  });
+  secondWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.1;
+  });
+  thirdWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.2;
+  });
+  fourthWorkItems.forEach(function(item, index) {
+    item.dataset.delay = 0.3;
+  });
+  
+  // from 과거 to 미래
+  $('.section-work__item').each(function(i,el) {
+    gsap.from($(this).find('.section-work__link'),{
+      opacity: 0,
+      y: '150',
+      delay: el.dataset.delay,
+      duration: .5,
+      scrollTrigger: {
+        trigger: el,
+        start:'0% 100%',
+        end: 'bottom center',
+        //markers: true,
+        toggleActions: 'play none none reset'
+        },
+    })
+  })
+})
+
+
+// footer
 const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
 const footerText2 = new SplitType('.footer-nav__link', {types: 'words'});
 const footerText3 = new SplitType('.footer .copyright span', {types: 'words'});
@@ -445,7 +526,6 @@ function playVideo(selector) {
   video.play();
 }
 
-
 // testimonial
 const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
   autoplay: {
@@ -484,44 +564,6 @@ const testimonialSwiper = new Swiper('.section-testimonial .swiper', {
     }
   }
 });
-
-// testimonialSwiper.on('slideChange', function() {
-//     const showLetter = gsap.timeline({
-//       paused: true
-//     });
-//     showLetter.from('.section-testimonial__headline .letter-wrapper span',{yPercent: 100, stagger: 0.2}, "+=0")
-//     showLetter.from('.section-testimonial__name .letter-wrapper span',{yPercent: 100, stagger: 0.2}, "+=0.2")
-
-//     gsap.to(testimonialSwiper.slides[testimonialSwiper.activeIndex], {
-//       // animation: showLetter
-//       onStart: function() {
-//         showLetter.play()
-//       }
-//     })
-//   }
-// )
-
-
-
-
-
-// const showLetter = gsap.timeline({
-//   // paused: true
-//   scrollTrigger: {
-//     trigger: '.section-testimonial',
-//     start: 'center center',
-//     end: 'bottom center',
-//     scrub: 0,
-//     markers: true,
-//   }
-// });
-// showLetter.from('.section-testimonial__headline .letter-wrapper span',{yPercent: 100, stagger: 0.2})
-// showLetter.from('.section-testimonial__name .letter-wrapper span',{yPercent: 100, stagger: 0.2})
-// $('.indicator__button').on('click', function(e) {
-
-//   // showLetter.play();
-// });
-
 
 // from 과거 to 미래
 // testimonial
