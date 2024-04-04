@@ -92,7 +92,7 @@ function introWomen() {
 const counting = gsap.to(startCount, {
   var: 100,
   duration: 2,
-  ease:"none",
+  ease: 'none',
   onStart: function() {
     lenis.stop();
     $('body').addClass('is-load');
@@ -304,12 +304,17 @@ mm.add("(max-width: 767px)", () => {
       scrub:0,
     },
   })
-  document.querySelectorAll('.progress__column').forEach((element,index) => {
-    progressTl.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
-      onComplete:function() {
+
+   document.querySelectorAll('.progress__column').forEach((progressEl, index) => {
+    const progressFill = progressEl.querySelector('.progress__fill');
+
+    progressTl.to(progressFill, {
+      width: '100%',
+      ease: 'none',
+      onComplete: function() {
         stickySlide.slideTo(index + 1);
       },
-      onReverseComplete:function() {
+      onReverseComplete: function() {
         stickySlide.slideTo(index - 1);
       }
     })
@@ -335,12 +340,17 @@ mm.add("(min-width: 768px)", () => {
       $('.section-expertise .marquee__texts').css('animation-play-state', 'running');
     },
   })
-  document.querySelectorAll('.progress__column').forEach((element,index) => {
-    progressTl.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
-      onComplete:function() {
+
+  document.querySelectorAll('.progress__column').forEach((progressEl, index) => {
+    const progressFill = progressEl.querySelector('.progress__fill');
+
+    progressTl.to(progressFill, {
+      width: '100%',
+      ease: 'none',
+      onComplete: function() {
         stickySlide.slideTo(index + 1);
       },
-      onReverseComplete:function() {
+      onReverseComplete: function() {
         stickySlide.slideTo(index - 1);
       }
     })
