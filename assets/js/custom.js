@@ -717,10 +717,10 @@ mm.add("(min-width: 2000px)", () => {
 })
 
 // footer
-const footerText1 = new SplitType('.footer-nav__title', {types: 'words'});
-const footerText2 = new SplitType('.footer-nav__link', {types: 'words'});
-const footerText3 = new SplitType('.footer .copyright span', {types: 'words'});
-const footerText4 = new SplitType('.footer .corporation__link', {types: 'words'});
+const footerText1 = new SplitType('.footer-nav__title', {types: 'words', tagName: 'span'});
+const footerText2 = new SplitType('.footer-nav__link', {types: 'words', tagName: 'span'});
+const footerText3 = new SplitType('.footer .copyright span', {types: 'words', tagName: 'span'});
+const footerText4 = new SplitType('.footer .corporation__link', {types: 'words', tagName: 'span'});
 
 mm.add("(max-width: 767px)", () => {
   const footerTl = gsap.timeline({
