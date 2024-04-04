@@ -239,18 +239,17 @@ gsap.from('.footer__inner', {
   }
 })
 
-gsap.from($('.section-work__more-view .more-view'), {
-  opacity: 0,
-  y: 50,
-  scrollTrigger: {
-    trigger: '.section-work',
-    start: '80% 60%',
-    // end: 'bottom center',
-    // markers: true,
-    // scrub: 0,
-    toggleActions: 'play none none reset'
+ScrollTrigger.create({
+  trigger: '.section-work',
+  start: '80% 60%',
+  // markers: true,
+  onEnter: function() {
+    $('.section-work__more-view').addClass('is-visible');
+  },
+  onLeaveBack: function() {
+    $('.section-work__more-view').removeClass('is-visible');
   }
-});
+})
 
 // interview
 $('.section-interview__video').mousemove(function(e) {

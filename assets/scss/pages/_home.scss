@@ -238,6 +238,10 @@ section {
     display: flex;
     justify-content: center;
     padding-top: $gutter-desktop;
+    &.is-visible .more-view {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
   .more-view {
     position: relative;
@@ -250,6 +254,9 @@ section {
     overflow: hidden;
     white-space: nowrap;
     border-radius: 50px;
+    transform: translateY(110%);
+    opacity: 0;
+    transition: transform 1s cubic-bezier(.23, 1, .32, 1), opacity 1s cubic-bezier(.23, 1, .32, 1);
     @include hover {
       &:hover {
         .more-view__texts {
