@@ -727,7 +727,7 @@ mm.add("(max-width: 767px)", () => {
   const footerTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.section-news',
-      start: '65% top',
+      start: '60% top',
       onEnter: function() {
         $('.footer').addClass('is-visible');
       },
