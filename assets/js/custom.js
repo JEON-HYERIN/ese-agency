@@ -277,7 +277,6 @@ gsap.from('.section-interview__embedded', {
   }
 })
 
-
 let mm = gsap.matchMedia();
 
 // expertise
