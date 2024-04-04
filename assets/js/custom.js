@@ -29,18 +29,20 @@ $(function () {
 // cursor
 function moveCursor() {
   const cursor = document.querySelector('.cursor');
+  const linkEl =  document.querySelector('a');
+  const CLASSNAME = 'is-hover';
+
   window.addEventListener('mousemove', function(e){
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
     cursor.style.opacity = '1';
   });
-  $('a').mouseenter(function(){
-    $('.cursor').addClass('is-hover');
-  });
-
-  $('a').mouseleave(function(){
-    $('.cursor').removeClass('is-hover');
-  });
+  linkEl.addEventListener('mouseenter', function() {
+    cursor.classList.add(CLASSNAME);
+  })
+  linkEl.addEventListener('mouseleave', function() {
+    cursor.classList.remove(CLASSNAME);
+  })
 }
 
 // intro
@@ -69,16 +71,19 @@ introMotion2
 .fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
 
 function introWomen() {
-  imgEl = $('.section-visual__sticky img');
-  total = imgEl.length - 1;
+  const imgEl = $('.section-visual__sticky img');
+  const total = imgEl.length - 1;
+  const CLASSNAME = 'is-visible';
+
   for (let i = 0; i <= total; i++) {
     setTimeout(()=> {
-      curr = imgEl.eq(i);
-      if($('.section-visual__sticky img.is-visible')) {
-        imgEl.removeClass('is-visible');
+      const currentImg = imgEl.eq(i);
+
+      if(imgEl.hasClass(CLASSNAME)) {
+        imgEl.removeClass(CLASSNAME);
       }
-      if(curr) {
-        curr.addClass('is-visible');
+      if(currentImg) {
+        currentImg.addClass(CLASSNAME);
       }
     }, i * 60)
   }
@@ -107,6 +112,7 @@ const counting = gsap.to(startCount, {
 
 function changeNumber() {
   const count = document.querySelector('.loading__count');
+
   count.innerHTML = (startCount.var).toFixed();
 }
 
@@ -118,20 +124,21 @@ function visualMotion() {
     end: '90% 60%',
     // markers: true,
     onLeaveBack: function() {
-      imgEl = $('.section-visual__sticky img');
-      total = imgEl.length;
+      const imgEl = $('.section-visual__sticky img');
+      const total = imgEl.length;
     },
     onUpdate: function(self) {
-      imgEl = $('.section-visual__sticky img');
-      total = imgEl.length - 1;
-      currImg = Math.round(total-(self.progress * total));
-      curr = imgEl.eq(currImg);
+      const imgEl = $('.section-visual__sticky img');
+      const total = imgEl.length - 1;
+      const currentIndex = Math.round(total-(self.progress * total));
+      const currentImg = imgEl.eq(currentIndex);
+      const CLASSNAME = 'is-visible';
   
-      if($('.section-visual__sticky img.is-visible')) {
-        imgEl.removeClass('is-visible');
+      if(imgEl.hasClass(CLASSNAME)) {
+        imgEl.removeClass(CLASSNAME);
       }
-      if(curr) {
-        curr.addClass('is-visible');
+      if(currentImg) {
+        currentImg.addClass(CLASSNAME);
       }
     }
   })
@@ -152,7 +159,9 @@ function visualMotion() {
 $('.global-nav__menu').on('click', function () {
   if($(window).width() <= 991) {
     let tl = gsap.timeline({defaults: {duration: .2}});
+
     $('body').toggleClass('is-nav-open');
+
     if($('body').hasClass('is-nav-open')) {
       tl.to('.global-nav__panel', {height: '100%', delay: .1})
       tl.fromTo('.global-nav__item', {opacity: 0}, {opacity: 1, ease: 'none', stagger: .1});
@@ -173,7 +182,9 @@ $('.global-nav__menu').on('click', function () {
 $('.global-nav__item--expertise .global-nav__link').on('click', function() {
   if($(window).width() <= 991) {
     const className = 'is-local-nav-open';
+
     $('body').toggleClass(className);
+
     if($('body').hasClass(className)) {
       gsap.to('.local-nav__inner', {
         height: 'auto',
@@ -187,12 +198,14 @@ $('.global-nav__item--expertise .global-nav__link').on('click', function() {
 $('.global-nav__item--expertise .global-nav__link').on('mouseenter', function() {
   if($(window).width() >= 992) {
     const className = 'is-local-nav-open';
+
     $('body').addClass(className);
   }
 })
 $('.local-nav__inner').on('mouseleave', function() {
   if($(window).width() >= 992) {
     const className = 'is-local-nav-open';
+    
     $('body').removeClass(className);
   }
 })
@@ -253,15 +266,15 @@ ScrollTrigger.create({
 
 // interview
 $('.section-interview__video').mousemove(function(e) {
-  offsetX = e.offsetX;
-  offsetY = e.offsetY;
+  const offsetX = e.offsetX;
+  const offsetY = e.offsetY;
 
-  w = $('.section-interview__video').outerWidth();
-  h = $('.section-interview__video').outerHeight();
+  const width = $('.section-interview__video').outerWidth();
+  const height = $('.section-interview__video').outerHeight();
 
   gsap.to('.common-video__play', {
-    x: (offsetX-(w/2)) / 10,
-    y: (offsetY-(h/2)) / 10,
+    x: (offsetX - (width / 2)) / 10,
+    y: (offsetY - (height / 2)) / 10,
   })
 })
 
