@@ -291,12 +291,12 @@ let mm = gsap.matchMedia();
 // expertise
 const stickySlide = new Swiper('.section-expertise .swiper', {
   direction: 'vertical',
-  parallax:true,
+  parallax: true,
   speed: 1000,
   touchRatio: 0
 });
 mm.add("(max-width: 767px)", () => {
-  bar = gsap.timeline({
+  const progressTl = gsap.timeline({
     scrollTrigger:{
       trigger: '.section-expertise__inner',
       start: '0% 0%',
@@ -305,7 +305,7 @@ mm.add("(max-width: 767px)", () => {
     },
   })
   document.querySelectorAll('.progress__column').forEach((element,index) => {
-    bar.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
+    progressTl.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
       onComplete:function() {
         stickySlide.slideTo(index + 1);
       },
@@ -316,7 +316,7 @@ mm.add("(max-width: 767px)", () => {
   });
 })
 mm.add("(min-width: 768px)", () => {
-  bar = gsap.timeline({
+  const progressTl = gsap.timeline({
     scrollTrigger:{
       trigger: '.section-expertise__inner',
       start: '0% 0%',
@@ -336,7 +336,7 @@ mm.add("(min-width: 768px)", () => {
     },
   })
   document.querySelectorAll('.progress__column').forEach((element,index) => {
-    bar.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
+    progressTl.to($('.progress__column').eq(index).find('.progress__fill'),{width:'100%',ease:"none",
       onComplete:function() {
         stickySlide.slideTo(index + 1);
       },
