@@ -1603,9 +1603,6 @@ section:nth-child(n+3) {
 .section-expertise__sticky .swiper {
   height: 100%;
 }
-.section-expertise__sticky .swiper-slide {
-  overflow: hidden;
-}
 .section-expertise__item {
   position: relative;
   width: 100%;
@@ -1627,10 +1624,10 @@ section:nth-child(n+3) {
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  transition: all 1s cubic-bezier(0.602, 0.001, 0.175, 1);
+  transition: opacity 1s cubic-bezier(0.602, 0.001, 0.175, 1);
+}
+.swiper-slide-prev .section-expertise__content {
+  opacity: 0.2;
 }
 .section-expertise__textbox {
   position: absolute;
