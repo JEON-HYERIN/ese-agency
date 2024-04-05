@@ -386,13 +386,6 @@ section {
     cursor: default;
     background-color: $color-primary;
   }
-  &__content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
   &__textbox {
     position: absolute;
     top: 0;
