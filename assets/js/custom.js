@@ -97,7 +97,7 @@ const counting = gsap.to(startCount, {
     lenis.stop();
     $('body').addClass('is-load');
     window.scrollTo(0,0);
-    $('body').css('overflow-x', 'hidden');
+    $('body').css('overflow', 'hidden');
   },
   onUpdate: changeNumber,
   scrollTrigger: {
@@ -154,32 +154,31 @@ function visualMotion() {
 // header & nav
 $('.global-nav__menu').on('click', function () {
   if($(window).width() <= 991) {
+    const CLASSNAME = 'is-nav-open';
     let tl = gsap.timeline({defaults: {duration: .2}});
 
-    $('body').toggleClass('is-nav-open');
+    $('body').toggleClass(CLASSNAME);
 
-    if($('body').hasClass('is-nav-open')) {
+    if($('body').hasClass(CLASSNAME)) {
       tl.to('.global-nav__panel', {height: '100%', delay: .1})
       tl.fromTo('.global-nav__item', {opacity: 0}, {opacity: 1, ease: 'none', stagger: .1});
   
       $('.global-nav__menu').attr('aria-label', 'close navigation menu');
-      lenis.stop();
     } else {
       tl.to('.global-nav__panel', {height: '0', delay: .1})
       tl.fromTo('.global-nav__item', {opacity: 1}, {opacity: 0, ease: 'none', stagger: .1})
   
       $('.global-nav__menu').attr('aria-label', 'navigation menu');
-      lenis.start();
     }
   }
 });
 $('.global-nav__item--expertise .global-nav__link').on('click', function() {
   if($(window).width() <= 991) {
-    const className = 'is-local-nav-open';
+    const CLASSNAME = 'is-local-nav-open';
 
-    $('body').toggleClass(className);
+    $('body').toggleClass(CLASSNAME);
 
-    if($('body').hasClass(className)) {
+    if($('body').hasClass(CLASSNAME)) {
       gsap.to('.local-nav__inner', {
         height: 'auto',
         duration: .3,
@@ -194,16 +193,16 @@ $('.global-nav__item--expertise .global-nav__link').on('click', function() {
 })
 $('.global-nav__item--expertise .global-nav__link').on('mouseenter', function() {
   if($(window).width() >= 992) {
-    const className = 'is-local-nav-open';
+    const CLASSNAME = 'is-local-nav-open';
 
-    $('body').addClass(className);
+    $('body').addClass(CLASSNAME);
   }
 })
 $('.local-nav__inner').on('mouseleave', function() {
   if($(window).width() >= 992) {
-    const className = 'is-local-nav-open';
+    const CLASSNAME = 'is-local-nav-open';
     
-    $('body').removeClass(className);
+    $('body').removeClass(CLASSNAME);
   }
 })
 $('.local-nav__link').mouseenter(function () {

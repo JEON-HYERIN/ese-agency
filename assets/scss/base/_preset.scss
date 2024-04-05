@@ -20,14 +20,11 @@ body {
   color: $color-white--transparent-small;
   background-color: $color-black;
   &.is-load {
-    // overflow-y: hidden;
-    // touch-action: none;
     cursor: wait;
   }
   @include tablet {
     &.is-nav-open {
-      // overflow-y: hidden;
-      // touch-action: none;
+      overflow: hidden;
     }
   }
 }

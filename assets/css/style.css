@@ -92,10 +92,17 @@ body {
 body.is-load {
   cursor: wait;
 }
+@media screen and (max-width: 991px) {
+  body.is-nav-open {
+    overflow: hidden;
+  }
+}
+
 ::-moz-selection {
   color: #fff;
   background-color: #1d4f62;
 }
+
 ::selection {
   color: #fff;
   background-color: #1d4f62;
