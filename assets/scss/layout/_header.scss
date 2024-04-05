@@ -50,6 +50,9 @@
       pointer-events: none;
       background-color: $color-primary;
       transition: height .6s cubic-bezier(.165,.84,.44,1);
+      .is-nav-open & {
+        pointer-events: auto;
+      }
     }
   }
   &__content {
@@ -57,13 +60,11 @@
     justify-content: space-between;
     @include tablet {
       flex-direction: column;
+      row-gap: 60px;
+      height: 100svh;
       padding: 120px $gutter-desktop 30px;
       overflow-y: auto;
       scrollbar-width: none;
-      .is-nav-open & {
-        height: 100svh;
-        pointer-events: auto;
-      }
     }
     @include mobile {
       padding-left: $gutter-tablet;
@@ -117,7 +118,9 @@
     column-gap: 30px;
     overflow: hidden;
     @include tablet {
+      flex-shrink: 0;
       align-items: flex-start;
+      margin: 0 -5px;
       &:not(.global-nav__list--lang) {
         flex-direction: column;
         row-gap: 10px;
@@ -130,7 +133,6 @@
       @include tablet {
         bottom: auto;
         column-gap: 14px;
-        padding-top: 60px;
       }
     }
     & + & {
@@ -165,6 +167,7 @@
       }
     }
     @include tablet {
+      padding: 0 5px;
       font-size: 40px;
       letter-spacing: -.05em;
       .global-nav__list--lang & {
@@ -317,6 +320,9 @@
     line-height: 1.15;
     transition: color 0.2s, transform 1s cubic-bezier(0.23, 1, 0.32, 1),
       opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    @include tablet {
+      padding: 0 5px;
+    }
     @include hover {
       .local-nav__list:hover & {
         color: $color-white--transparent-medium;
