@@ -133,7 +133,7 @@ iframe {
 
 #skip-nav {
   position: relative;
-  z-index: 50;
+  z-index: 20;
 }
 #skip-nav a {
   position: absolute;
@@ -213,7 +213,7 @@ iframe {
 
 .cursor {
   position: fixed;
-  z-index: 30;
+  z-index: 40;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s;
@@ -243,7 +243,7 @@ iframe {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 40;
+  z-index: 50;
   opacity: 0.04;
   pointer-events: none;
   background-image: url("../images/overlay.gif");
@@ -1198,7 +1198,7 @@ iframe {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 20;
+  z-index: 30;
   display: flex;
   justify-content: center;
   align-items: center;
