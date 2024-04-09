@@ -1,11 +1,14 @@
 @mixin common-section-gap {
   padding-top: $gap-desktop;
+
   @include tablet {
     padding-top: $gap-tablet;
   }
+
   @include mobile {
     padding-top: $gap-mobile;
   }
+
   @media (min-height: 950px) {
     padding-top: 200px;
   }

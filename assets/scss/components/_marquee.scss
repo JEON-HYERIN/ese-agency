@@ -5,6 +5,7 @@ $component-name: 'marquee';
     display: flex;
     align-items: center;
   }
+
   &__texts {
     flex-shrink: 0;
     margin-bottom: -0.05em;
@@ -18,18 +19,22 @@ $component-name: 'marquee';
     animation-name: marquee;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+
     @include tablet {
       font-size: 140px;
     }
+
     @include mobile-small {
       font-size: 120px;
     }
   }
+
   &__text {
     display: inline-block;
     margin: -0.15em -0.5em;
     overflow-y: hidden;
     vertical-align: top;
+
     span {
       display: inline-block;
       padding: 0.15em 0.5em;

@@ -4,41 +4,50 @@
   left: 0;
   z-index: $z-index--header;
   width: 100%;
+
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100px;
+
     @include tablet {
       height: 80px;
     }
+
     @include mobile-small {
       height: 70px;
     }
   }
+
   &__logo {
     position: relative;
     z-index: 1;
     overflow: hidden;
+
     a {
       display: block;
       width: 137px;
       height: 22px;
+
       @include mobile {
         width: 110px;
         height: 18px;
       }
     }
+
     svg {
       width: 100%;
       height: 100%;
     }
   }
 }
+
 .global-nav {
   @include tablet {
     pointer-events: none;
   }
+
   &__panel {
     @include tablet {
       position: fixed;
@@ -49,15 +58,18 @@
       overflow: hidden;
       pointer-events: none;
       background-color: $color-primary;
-      transition: height .6s cubic-bezier(.165,.84,.44,1);
+      transition: height .6s cubic-bezier(.165, .84, .44, 1);
+
       .is-nav-open & {
         pointer-events: auto;
       }
     }
   }
+
   &__content {
     display: flex;
     justify-content: space-between;
+
     @include tablet {
       flex-direction: column;
       row-gap: 60px;
@@ -66,15 +78,18 @@
       overflow-y: auto;
       scrollbar-width: none;
     }
+
     @include mobile {
       padding-left: $gutter-tablet;
       padding-right: $gutter-tablet;
     }
+
     @include mobile-small {
       padding-left: $gutter-mobile;
       padding-right: $gutter-mobile;
     }
   }
+
   &__menu {
     display: none;
     width: 50px;
@@ -90,11 +105,13 @@
     margin-left: auto;
     margin-right: -15px;
     padding: 15px;
+
     @include tablet {
       display: flex;
       pointer-events: auto;
     }
   }
+
   &__line {
     display: block;
     width: 20px;
@@ -103,77 +120,94 @@
     transition-property: transform;
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
     .is-nav-open & {
-    &:nth-child(1) {
+      &:nth-child(1) {
         transform: translateY(4px) rotate(45deg);
       }
-    &:nth-child(2) {
+
+      &:nth-child(2) {
         transform: translateY(-3px) rotate(-45deg);
       }
     }
   }
+
   &__list {
     display: flex;
     align-items: center;
     column-gap: 30px;
     overflow: hidden;
+
     @include tablet {
       flex-shrink: 0;
       align-items: flex-start;
       margin: 0 -5px;
+
       &:not(.global-nav__list--lang) {
         flex-direction: column;
         row-gap: 10px;
       }
     }
+
     &--lang {
       position: relative;
       bottom: -1px;
       column-gap: 8px;
+
       @include tablet {
         bottom: auto;
         column-gap: 14px;
       }
     }
-    & + & {
+
+    &+& {
       padding-left: $gutter-desktop;
+
       @include tablet {
         padding-left: 0;
       }
     }
   }
+
   &__link {
     position: relative;
     z-index: 1;
     display: flex;
     overflow: hidden;
+
     &[data-lang="de"] {
       .global-nav__text {
         opacity: .4;
       }
     }
   }
+
   &__text {
     transform: translate(0);
     font-weight: 500;
     transition: opacity 0.6s cubic-bezier(0.25, 0.74, 0.22, 0.99),
-    transform 0.6s cubic-bezier(0.25, 0.74, 0.22, 0.99);
+      transform 0.6s cubic-bezier(0.25, 0.74, 0.22, 0.99);
+
     &[aria-hidden="true"] {
       position: absolute;
       top: 100%;
       left: 0;
+
       @media (hover: none) {
         display: none;
       }
     }
+
     @include tablet {
       padding: 0 5px;
       font-size: 40px;
       letter-spacing: -.05em;
+
       .global-nav__list--lang & {
         font-size: 20px;
       }
     }
+
     @include hover {
       .global-nav__link:hover & {
         opacity: 0.75;
@@ -181,14 +215,17 @@
       }
     }
   }
+
   &__item--expertise {
     .global-nav__link {
       display: flex;
       align-items: center;
       column-gap: 8px;
+
       @include tablet {
         column-gap: 12px;
       }
+
       @include hover {
         &:hover {
           .global-nav__text {
@@ -197,15 +234,18 @@
         }
       }
     }
+
     .is-local-nav-open & {
       .global-nav__text {
         transform: none;
       }
+
       .global-nav__arrow svg {
         transform: scaleY(-1);
       }
     }
   }
+
   &__arrow {
     display: flex;
     justify-content: center;
@@ -214,15 +254,18 @@
     height: 18px;
     background-color: $color-white--transparent-medium;
     border-radius: 50px;
+
     @include tablet {
       width: 22px;
       height: 22px;
     }
+
     svg {
       transition: transform .6s;
     }
   }
 }
+
 .local-nav {
   position: fixed;
   top: 0;
@@ -230,15 +273,19 @@
   right: 0;
   bottom: 0;
   pointer-events: none;
+
   .is-local-nav-open & {
     pointer-events: auto;
   }
+
   @include tablet {
     position: static;
+
     .is-local-nav-open & {
       padding-top: 10px;
     }
   }
+
   &__inner {
     position: absolute;
     top: 0;
@@ -248,18 +295,22 @@
     overflow: hidden;
     background-color: #171719;
     transition: height 1s cubic-bezier(0.23, 1, 0.32, 1);
+
     .is-local-nav-open & {
       height: 430px;
+
       @include tablet {
         height: 0;
       }
     }
+
     @include tablet {
       position: static;
       padding: 0;
       background-color: transparent;
     }
   }
+
   &__content {
     display: flex;
     position: relative;
@@ -267,6 +318,7 @@
     border-top: 1px solid $color-white--transparent-medium;
     margin-top: 100px;
     padding-top: 40px;
+
     @include tablet {
       height: auto;
       border-top: none;
@@ -274,6 +326,7 @@
       padding: 0;
     }
   }
+
   &__title,
   &__link,
   &__thumbnail {
@@ -281,6 +334,7 @@
     transform: translateY(100px);
     transition-timing-function: cubic-bezier(0.59, 0.12, 0.85, 0.33);
     transition-duration: 0.6s;
+
     .is-local-nav-open & {
       opacity: 1;
       transform: translateY(0px);
@@ -288,28 +342,34 @@
       transition-duration: 1s;
     }
   }
+
   &__title {
     display: block;
     width: 25%;
     font-weight: 500;
+
     @include tablet {
       display: none;
     }
   }
+
   &__list {
     flex: 1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
     @include tablet {
       gap: 10px;
     }
   }
+
   @for $i from 1 through 5 {
     .local-nav__item:nth-child(#{$i}) .local-nav__link {
       transition-delay: calc(0.05s * #{$i - 1});
     }
   }
+
   &__link {
     display: block;
     position: relative;
@@ -320,14 +380,17 @@
     line-height: 1.15;
     transition: color 0.2s, transform 1s cubic-bezier(0.23, 1, 0.32, 1),
       opacity 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+
     @include tablet {
       padding: 0 5px;
     }
+
     @include hover {
       .local-nav__list:hover & {
         color: $color-white--transparent-medium;
         transition-delay: 0s;
         transition-duration: 0.5s;
+
         & {
           &:hover {
             color: $color-white;
@@ -336,6 +399,7 @@
       }
     }
   }
+
   &__thumbnail {
     position: absolute;
     top: -5%;
@@ -344,10 +408,12 @@
     width: 45%;
     transition: transform 1s cubic-bezier(0.23, 1, 0.32, 1),
       opacity 1s cubic-bezier(0.23, 1, 0.32, 1);
+
     @include tablet {
       display: none;
     }
   }
+
   @at-root .local-nav-thumbnail {
     &__item {
       img {
@@ -361,6 +427,7 @@
         object-position: 50% 0%;
         transition: opacity .5s;
       }
+
       &.is-visible img {
         opacity: 1;
       }

@@ -2,114 +2,141 @@
   padding-top: 80px;
   overflow: hidden;
   background-color: $color-primary;
+
   &__content {
     display: flex;
     flex-direction: column;
   }
+
   &__row {
     display: flex;
     justify-content: space-between;
+
     @include mobile {
       flex-direction: column;
     }
-    & + & {
+
+    &+& {
       @media (min-height: 950px) {
         padding-top: 200px;
       }
+
       @include common-section-gap;
+
       @include mobile {
         row-gap: 10px;
       }
     }
   }
+
   &__logo {
     @media screen and (min-width: 768px) and (max-width: 991px) {
       display: none;
     }
+
     a {
       display: block;
       width: 137px;
       height: 22px;
       overflow: hidden;
+
       @include mobile {
         width: 110px;
         height: 18px;
       }
+
       svg {
         transform: translateY(110%);
         transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+
         .footer.is-visible & {
           transform: translateY(0);
         }
       }
     }
+
     svg {
       width: 100%;
       height: 100%;
     }
   }
+
   &__nav {
     @include tablet {
       flex-basis: 100%;
     }
+
     @include mobile {
       padding-top: 60px;
     }
   }
+
   .word {
     display: inline-block;
     opacity: 0;
     transform: translateY(110%);
     transition: transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
   }
+
   &.is-visible .word {
     opacity: 1;
     transform: translateY(0);
   }
+
   @at-root .footer-nav {
     display: flex;
     gap: 9vw;
+
     @include tablet {
       gap: 0;
     }
+
     @include mobile {
       flex-direction: column;
     }
+
     &__column {
       position: relative;
       display: flex;
       flex-direction: column;
       gap: 20px;
+
       @for $i from 1 through 4 {
-      &:nth-child(#{$i}) {
+        &:nth-child(#{$i}) {
           .word {
             transition-delay: calc(0.1s * $i);
           }
         }
       }
+
       @include tablet {
         flex: 1;
       }
+
       @include mobile {
         gap: normal;
+
         &.is-active {
           padding-bottom: 20px;
         }
-        & + &::before {
+
+        &+&::before {
           content: '';
-            position: absolute;
-            left: 0;
-            bottom: 100%;
-            width: 100%;
-            height: 1px;
-            background-color: $color-white--transparent-medium;
-            transform-origin: left top;
-            transform: scaleX(0);
-            transition: transform 1s cubic-bezier(.165, .84, .44, 1);
-            .footer.is-visible & {
-              transform: scaleX(1);
-            }
+          position: absolute;
+          left: 0;
+          bottom: 100%;
+          width: 100%;
+          height: 1px;
+          background-color: $color-white--transparent-medium;
+          transform-origin: left top;
+          transform: scaleX(0);
+          transition: transform 1s cubic-bezier(.165, .84, .44, 1);
+
+          .footer.is-visible & {
+            transform: scaleX(1);
           }
+        }
+
         @for $i from 2 through 4 {
           &:nth-child(#{$i})::before {
             transition-delay: ($i - 1) * 0.1+s
@@ -117,8 +144,10 @@
         }
       }
     }
+
     &__header {
       pointer-events: none;
+
       @include mobile {
         display: flex;
         justify-content: space-between;
@@ -128,14 +157,17 @@
         pointer-events: auto;
       }
     }
+
     &__title {
       display: inline-block;
       padding: 0.15em 0;
       font-weight: 500;
       line-height: 1.1;
+
       @include mobile {
         overflow: hidden;
       }
+
       .word {
         @for $i from 1 through 4 {
           @at-root .footer-nav__column:nth-child(#{$i}) {
@@ -146,6 +178,7 @@
         }
       }
     }
+
     &__arrow {
       display: none;
       justify-content: center;
@@ -154,15 +187,18 @@
       height: 18px;
       border-radius: 50%;
       background-color: $color-white--transparent-medium;
+
       @include mobile {
         display: flex;
         transform: scale(0.5);
         opacity: 0;
         transition: transform 1s cubic-bezier(.165, .84, .44, 1), opacity 1s ease;
+
         .footer.is-visible & {
           transform: scale(1);
           opacity: 1;
         }
+
         @for $i from 1 through 4 {
           @at-root .footer-nav__column:nth-child(#{$i}) {
             .footer-nav__arrow {
@@ -171,84 +207,104 @@
           }
         }
       }
+
       svg {
-        transition: transform .6s cubic-bezier(.165,.84,.44,1);
+        transition: transform .6s cubic-bezier(.165, .84, .44, 1);
+
         .footer-nav__column.is-active & {
           transform: scaleY(-1);
         }
       }
     }
+
     &__list {
       display: flex;
       flex-direction: column;
       row-gap: 5px;
+
       @include mobile {
         display: none;
       }
     }
+
     &__link {
       display: block;
       padding: 4px 0;
       overflow: hidden;
+
       @include hover {
         .footer-nav__list:hover &:not(:hover) {
           color: $color-gray;
         }
       }
+
       @include mobile {
         padding: 6px 0;
       }
     }
   }
+
   @at-root {
     .copyright {
       overflow: hidden;
       color: $color-gray;
       cursor: default;
+
       @include mobile {
         flex-basis: 100%;
       }
+
       .word {
         transition-delay: 0.5s;
       }
     }
+
     .corporation {
       @include mobile {
         flex-basis: 100%;
       }
+
       &__list {
         display: flex;
         gap: 40px;
+
         @include mobile-small {
           gap: 10px;
         }
       }
+
       &__link {
         display: block;
         overflow: hidden;
         color: $color-gray;
+
         @include hover {
           &:hover {
             color: $color-white--transparent-small;
           }
         }
       }
+
       .word {
         transition-delay: 0.6s;
       }
     }
   }
+
   &__contact {
     display: block;
     padding-top: 0.45em;
     font-size: 18vw;
     font-weight: 500;
+
     @include tablet {
       font-size: 25vw;
     }
+
     @include mobile {
       font-size: 30vw;
     }
+
     @include hover {
       &:hover {
         text-stroke: 1px $color-white--transparent-small;
@@ -256,6 +312,7 @@
         color: transparent;
       }
     }
+
     .marquee__texts {
       margin-top: -0.3em;
       margin-bottom: -0.15em;
@@ -265,8 +322,10 @@
       font-weight: inherit;
       animation-duration: 20s;
     }
+
     .marquee__text span {
       transform: translateY(110%);
+
       .footer.is-visible & {
         transform: translateY(0);
       }

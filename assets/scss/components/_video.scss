@@ -1,4 +1,5 @@
 $component-name: 'common-video';
+
 .#{$component-name} {
   &__cursor {
     // z-index: 2;
@@ -9,6 +10,7 @@ $component-name: 'common-video';
     // height: 300px;
     // pointer-events: none;
   }
+
   &__play {
     position: absolute;
     top: 50%;
@@ -24,11 +26,13 @@ $component-name: 'common-video';
     transition-duration: .2s;
     transition-timing-function: cubic-bezier(.165, .84, .44, 1);
     will-change: transform;
+
     // pointer-events: none;
     @include tablet {
       width: 80px;
       height: 80px;
     }
+
     @include hover {
       &:hover {
         width: 130px;
@@ -37,6 +41,7 @@ $component-name: 'common-video';
       }
     }
   }
+
   &__controls {
     position: absolute;
     top: 30px;
@@ -45,11 +50,13 @@ $component-name: 'common-video';
     display: flex;
     align-items: center;
     column-gap: 10px;
+
     @include mobile-small {
       top: $gutter-mobile;
       right: $gutter-mobile;
     }
   }
+
   &__control {
     position: relative;
     width: 70px;
@@ -60,6 +67,7 @@ $component-name: 'common-video';
     transition-property: width, height, margin, background-color;
     transition-duration: .2s;
     transition-timing-function: cubic-bezier(.165, .84, .44, 1);
+
     @include hover {
       &:hover {
         width: 80px;
@@ -68,9 +76,11 @@ $component-name: 'common-video';
         background-color: $color-white;
       }
     }
+
     @include mobile {
       width: 40px;
       height: 40px;
+
       @include hover {
         &:hover {
           width: 50px;
@@ -78,6 +88,7 @@ $component-name: 'common-video';
         }
       }
     }
+
     img {
       position: absolute;
       top: 50%;
@@ -86,27 +97,32 @@ $component-name: 'common-video';
       width: 25px;
       height: 20px;
       transition: all .3s cubic-bezier(.455, .03, .515, .955);
+
       @include mobile-small {
         width: 16px;
       }
     }
+
     &--audio {
       img {
         &[data-audio-status="off"] {
           opacity: 0;
           pointer-events: none;
         }
+
         &[data-audio-status="on"] {
           opacity: 1;
           pointer-events: auto;
         }
       }
+
       &.is-active {
         img {
           &[data-audio-status="off"] {
             opacity: 1;
             pointer-events: auto;
           }
+
           &[data-audio-status="on"] {
             opacity: 0;
             pointer-events: none;
