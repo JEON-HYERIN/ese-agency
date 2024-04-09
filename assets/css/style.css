@@ -165,52 +165,6 @@ iframe {
   clip: rect(0 0 0 0);
 }
 
-.common-inner {
-  position: relative;
-  max-width: 2000px;
-  padding: 0 60px;
-  margin: 0 auto;
-}
-@media screen and (max-width: 767px) {
-  .common-inner {
-    padding: 0 40px;
-  }
-}
-@media screen and (max-width: 479px) {
-  .common-inner {
-    padding: 0 6vw;
-  }
-}
-
-.common-title {
-  max-width: 540px;
-  font-size: 50px;
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-@media screen and (max-width: 991px) {
-  .common-title {
-    font-size: 40px;
-  }
-}
-@media screen and (max-width: 479px) {
-  .common-title {
-    max-width: 90%;
-  }
-}
-
-.letter-wrapper {
-  display: inline-block;
-  margin: -0.15em -0.5em;
-  vertical-align: top;
-  overflow: hidden;
-}
-.letter-wrapper span {
-  display: inline-block;
-  padding: 0.15em 0.5em;
-}
-
 .cursor {
   position: fixed;
   z-index: 40;
@@ -272,6 +226,52 @@ iframe {
   font-style: normal;
   font-display: swap;
 }
+.common-inner {
+  position: relative;
+  max-width: 2000px;
+  padding: 0 60px;
+  margin: 0 auto;
+}
+@media screen and (max-width: 767px) {
+  .common-inner {
+    padding: 0 40px;
+  }
+}
+@media screen and (max-width: 479px) {
+  .common-inner {
+    padding: 0 6vw;
+  }
+}
+
+.common-title {
+  max-width: 540px;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+@media screen and (max-width: 991px) {
+  .common-title {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 479px) {
+  .common-title {
+    max-width: 90%;
+  }
+}
+
+.letter-wrapper {
+  display: inline-block;
+  margin: -0.15em -0.5em;
+  vertical-align: top;
+  overflow: hidden;
+}
+.letter-wrapper span {
+  display: inline-block;
+  padding: 0.15em 0.5em;
+}
+
 .header {
   position: fixed;
   top: 0;

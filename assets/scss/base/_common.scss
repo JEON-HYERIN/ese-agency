@@ -1,0 +1,42 @@
+.common-inner {
+  position: relative;
+  max-width: 2000px;
+  padding: 0 $gutter-desktop;
+  margin: 0 auto;
+
+  @include mobile {
+    padding: 0 $gutter-tablet;
+  }
+
+  @include mobile-small {
+    padding: 0 $gutter-mobile;
+  }
+}
+
+.common-title {
+  max-width: 540px;
+  font-size: 50px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -.04em;
+
+  @include tablet {
+    font-size: 40px;
+  }
+
+  @include mobile-small {
+    max-width: 90%;
+  }
+}
+
+.letter-wrapper {
+  display: inline-block;
+  margin: -0.15em -0.5em;
+  vertical-align: top;
+  overflow: hidden;
+
+  span {
+    display: inline-block;
+    padding: 0.15em 0.5em;
+  }
+}
