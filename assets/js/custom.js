@@ -65,10 +65,10 @@ const introMotion2 = gsap.timeline({
   }
 })
 introMotion2
-.fromTo('.header__logo a', {yPercent: 100}, {yPercent: 0, onComplete: function() {introWomen();}}, "+=0.2")
-.fromTo('.global-nav__link', {yPercent: 100}, {yPercent: 0, stagger: .1}, "+=0")
-.fromTo('.section-visual .marquee__text span', { yPercent: 150, scaleY: 1.2}, {yPercent: 0, scaleY: 1, stagger: 0.2}, "-=2")
-.fromTo('.slogan__title span', {yPercent: 100}, {yPercent: 0, stagger: 0.2}, "-=1")
+.from('.header__logo a', {yPercent: 100, onComplete: function() {introWomen();}}, "+=.2")
+.from('.global-nav__link', {yPercent: 100, stagger: .1}, "+=0")
+.from('.section-visual .marquee__text span', {yPercent: 150, scaleY: 1.2, stagger: .2}, "-=2")
+.from('.slogan__title span', {yPercent: 100, stagger: .2}, "-=1")
 
 function introWomen() {
   const imgEl = $('.section-visual__sticky img');
