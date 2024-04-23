@@ -184,7 +184,9 @@ iframe {
   transform: translate(-50%, -50%);
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 50%;
-  transition: all 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition-property: width, height;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
 }
 .cursor.is-hover .cursor__pointer {
   width: 90px;

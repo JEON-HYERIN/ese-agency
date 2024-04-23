@@ -30,20 +30,24 @@ window.onload = function() {
   // cursor
   function moveCursor() {
     const cursor = document.querySelector('.cursor');
-    const linkEl =  document.querySelector('a');
+    const anchorEls = document.querySelectorAll('a');
     const CLASSNAME = 'is-hover';
   
-    window.addEventListener('mousemove', function(e) {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-      cursor.style.opacity = '1';
+    window.addEventListener('mousemove', (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      cursor.style.cssText = `top: ${y}px; left: ${x}px; opacity: 1;`;
     });
-    linkEl.addEventListener('mouseenter', function() {
-      cursor.classList.add(CLASSNAME);
-    })
-    linkEl.addEventListener('mouseleave', function() {
-      cursor.classList.remove(CLASSNAME);
-    })
+
+    anchorEls.forEach(function(anchorEl) {
+      anchorEl.addEventListener('mouseenter', () => {
+        cursor.classList.add(CLASSNAME);
+      })
+      anchorEl.addEventListener('mouseleave', () => {
+        cursor.classList.remove(CLASSNAME);
+      })
+    });
   }
   
   // intro
