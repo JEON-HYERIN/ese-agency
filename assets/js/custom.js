@@ -261,17 +261,24 @@ window.onload = function() {
   })
   
   // interview
-  $('.section-interview__video').mousemove(function(e) {
-    const offsetX = e.offsetX;
-    const offsetY = e.offsetY;
-  
-    const width = $('.section-interview__video').outerWidth();
-    const height = $('.section-interview__video').outerHeight();
-  
-    gsap.to('.common-video__play', {
-      x: (offsetX - (width / 2)) / 10,
-      y: (offsetY - (height / 2)) / 10,
-    })
+  $(document).on('mousemove', function(e) {
+    const video = document.querySelector('.section-interview__video');
+    const videoWidth = video.getBoundingClientRect().width;
+    const videoHeight = video.getBoundingClientRect().height;
+    const x = (e.clientX - (videoWidth / 2)) / 5;
+    const y = (e.clientY - (videoHeight / 2)) / 5;
+
+    if(e.target.classList.contains('section-interview__asset')) {
+      gsap.to('.section-interview__video .common-video__play', {
+        x: x,
+        y: y
+      })
+    } else {
+      gsap.to('.section-interview__video .common-video__play', {
+        x: 0,
+        y: 0
+      })
+    }
   })
   
   gsap.from('.section-interview__embedded', {
@@ -870,6 +877,26 @@ window.onload = function() {
       }
     }
   });
+
+  $(document).on('mousemove', function(e) {
+    const video = document.querySelector('.section-testimonial__video');
+    const videoWidth = video.getBoundingClientRect().width;
+    const videoHeight = video.getBoundingClientRect().height;
+    const x = (e.clientX - (videoWidth / 2)) / 5;
+    const y = (e.clientY - (videoHeight / 2)) / 5;
+
+    if(e.target.classList.contains('section-testimonial__item')) {
+      gsap.to('.section-testimonial__video .common-video__play', {
+        x: x,
+        y: y
+      })
+    } else {
+      gsap.to('.section-testimonial__video .common-video__play', {
+        x: 0,
+        y: 0
+      })
+    }
+  })
   
   // footer
   $('.footer-nav__header').on('click', footerToggle);

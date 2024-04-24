@@ -1,16 +1,6 @@
 $component-name: 'common-video';
 
 .#{$component-name} {
-  &__cursor {
-    // z-index: 2;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-    // width: 300px;
-    // height: 300px;
-    // pointer-events: none;
-  }
-
   &__play {
     position: absolute;
     top: 50%;
@@ -27,7 +17,6 @@ $component-name: 'common-video';
     transition-timing-function: cubic-bezier(.165, .84, .44, 1);
     will-change: transform;
 
-    // pointer-events: none;
     @include tablet {
       width: 80px;
       height: 80px;

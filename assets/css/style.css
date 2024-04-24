@@ -1862,6 +1862,7 @@ section:nth-child(n+3) {
   flex-direction: column;
   justify-content: center;
   padding: 60px;
+  pointer-events: none;
 }
 @media screen and (max-width: 991px) {
   .section-testimonial__text {
