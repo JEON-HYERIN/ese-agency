@@ -374,14 +374,14 @@ window.onload = function() {
   
   // work
   mm.add("(max-width: 479px)", () => {
-    const evenItems = document.querySelectorAll('.section-work__item:nth-child(2n)');
-    const oddItems = document.querySelectorAll('.section-work__item:nth-child(2n+1)');
+    const firstItems = document.querySelectorAll('.section-work__item:nth-child(2n-1)');
+    const secondItems = document.querySelectorAll('.section-work__item:nth-child(2n)');
     
-    evenItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    oddItems.forEach(function(item, index) {
+    firstItems.forEach(function(item, index) {
       item.dataset.delay = 0;
+    });
+    secondItems.forEach(function(item, index) {
+      item.dataset.delay = 0.1;
     });
   
     $('.section-work__item').each(function(i,el) {
@@ -401,8 +401,8 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 480px) and (max-width: 991px)", () => {
-    const firstItems = document.querySelectorAll('.section-work__item:nth-child(3n+1)');
-    const secondItems = document.querySelectorAll('.section-work__item:nth-child(3n+2)');
+    const firstItems = document.querySelectorAll('.section-work__item:nth-child(3n-2)');
+    const secondItems = document.querySelectorAll('.section-work__item:nth-child(3n-1)');
     const thirdItems = document.querySelectorAll('.section-work__item:nth-child(3n)');
     
     firstItems.forEach(function(item, index) {
@@ -432,7 +432,7 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 992px)", () => {
-    const firstItems = document.querySelectorAll('.section-work__item:nth-child(4n+1)');
+    const firstItems = document.querySelectorAll('.section-work__item:nth-child(4n-3)');
     const secondItems = document.querySelectorAll('.section-work__item:nth-child(4n-2)');
     const thirdItems = document.querySelectorAll('.section-work__item:nth-child(4n-1)');
     const fourthItems = document.querySelectorAll('.section-work__item:nth-child(4n)');
@@ -470,14 +470,14 @@ window.onload = function() {
   
   // partner
   mm.add("(max-width: 479px)", () => {
-    const evenItems = document.querySelectorAll('.section-partner__item:nth-child(2n)');
-    const oddItems = document.querySelectorAll('.section-partner__item:nth-child(2n+1)');
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(2n-1)');
+    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(2n)');
     
-    evenItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    oddItems.forEach(function(item, index) {
+    firstItems.forEach(function(item, index) {
       item.dataset.delay = 0;
+    });
+    secondItems.forEach(function(item, index) {
+      item.dataset.delay = 0.1;
     });
   
     $('.section-partner__item').each(function(i,el) {
@@ -496,8 +496,8 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 480px) and (max-width: 949px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n+1)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n+2)');
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n-2)');
+    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n-1)');
     const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
     
     firstItems.forEach(function(item, index) {
@@ -526,7 +526,7 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 950px) and (max-width: 991px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n+1)');
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n-3)');
     const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
     const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
     const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
@@ -560,8 +560,8 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 992px) and (max-width: 1189px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n+1)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n+2)');
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n-2)');
+    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n-1)');
     const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
     
     firstItems.forEach(function(item, index) {
@@ -590,7 +590,7 @@ window.onload = function() {
     })
   })
   mm.add("(min-width: 1190px) and (max-width: 1459px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n+1)');
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n-3)');
     const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
     const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
     const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
