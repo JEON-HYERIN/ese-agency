@@ -51,7 +51,9 @@ window.onload = function() {
   }
   
   // intro
-  var startCount = {var: 0};
+  const introCount = {
+    number: 0
+  };
   const introMotion = gsap.timeline({
     paused: true,
     onComplete: function() {
@@ -94,8 +96,8 @@ window.onload = function() {
     }
    }
   
-  const counting = gsap.to(startCount, {
-    var: 100,
+  const counting = gsap.to(introCount, {
+    number: 100,
     duration: 2,
     ease: 'none',
     onStart: function() {
@@ -104,7 +106,7 @@ window.onload = function() {
     },
     onUpdate: changeNumber,
     scrollTrigger: {
-      trigger: ".loading__count",
+      trigger: '.loading__count',
     },
     onComplete: function() {
       $('body').removeClass('is-load');
@@ -114,9 +116,9 @@ window.onload = function() {
   })
   
   function changeNumber() {
-    const count = document.querySelector('.loading__count');
+    const loadingCountEl = document.querySelector('.loading__count');
   
-    count.innerHTML = (startCount.var).toFixed();
+    loadingCountEl.textContent = (introCount.number).toFixed();
   }
   
   // visual
