@@ -168,25 +168,21 @@ section {
 }
 
 .section-work {
-  $card-gap: 16px;
-
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $card-gap;
-  }
-
-  &__item {
-    width: calc((100% - (#{$card-gap} * 3)) / 4);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
 
     @include tablet {
-      width: calc((100% - (#{$card-gap} * 2)) / 3);
+      grid-template-columns: repeat(3, 1fr);
     }
 
     @include mobile-small {
-      width: calc((100% - #{$card-gap}) / 2);
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
 
+  &__item {
     &:last-child {
       display: none;
 

@@ -1367,21 +1367,18 @@ section:nth-child(n+3) {
 }
 
 .section-work__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 16px;
 }
-.section-work__item {
-  width: calc((100% - 16px * 3) / 4);
-}
 @media screen and (max-width: 991px) {
-  .section-work__item {
-    width: calc((100% - 16px * 2) / 3);
+  .section-work__list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (max-width: 479px) {
-  .section-work__item {
-    width: calc((100% - 16px) / 2);
+  .section-work__list {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .section-work__item:last-child {
