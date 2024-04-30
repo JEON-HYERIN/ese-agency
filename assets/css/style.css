@@ -2159,8 +2159,6 @@ section:nth-child(n+3) {
   height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  transform: scale3d(1none, 1none, 1none);
-  transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 @media (hover: hover) and (min-width: 768px) {
