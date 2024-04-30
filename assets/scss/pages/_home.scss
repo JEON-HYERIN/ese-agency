@@ -959,24 +959,15 @@ section {
     }
   }
 
-  $card-gap: 10px;
-
   &__list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $card-gap;
+    display: grid;
+    grid-template-columns: (repeat(3, 1fr));
+    gap: 10px;
     padding-top: 30px;
 
     @include mobile {
+      display: flex;
       flex-direction: column;
-    }
-  }
-
-  &__item {
-    width: calc((100% - (#{$card-gap} * 2)) / 3);
-
-    @include mobile {
-      width: 100%;
     }
   }
 
