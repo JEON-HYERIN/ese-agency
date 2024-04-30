@@ -1776,27 +1776,23 @@ section:nth-child(n+3) {
 }
 .section-partner__list {
   display: grid;
-  gap: 10px;
-  grid-template-rows: auto auto;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  grid-auto-columns: minmax(260px, 1fr);
-  align-content: flex-start;
+  gap: 10px;
   padding-top: 30px;
 }
 @media screen and (max-width: 991px) {
   .section-partner__list {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-auto-columns: minmax(200px, 1fr);
   }
 }
 @media screen and (max-width: 767px) {
   .section-partner__list {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 @media screen and (max-width: 479px) {
   .section-partner__list {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .section-partner__item {
