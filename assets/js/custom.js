@@ -497,134 +497,10 @@ window.onload = function() {
       })
     })
   })
-  mm.add("(min-width: 480px) and (max-width: 949px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n-2)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n-1)');
-    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
-    
-    firstItems.forEach(function(item, index) {
-      item.dataset.delay = 0;
-    });
-    secondItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    thirdItems.forEach(function(item, index) {
-      item.dataset.delay = 0.2;
-    });
-  
-    $('.section-partner__item').each(function(i,el) {
-      gsap.from($(this).find('.section-partner__link'),{
-        opacity:0,
-        y: '100',
-        delay: el.dataset.delay,
-        scrollTrigger: {
-          trigger: el,
-          start:'0% 100%',
-          end: 'bottom center',
-          //markers: true,
-          toggleActions: 'play none none reset'
-          },
-      })
-    })
-  })
-  mm.add("(min-width: 950px) and (max-width: 991px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n-3)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
-    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
-    const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
-    
-    firstItems.forEach(function(item, index) {
-      item.dataset.delay = 0;
-    });
-    secondItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    thirdItems.forEach(function(item, index) {
-      item.dataset.delay = 0.2;
-    });
-    fourthItems.forEach(function(item, index) {
-      item.dataset.delay = 0.3;
-    });
-  
-    $('.section-partner__item').each(function(i,el) {
-      gsap.from($(this).find('.section-partner__link'),{
-        opacity:0,
-        y: '100',
-        delay: el.dataset.delay,
-        scrollTrigger: {
-          trigger: el,
-          start:'0% 100%',
-          end: 'bottom center',
-          //markers: true,
-          toggleActions: 'play none none reset'
-          },
-      })
-    })
-  })
-  mm.add("(min-width: 992px) and (max-width: 1189px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n-2)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n-1)');
-    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
-    
-    firstItems.forEach(function(item, index) {
-      item.dataset.delay = 0;
-    });
-    secondItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    thirdItems.forEach(function(item, index) {
-      item.dataset.delay = 0.2;
-    });
-  
-    $('.section-partner__item').each(function(i,el) {
-      gsap.from($(this).find('.section-partner__link'),{
-        opacity:0,
-        y: '100',
-        delay: el.dataset.delay,
-        scrollTrigger: {
-          trigger: el,
-          start:'0% 100%',
-          end: 'bottom center',
-          //markers: true,
-          toggleActions: 'play none none reset'
-          },
-      })
-    })
-  })
-  mm.add("(min-width: 1190px) and (max-width: 1459px)", () => {
-    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n-3)');
-    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
-    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
-    const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
-    
-    firstItems.forEach(function(item, index) {
-      item.dataset.delay = 0;
-    });
-    secondItems.forEach(function(item, index) {
-      item.dataset.delay = 0.1;
-    });
-    thirdItems.forEach(function(item, index) {
-      item.dataset.delay = 0.2;
-    });
-    fourthItems.forEach(function(item, index) {
-      item.dataset.delay = 0.3;
-    });
-  
-    $('.section-partner__item').each(function(i,el) {
-      gsap.from($(this).find('.section-partner__link'),{
-        opacity:0,
-        y: '100',
-        delay: el.dataset.delay,
-        scrollTrigger: {
-          trigger: el,
-          start:'0% 100%',
-          end: 'bottom center',
-          //markers: true,
-          toggleActions: 'play none none reset'
-          },
-      })
-    })
-  })
+  mm.add("(min-width: 480px) and (max-width: 949px)", partnerThreeColumn)
+  mm.add("(min-width: 950px) and (max-width: 991px)", partnerFourColumn)
+  mm.add("(min-width: 992px) and (max-width: 1189px)", partnerThreeColumn)
+  mm.add("(min-width: 1190px) and (max-width: 1459px)", partnerFourColumn)
   mm.add("(min-width: 1460px) and (max-width: 1729px)", () => {
     const firstItems = document.querySelectorAll('.section-partner__item:nth-child(5n-4)');
     const secondItems = document.querySelectorAll('.section-partner__item:nth-child(5n-3)');
@@ -751,6 +627,71 @@ window.onload = function() {
       })
     })
   })
+
+  function partnerThreeColumn() {
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(3n-2)');
+    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(3n-1)');
+    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(3n)');
+    
+    firstItems.forEach(function(item, index) {
+      item.dataset.delay = 0;
+    });
+    secondItems.forEach(function(item, index) {
+      item.dataset.delay = 0.1;
+    });
+    thirdItems.forEach(function(item, index) {
+      item.dataset.delay = 0.2;
+    });
+  
+    $('.section-partner__item').each(function(i,el) {
+      gsap.from($(this).find('.section-partner__link'),{
+        opacity:0,
+        y: '100',
+        delay: el.dataset.delay,
+        scrollTrigger: {
+          trigger: el,
+          start:'0% 100%',
+          end: 'bottom center',
+          //markers: true,
+          toggleActions: 'play none none reset'
+          },
+      })
+    })
+  }
+  function partnerFourColumn() {
+    const firstItems = document.querySelectorAll('.section-partner__item:nth-child(4n-3)');
+    const secondItems = document.querySelectorAll('.section-partner__item:nth-child(4n-2)');
+    const thirdItems = document.querySelectorAll('.section-partner__item:nth-child(4n-1)');
+    const fourthItems = document.querySelectorAll('.section-partner__item:nth-child(4n)');
+    
+    firstItems.forEach(function(item, index) {
+      item.dataset.delay = 0;
+    });
+    secondItems.forEach(function(item, index) {
+      item.dataset.delay = 0.1;
+    });
+    thirdItems.forEach(function(item, index) {
+      item.dataset.delay = 0.2;
+    });
+    fourthItems.forEach(function(item, index) {
+      item.dataset.delay = 0.3;
+    });
+  
+    $('.section-partner__item').each(function(i,el) {
+      gsap.from($(this).find('.section-partner__link'),{
+        opacity:0,
+        y: '100',
+        delay: el.dataset.delay,
+        scrollTrigger: {
+          trigger: el,
+          start:'0% 100%',
+          end: 'bottom center',
+          //markers: true,
+          toggleActions: 'play none none reset'
+          },
+      })
+    })
+  }
   
   // footer
   const footerText1 = new SplitType('.footer-nav__title', {types: 'words', tagName: 'span'});
